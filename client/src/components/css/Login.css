@@ -1,0 +1,17 @@
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+    width: 300px;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    width: 320px;
+  }
+  .email {
+    width: 100%;
+  }
+  .password {
+    width: 100%;
+  }
+}
