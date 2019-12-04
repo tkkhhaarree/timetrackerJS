@@ -1,51 +1,62 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from "react";
+import { auth } from "../actions/auth";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import { login } from "../actions/auth";
 import "./css/Login.css";
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: ""
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(email);
-    login(email, password).then(token => console.log(token));
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
-  return (
-    <div className="Login">
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email">
-          <FormLabel>Email</FormLabel>
-          <FormControl
-            className="email"
-            autoFocus
+  onSubmit(e) {
+    e.preventDefault();
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    auth.login(user).then(res => {
+      if (res) {
+        this.props.history.push("/dashboard");
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div className="Login">
+        <form noValidate onSubmit={this.onSubmit}>
+          <label>Email</label>
+          <input
             type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            name="email"
+            value={this.state.email}
+            onChange={this.onChange}
           />
-        </FormGroup>
-        <FormGroup controlId="password">
-          <FormLabel>Password</FormLabel>
-          <FormControl
-            className="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+          <br />
+          <label>Password</label>
+          <input
+            name="password"
+            value={this.state.password}
+            onChange={this.onChange}
             type="password"
           />
-        </FormGroup>
-        <Button block disabled={!validateForm()} type="submit">
-          Login
-        </Button>
-      </form>
-    </div>
-  );
-};
+          <br />
+          <Button type="submit">Login</Button>
+        </form>
+      </div>
+    );
+  }
+}
 
 export default Login;

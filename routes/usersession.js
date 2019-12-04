@@ -4,11 +4,9 @@ const { check, validationResult } = require("express-validator");
 const Session = require("../models/Session");
 const CurrentUrl = require("../models/CurrentUrl");
 const Webstats = require("../models/Webstats");
-
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const config = require("config");
 const auth = require("../middleware/auth");
+var cors = require("cors");
+router.use(cors());
 
 function url_strip(url) {
   if (url.includes("http://") || url.includes("https://")) {

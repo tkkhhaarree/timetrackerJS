@@ -111,7 +111,7 @@ router.get("/userinfo", auth, async (req, res) => {
     const user = await User.findById(req.user.id).select("-password");
     res.json({ user });
   } catch (err2) {
-    console.error(err.message);
+    console.error(err2.message);
     res.status(500).send("Server down.");
   }
 });
