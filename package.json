@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "client": "0.0.1",
     "concurrently": "^5.0.0",
     "config": "^3.2.3",
