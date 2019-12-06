@@ -7,10 +7,24 @@ import {
 } from "react-router-dom";
 import { auth } from "../actions/auth";
 
+const Webstats = () => {
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      "x-auth-token": token
+    }
+  };
+  return axios
+    .post("http://localhost:5000/stats/webstats", config)
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 const Dashboard = () => {
   return (
     <div>
-      <b>dashboard</b>
+      <Webstats />
       <br />
       <Link to="/">
         <button onClick={auth.logout}>Logout</button>
