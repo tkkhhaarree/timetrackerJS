@@ -31,14 +31,67 @@ const Webstats = () => {
   var labels = [];
   var viewtime = [];
   var i;
-  var colors = [];
+  var j;
+  var colors = [
+    "#488f31",
+    "#8aae4c",
+    "#c6cd6e",
+    "#eb7c52",
+    "#f8b669",
+    "#ffed97"
+  ];
   if (resp.webstats.length > 0) {
     for (i = 0; i < resp.webstats.length; i++) {
-      labels.push(resp.webstats[i].url);
-      viewtime.push(resp.webstats[i].viewtime);
+      if (resp.webstats[i].viewtime > 0) {
+        labels.push(resp.webstats[i].url);
+        viewtime.push(resp.webstats[i].viewtime);
+      }
     }
 
-    while (colors.length < resp.webstats.length) {
+    var temp1;
+    var temp2;
+    for (i = 0; i < viewtime.length - 1; i++) {
+      for (j = 1; j < viewtime.length; j++) {
+        if (viewtime[j] < viewtime[i]) {
+          temp1 = viewtime[j];
+          viewtime[j] = viewtime[i];
+          viewtime[i] = temp1;
+          temp2 = labels[j];
+          labels[j] = labels[i];
+          labels[i] = temp2;
+        }
+      }
+    }
+
+    var sum = 0;
+    for (i = 0; i < viewtime.length; i++) {
+      sum = sum + viewtime[i];
+    }
+    var sp = 0;
+    var index;
+    for (i = viewtime.length - 1; i >= 0; i--) {
+      if (((sp + viewtime[i]) / sum) * 100 > 1) {
+        break;
+      } else {
+        sp = sp + viewtime[i];
+        index = i;
+      }
+    }
+
+    var lbl = [];
+    var vt = [];
+    for (i = 0; i < index; i++) {
+      lbl.push(labels[i]);
+      vt.push(viewtime[i]);
+    }
+
+    lbl.push("others");
+    vt.push(sp);
+
+    console.log(lbl);
+    console.log(sp);
+
+    while (colors.length < lbl.length) {
       do {
         var color = Math.floor(Math.random() * 1000000 + 1);
       } while (colors.indexOf(color) >= 0);
@@ -52,37 +105,35 @@ const Webstats = () => {
     );
   }
   const pd = {
-    labels: labels,
+    labels: lbl,
     datasets: [
       {
         label: "Points",
         backgroundColor: colors,
-        data: viewtime,
+        data: vt,
         responsive: true,
         maintainAspectRatio: false
       }
     ]
   };
 
-  return <Doughnut data={pd} />;
-
-  //return <font color="white">{JSON.stringify(resp, null, 2)}</font>;
+  return (
+    <div height="50%" width="50%" align="center">
+      <Doughnut data={pd} />
+    </div>
+  );
 };
 
 const Dashboard = () => {
   return (
-    <div className="limiter">
+    <div>
       <Webstats />
-      <div className="container-login100">
-        <br />
-        <Link to="/">
-          <div className="container-login100-form-btn">
-            <button className="login100-form-btn" onClick={auth.logout}>
-              Logout
-            </button>
-          </div>
-        </Link>
-      </div>
+
+      <Link to="/">
+        <div>
+          <button onClick={auth.logout}>Logout</button>
+        </div>
+      </Link>
     </div>
   );
 };

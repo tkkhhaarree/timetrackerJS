@@ -35,60 +35,44 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <div className="limiter">
-          <div className="container-login100">
-            <div className="wrap-login100">
-              <div className="login100-pic js-tilt" data-tilt>
-                <img src={logo} />
-              </div>
+      <div>
+        <form noValidate onSubmit={this.onSubmit}>
+          <span>Member Login</span>
 
-              <form
-                className="login100-form validate-form"
-                noValidate
-                onSubmit={this.onSubmit}
-              >
-                <span className="login100-form-title">Member Login</span>
-
-                <div className="wrap-input100 validate-input">
-                  <input
-                    className="input100"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                  />
-                  <span className="focus-input100"></span>
-                  <span className="symbol-input100">
-                    <i className="fa fa-envelope" aria-hidden="true"></i>
-                  </span>
-                </div>
-
-                <div className="wrap-input100 validate-input">
-                  <input
-                    className="input100"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                  />
-                  <span className="focus-input100"></span>
-                  <span className="symbol-input100">
-                    <i className="fa fa-lock" aria-hidden="true"></i>
-                  </span>
-                </div>
-
-                <div className="container-login100-form-btn">
-                  <button type="submit" className="login100-form-btn">
-                    Login
-                  </button>
-                </div>
-              </form>
-            </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.onChange}
+            />
+            <span></span>
+            <span>
+              <i aria-hidden="true"></i>
+            </span>
           </div>
-        </div>
+
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.onChange}
+            />
+            <span></span>
+            <span>
+              <i aria-hidden="true"></i>
+            </span>
+          </div>
+
+          <div className="container-login100-form-btn">
+            <button type="submit" className="login100-form-btn">
+              Login
+            </button>
+          </div>
+        </form>
       </div>
     );
   }
