@@ -32,14 +32,23 @@ const Webstats = () => {
   var viewtime = [];
   var i;
   var j;
-  var colors = [
-    "#488f31",
-    "#8aae4c",
-    "#c6cd6e",
-    "#eb7c52",
-    "#f8b669",
-    "#ffed97"
-  ];
+  // var colors = [
+  //   "#488f31",
+  //   "#8aae4c",
+  //   "#c6cd6e",
+  //   "#eb7c52",
+  //   "#f8b669",
+  //   "#ffed97"
+  // ];
+  var colors = [];
+  var temp1;
+  var temp2;
+  var sum = 0;
+  var sp = 0;
+  var index = 0;
+  var lbl = [];
+  var vt = [];
+
   if (resp.webstats.length > 0) {
     for (i = 0; i < resp.webstats.length; i++) {
       if (resp.webstats[i].viewtime > 0) {
@@ -48,11 +57,14 @@ const Webstats = () => {
       }
     }
 
-    var temp1;
-    var temp2;
+    index = viewtime.length;
+
+    //console.log("label before sort: ", labels);
+    //console.log("viewtime after sort: ", viewtime);
+
     for (i = 0; i < viewtime.length - 1; i++) {
-      for (j = 1; j < viewtime.length; j++) {
-        if (viewtime[j] < viewtime[i]) {
+      for (j = i + 1; j < viewtime.length; j++) {
+        if (viewtime[i] < viewtime[j]) {
           temp1 = viewtime[j];
           viewtime[j] = viewtime[i];
           viewtime[i] = temp1;
@@ -62,24 +74,23 @@ const Webstats = () => {
         }
       }
     }
+    //console.log("label after sort: ", labels);
+    //console.log("viewtime after sort: ", viewtime);
 
-    var sum = 0;
     for (i = 0; i < viewtime.length; i++) {
       sum = sum + viewtime[i];
     }
-    var sp = 0;
-    var index;
+
     for (i = viewtime.length - 1; i >= 0; i--) {
-      if (((sp + viewtime[i]) / sum) * 100 > 1) {
+      if (((sp + viewtime[i]) / sum) * 100 > 5) {
         break;
       } else {
         sp = sp + viewtime[i];
         index = i;
+        //console.log("index: ", index);
       }
     }
 
-    var lbl = [];
-    var vt = [];
     for (i = 0; i < index; i++) {
       lbl.push(labels[i]);
       vt.push(viewtime[i]);
@@ -88,8 +99,8 @@ const Webstats = () => {
     lbl.push("others");
     vt.push(sp);
 
-    console.log(lbl);
-    console.log(sp);
+    // console.log("lbl: ", lbl);
+    // console.log("vt: ", vt);
 
     while (colors.length < lbl.length) {
       do {
@@ -98,11 +109,7 @@ const Webstats = () => {
       colors.push("#" + ("000000" + color.toString(16)).slice(-6));
     }
   } else {
-    return (
-      <h1>
-        <font color="white">Loading</font>
-      </h1>
-    );
+    return <h1>Loading</h1>;
   }
   const pd = {
     labels: lbl,
@@ -110,25 +117,40 @@ const Webstats = () => {
       {
         label: "Points",
         backgroundColor: colors,
-        data: vt,
-        responsive: true,
-        maintainAspectRatio: false
+        data: vt
       }
     ]
   };
 
   return (
-    <div height="50%" width="50%" align="center">
-      <Doughnut data={pd} />
-    </div>
+    <Doughnut
+      data={pd}
+      height={500}
+      width={500}
+      options={{
+        maintainAspectRatio: false,
+        legend: {
+          position: "left",
+          labels: {
+            boxWidth: 12,
+            fontSize: 12
+          }
+        },
+        responsive: false
+      }}
+    />
   );
+};
+
+const rowC = {
+  display: "flex",
+  flexDirection: "row"
 };
 
 const Dashboard = () => {
   return (
     <div>
       <Webstats />
-
       <Link to="/">
         <div>
           <button onClick={auth.logout}>Logout</button>

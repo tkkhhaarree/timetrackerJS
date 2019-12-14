@@ -1,0 +1,661 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20191213.184321.11260.0.001.json",
+    "dumpEventTime": "2019-12-13T18:43:21Z",
+    "dumpEventTimeStamp": "1576242801563",
+    "processId": 11260,
+    "cwd": "E:\\web dev\\timetrackerJS",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "server.js"
+    ],
+    "nodejsVersion": "v12.13.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.13.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.13.1/node-v12.13.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.13.1/node-v12.13.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.13.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18362",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i3-4005U CPU @ 1.70GHz",
+        "speed": 1696,
+        "user": 563546,
+        "nice": 0,
+        "sys": 456859,
+        "idle": 7345781,
+        "irq": 59031
+      },
+      {
+        "model": "Intel(R) Core(TM) i3-4005U CPU @ 1.70GHz",
+        "speed": 1696,
+        "user": 530937,
+        "nice": 0,
+        "sys": 317359,
+        "idle": 7517609,
+        "irq": 10515
+      },
+      {
+        "model": "Intel(R) Core(TM) i3-4005U CPU @ 1.70GHz",
+        "speed": 1696,
+        "user": 654921,
+        "nice": 0,
+        "sys": 398609,
+        "idle": 7312359,
+        "irq": 4640
+      },
+      {
+        "model": "Intel(R) Core(TM) i3-4005U CPU @ 1.70GHz",
+        "speed": 1696,
+        "user": 618375,
+        "nice": 0,
+        "sys": 341984,
+        "idle": 7405546,
+        "irq": 3140
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "c0:38:96:78:01:25",
+        "address": "fe80::d502:9f8f:947e:82fd",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 8
+      },
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "c0:38:96:78:01:25",
+        "address": "192.168.1.105",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "ABC"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6dc9c1729",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dc9c5b4c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dc9c4b08",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dcab369b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd2b82de",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd2a0321",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd16dbec",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd175cf1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd16b353",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd169b24",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd18adf5",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dcef6e19",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd6e404d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd74b168",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd65cf8c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd65f1c7",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd744e70",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd65cf8c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd663bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd661191",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd660d7c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd1c62d3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd1c5c56",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd296ecb",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dcb0bb7b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dcb5d3f4",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dcb59e4c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dca7bc12",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dcad9a73",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dc99667c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff6dd797138",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ffced2c7bd4",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ffcee3eced1",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 17022976,
+    "totalCommittedMemory": 17022976,
+    "usedMemory": 15177024,
+    "availableMemory": 2183163800,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047488,
+        "used": 1047440,
+        "available": 48
+      },
+      "old_space": {
+        "memorySize": 11907072,
+        "committedMemory": 11907072,
+        "capacity": 11727840,
+        "used": 11022352,
+        "available": 705488
+      },
+      "code_space": {
+        "memorySize": 688128,
+        "committedMemory": 688128,
+        "capacity": 414144,
+        "used": 377696,
+        "available": 36448
+      },
+      "map_space": {
+        "memorySize": 1052672,
+        "committedMemory": 1052672,
+        "capacity": 1050032,
+        "used": 697600,
+        "available": 352432
+      },
+      "large_object_space": {
+        "memorySize": 2015232,
+        "committedMemory": 2015232,
+        "capacity": 1996088,
+        "used": 1996088,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3552,
+        "used": 3552,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 1.5,
+    "kernelCpuSeconds": 0.484,
+    "cpuConsumptionPercent": 0.737546,
+    "maxRss": 54517760,
+    "pageFaults": {
+      "IORequired": 19481,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 724,
+      "writes": 101
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\DELL\\AppData\\Roaming",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132201185551353016",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "ABC",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "dp0": "E:\\web dev\\timetrackerJS\\node_modules\\.bin\\",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "FORCE_COLOR": "2",
+    "HOME": "C:\\Users\\DELL",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\DELL",
+    "INIT_CWD": "E:\\web dev\\timetrackerJS",
+    "LOCALAPPDATA": "C:\\Users\\DELL\\AppData\\Local",
+    "LOGONSERVER": "\\\\ABC",
+    "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_EXE": "C:\\Program Files\\nodejs\\\\node.exe",
+    "NPM_CLI_JS": "C:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npm-cli.js",
+    "npm_config_access": "",
+    "npm_config_allow_same_version": "",
+    "npm_config_also": "",
+    "npm_config_always_auth": "",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"server\"],\"original\":[\"run\",\"server\"]}",
+    "npm_config_audit": "true",
+    "npm_config_audit_level": "low",
+    "npm_config_auth_type": "legacy",
+    "npm_config_before": "",
+    "npm_config_bin_links": "true",
+    "npm_config_browser": "",
+    "npm_config_ca": "",
+    "npm_config_cache": "C:\\Users\\DELL\\AppData\\Roaming\\npm-cache",
+    "npm_config_cache_lock_retries": "10",
+    "npm_config_cache_lock_stale": "60000",
+    "npm_config_cache_lock_wait": "10000",
+    "npm_config_cache_max": "Infinity",
+    "npm_config_cache_min": "10",
+    "npm_config_cafile": "",
+    "npm_config_cert": "",
+    "npm_config_cidr": "",
+    "npm_config_color": "true",
+    "npm_config_commit_hooks": "true",
+    "npm_config_depth": "Infinity",
+    "npm_config_description": "true",
+    "npm_config_dev": "",
+    "npm_config_dry_run": "",
+    "npm_config_editor": "notepad.exe",
+    "npm_config_engine_strict": "",
+    "npm_config_fetch_retries": "2",
+    "npm_config_fetch_retry_factor": "10",
+    "npm_config_fetch_retry_maxtimeout": "60000",
+    "npm_config_fetch_retry_mintimeout": "10000",
+    "npm_config_force": "",
+    "npm_config_format_package_lock": "true",
+    "npm_config_git": "git",
+    "npm_config_git_tag_version": "true",
+    "npm_config_global": "",
+    "npm_config_globalconfig": "C:\\Users\\DELL\\AppData\\Roaming\\npm\\etc\\npmrc",
+    "npm_config_globalignorefile": "C:\\Users\\DELL\\AppData\\Roaming\\npm\\etc\\npmignore",
+    "npm_config_global_style": "",
+    "npm_config_group": "",
+    "npm_config_ham_it_up": "",
+    "npm_config_heading": "npm",
+    "npm_config_https_proxy": "",
+    "npm_config_if_present": "",
+    "npm_config_ignore_prepublish": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_author_email": "",
+    "npm_config_init_author_name": "",
+    "npm_config_init_author_url": "",
+    "npm_config_init_license": "ISC",
+    "npm_config_init_module": "C:\\Users\\DELL\\.npm-init.js",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_json": "",
+    "npm_config_key": "",
+    "npm_config_legacy_bundling": "",
+    "npm_config_link": "",
+    "npm_config_local_address": "",
+    "npm_config_loglevel": "notice",
+    "npm_config_logs_max": "10",
+    "npm_config_long": "",
+    "npm_config_maxsockets": "50",
+    "npm_config_message": "%s",
+    "npm_config_metrics_registry": "https://registry.npmjs.org/",
+    "npm_config_node_gyp": "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
+    "npm_config_node_options": "",
+    "npm_config_node_version": "12.13.1",
+    "npm_config_noproxy": "",
+    "npm_config_offline": "",
+    "npm_config_onload_script": "",
+    "npm_config_only": "",
+    "npm_config_optional": "true",
+    "npm_config_otp": "",
+    "npm_config_package_lock": "true",
+    "npm_config_package_lock_only": "",
+    "npm_config_parseable": "",
+    "npm_config_prefer_offline": "",
+    "npm_config_prefer_online": "",
+    "npm_config_prefix": "C:\\Users\\DELL\\AppData\\Roaming\\npm",
+    "npm_config_preid": "",
+    "npm_config_production": "",
+    "npm_config_progress": "true",
+    "npm_config_proxy": "",
+    "npm_config_read_only": "",
+    "npm_config_rebuild_bundle": "true",
+    "npm_config_registry": "https://registry.npmjs.org/",
+    "npm_config_rollback": "true",
+    "npm_config_save": "true",
+    "npm_config_save_bundle": "",
+    "npm_config_save_dev": "",
+    "npm_config_save_exact": "",
+    "npm_config_save_optional": "",
+    "npm_config_save_prefix": "^",
+    "npm_config_save_prod": "",
+    "npm_config_scope": "",
+    "npm_config_scripts_prepend_node_path": "warn-only",
+    "npm_config_script_shell": "",
+    "npm_config_searchexclude": "",
+    "npm_config_searchlimit": "20",
+    "npm_config_searchopts": "",
+    "npm_config_searchstaleness": "900",
+    "npm_config_send_metrics": "",
+    "npm_config_shell": "C:\\WINDOWS\\system32\\cmd.exe",
+    "npm_config_shrinkwrap": "true",
+    "npm_config_sign_git_commit": "",
+    "npm_config_sign_git_tag": "",
+    "npm_config_sso_poll_frequency": "500",
+    "npm_config_sso_type": "oauth",
+    "npm_config_strict_ssl": "true",
+    "npm_config_tag": "latest",
+    "npm_config_tag_version_prefix": "v",
+    "npm_config_timing": "",
+    "npm_config_tmp": "C:\\Users\\DELL\\AppData\\Local\\Temp",
+    "npm_config_umask": "0000",
+    "npm_config_unicode": "",
+    "npm_config_unsafe_perm": "true",
+    "npm_config_update_notifier": "true",
+    "npm_config_usage": "",
+    "npm_config_user": "",
+    "npm_config_userconfig": "C:\\Users\\DELL\\.npmrc",
+    "npm_config_user_agent": "npm/6.12.1 node/v12.13.1 win32 x64",
+    "npm_config_version": "",
+    "npm_config_versions": "",
+    "npm_config_viewer": "browser",
+    "npm_execpath": "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "npm_lifecycle_event": "server",
+    "npm_lifecycle_script": "nodemon server",
+    "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+    "npm_package_author": "",
+    "npm_package_dependencies_bcryptjs": "^2.4.3",
+    "npm_package_dependencies_client": "0.0.1",
+    "npm_package_dependencies_concurrently": "^5.0.0",
+    "npm_package_dependencies_config": "^3.2.3",
+    "npm_package_dependencies_cors": "^2.8.5",
+    "npm_package_dependencies_create_react_app": "^3.2.0",
+    "npm_package_dependencies_express": "^4.17.1",
+    "npm_package_dependencies_express_validator": "^6.2.0",
+    "npm_package_dependencies_jsonwebtoken": "^8.5.1",
+    "npm_package_dependencies_mongoose": "^5.7.4",
+    "npm_package_dependencies_nodemon": "^1.19.3",
+    "npm_package_description": "",
+    "npm_package_devDependencies_concurrently": "^4.1.1",
+    "npm_package_devDependencies_nodemon": "^1.19.1",
+    "npm_package_gitHead": "296173005eec68620d513df1fa08b9035734cc98",
+    "npm_package_license": "ISC",
+    "npm_package_main": "server.js",
+    "npm_package_name": "expressapi",
+    "npm_package_proxy": "https://localhost:5000",
+    "npm_package_scripts_client": "npm start --prefix client",
+    "npm_package_scripts_dev": "concurrently \"npm run server\" \"npm run client\"",
+    "npm_package_scripts_server": "nodemon server",
+    "npm_package_scripts_start": "node server",
+    "npm_package_version": "1.0.0",
+    "NPM_PREFIX_NPM_CLI_JS": "C:\\Users\\DELL\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+    "NUMBER_OF_PROCESSORS": "4",
+    "OneDrive": "C:\\Users\\DELL\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\DELL\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\npm-lifecycle\\node-gyp-bin;E:\\web dev\\timetrackerJS\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\npm-lifecycle\\node-gyp-bin;E:\\web dev\\timetrackerJS\\node_modules\\.bin;C:\\Python27\\;C:\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Python36-32\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\DELL\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\DELL\\AppData\\Roaming\\npm",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 69 Stepping 1, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "4501",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "SynaProgDir": "Synaptics\\SynTP",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\DELL\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\DELL\\AppData\\Local\\Temp",
+    "USERDOMAIN": "ABC",
+    "USERDOMAIN_ROAMINGPROFILE": "ABC",
+    "USERNAME": "DELL",
+    "USERPROFILE": "C:\\Users\\DELL",
+    "windir": "C:\\WINDOWS",
+    "_prog": "node"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\WINDOWS\\System32\\fwpuclnt.dll"
+  ]
+}
