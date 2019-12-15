@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { auth } from "../actions/auth";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 
-import logo from "./images/logo.jpg";
-
 class Login extends Component {
   constructor() {
     super();
