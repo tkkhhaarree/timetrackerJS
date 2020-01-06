@@ -1,79 +1,121 @@
 import React, { Component } from "react";
 import { auth } from "../actions/auth";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: ""
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+   constructor() {
+      super();
+      this.state = {
+         email: "",
+         password: ""
+      };
+      this.onChange = this.onChange.bind(this);
+      this.onSubmit = this.onSubmit.bind(this);
+   }
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+   onChange(e) {
+      this.setState({ [e.target.name]: e.target.value });
+   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    };
+   onSubmit(e) {
+      e.preventDefault();
+      const user = {
+         email: this.state.email,
+         password: this.state.password
+      };
 
-    auth.login(user).then(res => {
-      if (res) {
-        this.props.history.push("/dashboard");
-      }
-    });
-  }
+      auth.login(user).then(res => {
+         if (res) {
+            //window.location.reload();
+            //this.props.history.push("/dashboard");
+            window.open("/dashboard", "_self");
+         }
+      });
+   }
 
-  render() {
-    return (
-      <div>
-        <form noValidate onSubmit={this.onSubmit}>
-          <span>Member Login</span>
+   render() {
+      return (
+         <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div style={paper}>
+               <Avatar style={avatar}>
+                  <LockOutlinedIcon />
+               </Avatar>
+               <Typography component="h1" variant="h5">
+                  Sign in
+               </Typography>
+               <form noValidate onSubmit={this.onSubmit} style={form}>
+                  <TextField
+                     variant="outlined"
+                     margin="normal"
+                     required
+                     fullWidth
+                     id="email"
+                     type="email"
+                     label="Email Address"
+                     name="email"
+                     autoComplete="email"
+                     autoFocus
+                     value={this.state.email}
+                     onChange={this.onChange}
+                  />
 
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.onChange}
-            />
-            <span></span>
-            <span>
-              <i aria-hidden="true"></i>
-            </span>
-          </div>
+                  <TextField
+                     variant="outlined"
+                     margin="normal"
+                     required
+                     fullWidth
+                     name="password"
+                     label="Password"
+                     type="password"
+                     name="password"
+                     id="password"
+                     autoComplete="current-password"
+                     value={this.state.password}
+                     onChange={this.onChange}
+                  />
 
-          <div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.onChange}
-            />
-            <span></span>
-            <span>
-              <i aria-hidden="true"></i>
-            </span>
-          </div>
-
-          <div className="container-login100-form-btn">
-            <button type="submit" className="login100-form-btn">
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+                  <Button
+                     type="submit"
+                     fullWidth
+                     variant="contained"
+                     color="primary"
+                     style={submit}
+                  >
+                     Sign In
+                  </Button>
+               </form>
+            </div>
+         </Container>
+      );
+   }
 }
+
+const paper = {
+   marginTop: "30px",
+   display: "flex",
+   flexDirection: "column",
+   alignItems: "center"
+};
+
+const avatar = {
+   margin: 1,
+   backgroundColor: "red"
+};
+
+const form = {
+   width: "100%", // Fix IE 11 issue.
+   marginTop: 1
+};
+const submit = {
+   margin: "8px 0px 2px"
+};
 
 export default Login;
