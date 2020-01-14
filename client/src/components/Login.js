@@ -14,7 +14,8 @@ class Login extends Component {
       super();
       this.state = {
          email: "",
-         password: ""
+         password: "",
+         alert: ""
       };
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
@@ -35,7 +36,13 @@ class Login extends Component {
          if (res) {
             //window.location.reload();
             //this.props.history.push("/dashboard");
+            this.setState({ alert: "" });
             window.open("/dashboard", "_self");
+         } else {
+            this.setState({ alert: "invalid login ID / Password." });
+            setTimeout(() => {
+               this.setState({ alert: "" });
+            }, 3000);
          }
       });
    }
@@ -92,6 +99,7 @@ class Login extends Component {
                      Sign In
                   </Button>
                </form>
+               <font color="red">{this.state.alert}</font>
             </div>
          </Container>
       );
