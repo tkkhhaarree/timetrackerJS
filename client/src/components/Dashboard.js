@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import {
    BrowserRouter as Router,
    Route,
@@ -107,10 +107,10 @@ const Webstats = () => {
 
    if (doughnutData != null) {
       return (
-         <div>
+         <Fragment>
             <DoughnutChart doughnutData={doughnutData} />
             <HorizontalBarChart doughnutData={doughnutData} />
-         </div>
+         </Fragment>
       );
    } else {
       return "loading";

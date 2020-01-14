@@ -15,6 +15,7 @@ const Home = () => {
          <div>
             <font color="black">you are already logged in!.</font>
             <br />
+            <br />
             <Button
                component={Link}
                to="/dashboard"
@@ -29,6 +30,7 @@ const Home = () => {
       return (
          <div>
             <font color="black">you are not logged in.</font>
+            <br />
             <br />
             <Button
                component={Link}

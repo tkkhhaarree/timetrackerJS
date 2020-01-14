@@ -107,7 +107,7 @@ const paper = {
 
 const avatar = {
    margin: 1,
-   backgroundColor: "red"
+   backgroundColor: "#1872cc"
 };
 
 const form = {

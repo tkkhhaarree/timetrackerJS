@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import IconButton from "@material-ui/core/IconButton";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { auth } from "../actions/auth";
 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +15,7 @@ const useStyles = makeStyles(theme => ({
       flex: 1
    },
    menuButton: {
-      marginRight: theme.spacing(2)
+      marginRight: theme.spacing(1)
    },
    title: {
       flexGrow: 1
@@ -49,7 +51,16 @@ const NavBar = () => {
                      <b>Timetracker</b>
                   </Link>
                </Typography>
-
+               <IconButton
+                  component={Link}
+                  href="http://github.com/tkkhhaarree/timetrackerjs"
+                  target="_blank"
+                  edge="end"
+                  className={classes.menuButton}
+                  color="inherit"
+               >
+                  <GitHubIcon />
+               </IconButton>
                <Link
                   href={btnLink}
                   style={{
