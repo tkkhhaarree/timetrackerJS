@@ -40,6 +40,14 @@ const Home = () => {
             >
                Login button
             </Button>
+            <Button
+               component={Link}
+               to="/register"
+               variant="outlined"
+               color="primary"
+            >
+               Register button
+            </Button>
          </div>
       );
    }

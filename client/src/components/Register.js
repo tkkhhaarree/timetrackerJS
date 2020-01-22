@@ -11,13 +11,15 @@ import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
 
-class Login extends Component {
+class Register extends Component {
    constructor() {
       super();
       this.state = {
+         username: "",
          email: "",
          password: "",
-         open: false
+         open: false,
+         alert: ""
       };
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
@@ -30,16 +32,21 @@ class Login extends Component {
    onSubmit(e) {
       e.preventDefault();
       const user = {
+         username: this.state.username,
          email: this.state.email,
          password: this.state.password
       };
 
-      auth.login(user).then(res => {
+      auth.register(user).then(res => {
          if (res) {
             this.setState({ open: false });
             window.open("/dashboard", "_self");
          } else {
             this.setState({ open: true });
+            this.setState({
+               alert:
+                  "Invalid Email / Password format or Account already exists."
+            });
             setTimeout(() => {
                this.setState({ open: false });
             }, 3000);
@@ -56,9 +63,24 @@ class Login extends Component {
                   <LockOutlinedIcon />
                </Avatar>
                <Typography component="h1" variant="h5">
-                  Sign in
+                  Sign up
                </Typography>
                <form noValidate onSubmit={this.onSubmit} style={form}>
+                  <TextField
+                     variant="outlined"
+                     margin="normal"
+                     required
+                     fullWidth
+                     id="username"
+                     type="username"
+                     label="Username"
+                     name="username"
+                     autoComplete="username"
+                     autoFocus
+                     value={this.state.username}
+                     onChange={this.onChange}
+                  />
+
                   <TextField
                      variant="outlined"
                      margin="normal"
@@ -96,12 +118,12 @@ class Login extends Component {
                      color="primary"
                      style={submit}
                   >
-                     Sign In
+                     Sign Up
                   </Button>
                </form>
                <Snackbar open={this.state.open}>
                   <Alert variant="filled" severity="error">
-                     Invalid Login ID / Password
+                     {this.state.alert}
                   </Alert>
                </Snackbar>
             </div>
@@ -130,4 +152,4 @@ const submit = {
    margin: "8px 0px 2px"
 };
 
-export default Login;
+export default Register;

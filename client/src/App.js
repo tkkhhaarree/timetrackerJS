@@ -7,6 +7,7 @@ import {
    Switch
 } from "react-router-dom";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import { auth } from "./actions/auth";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
@@ -21,6 +22,7 @@ export default function App() {
             <section>
                <Switch>
                   <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
                </Switch>
             </section>
