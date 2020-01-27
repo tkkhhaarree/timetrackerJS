@@ -46,9 +46,12 @@ const NavBar = () => {
                <Typography variant="h6" className={classes.title}>
                   <Link
                      href="/"
-                     style={{ textDecoration: "none", color: "white" }}
+                     style={{ color: "white", textDecoration: "none" }}
                   >
-                     <b>Timetracker</b>
+                     <b style={{ fontSize: 20 }}>
+                        Timetracker
+                        <sup style={{ fontSize: 11 }}> beta</sup>
+                     </b>
                   </Link>
                </Typography>
                <IconButton
@@ -57,10 +60,27 @@ const NavBar = () => {
                   target="_blank"
                   edge="end"
                   className={classes.menuButton}
-                  color="inherit"
+                  style={{ color: "white" }}
                >
                   <GitHubIcon />
                </IconButton>
+               <Link
+                  href="/register"
+                  style={{
+                     textDecoration: "none",
+                     color: "white",
+                     marginRight: "7px"
+                  }}
+               >
+                  <Button
+                     variant="outlined"
+                     color="inherit"
+                     style={{ textTransform: "none", padding: "5px 9px" }}
+                  >
+                     <b>Register</b>
+                  </Button>
+               </Link>
+
                <Link
                   href={btnLink}
                   style={{
@@ -71,7 +91,7 @@ const NavBar = () => {
                   <Button
                      variant="outlined"
                      color="inherit"
-                     style={{ textTransform: "none" }}
+                     style={{ textTransform: "none", padding: "5px 9px" }}
                      onClick={changeNavbar}
                   >
                      <b>{btnText}</b>

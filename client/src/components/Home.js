@@ -37,6 +37,9 @@ const Home = () => {
                to="/login"
                variant="outlined"
                color="primary"
+               style={{
+                  marginRight: "7px"
+               }}
             >
                Login button
             </Button>

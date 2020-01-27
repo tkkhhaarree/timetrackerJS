@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { auth } from "../actions/auth";
-
+import Link from "@material-ui/core/Link";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -59,7 +59,7 @@ class Register extends Component {
          <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div style={paper}>
-               <Avatar style={avatar}>
+               <Avatar>
                   <LockOutlinedIcon />
                </Avatar>
                <Typography component="h1" variant="h5">
@@ -91,7 +91,6 @@ class Register extends Component {
                      label="Email Address"
                      name="email"
                      autoComplete="email"
-                     autoFocus
                      value={this.state.email}
                      onChange={this.onChange}
                   />
@@ -120,6 +119,9 @@ class Register extends Component {
                   >
                      Sign Up
                   </Button>
+                  <Link href="/login" variant="body2">
+                     Already have an account? Sign In
+                  </Link>
                </form>
                <Snackbar open={this.state.open}>
                   <Alert variant="filled" severity="error">

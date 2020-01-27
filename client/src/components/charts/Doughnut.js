@@ -5,7 +5,7 @@ const DoughnutChart = props => {
    return (
       <Doughnut
          data={props.doughnutData}
-         height={350}
+         height={250}
          width={350}
          options={{
             maintainAspectRatio: false,

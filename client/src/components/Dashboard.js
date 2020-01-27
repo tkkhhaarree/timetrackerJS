@@ -1,14 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
-import {
-   BrowserRouter as Router,
-   Route,
-   Link,
-   Redirect
-} from "react-router-dom";
 import { auth } from "../actions/auth";
 import axios from "axios";
 import DoughnutChart from "./charts/Doughnut";
 import HorizontalBarChart from "./charts/HorizontalBar";
+import { Grid, Paper } from "@material-ui/core";
 
 const Webstats = () => {
    const token = localStorage.getItem("token");
@@ -108,8 +103,22 @@ const Webstats = () => {
    if (doughnutData != null) {
       return (
          <Fragment>
-            <DoughnutChart doughnutData={doughnutData} />
-            <HorizontalBarChart doughnutData={doughnutData} />
+            <Grid container spacing={1}>
+               <Grid item sm>
+                  <Paper
+                     style={{ padding: 20, marginTop: 10, marginBottom: 10 }}
+                  >
+                     <DoughnutChart doughnutData={doughnutData} />
+                  </Paper>
+               </Grid>
+               <Grid item sm>
+                  <Paper
+                     style={{ padding: 20, marginTop: 10, marginBottom: 10 }}
+                  >
+                     <HorizontalBarChart doughnutData={doughnutData} />
+                  </Paper>
+               </Grid>
+            </Grid>
          </Fragment>
       );
    } else {

@@ -12,7 +12,7 @@ app.use("/userauth", require("./routes/userauth"));
 app.use("/urltrack", require("./routes/urltrack"));
 app.use("/usersession", require("./routes/usersession"));
 app.use("/stats", require("./routes/stats"));
-//app.use("/urlcategory", require("./routes/urlcategory"));
+app.use("/urlcategory", require("./routes/urlcategory"));
 
 const PORT = process.env.PORT || 5000;
 

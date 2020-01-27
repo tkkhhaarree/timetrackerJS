@@ -40,6 +40,7 @@ export const auth = {
       return axios
          .post("http://localhost:5000/userauth/signup", body, config)
          .then(res => {
+            console.log("response from auth: ", res);
             localStorage.setItem("token", res.data.token);
             this.isAuthenticated = true;
             console.log("from auth: ", this.isAuthenticated);
@@ -65,6 +66,7 @@ export const auth = {
       return axios
          .post("http://localhost:5000/userauth/login", body, config)
          .then(res => {
+            console.log("response from auth: ", res);
             localStorage.setItem("token", res.data.token);
             this.isAuthenticated = true;
             console.log("from auth: ", this.isAuthenticated);
