@@ -3,11 +3,18 @@ import { auth } from "../actions/auth";
 import axios from "axios";
 import DoughnutChart from "./charts/Doughnut";
 import HorizontalBarChart from "./charts/HorizontalBar";
+import UrlTable from "./charts/UrlTable";
 import { Grid, Paper } from "@material-ui/core";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const Webstats = () => {
    const token = localStorage.getItem("token");
-   const [doughnutData, setDoughnutData] = useState({});
+   const [graphData, setGraphData] = useState({});
+   const [tableData, setTableData] = useState();
+   const [username, setUsername] = useState();
+   const [interval, setInterval] = React.useState("day");
 
    async function fetchData() {
       const config = {
@@ -15,17 +22,28 @@ const Webstats = () => {
             "x-auth-token": token
          }
       };
-      const res = await axios.get(
-         "http://localhost:5000/stats/webstats",
+
+      const userinfo = await axios.get(
+         "http://localhost:5000/userauth/userinfo",
          config
       );
+      console.log(userinfo.data.user.name);
+      setUsername(userinfo.data.user.name);
+
+      var statsUrl = "http://localhost:5000/stats/webstats/";
+
+      if (interval == "Daily") {
+         statsUrl = "http://localhost:5000/stats/webstats/" + "day";
+      } else {
+         statsUrl = "http://localhost:5000/stats/webstats/";
+      }
+
+      const res = await axios.get(statsUrl, config);
 
       var labels = [];
       var viewtime = [];
       var i;
       var j;
-
-      var colors = [];
       var temp1;
       var temp2;
       var sum = 0;
@@ -77,20 +95,54 @@ const Webstats = () => {
       lbl.push("others");
       vt.push(sp);
 
-      while (colors.length < lbl.length) {
-         do {
-            var color = Math.floor(Math.random() * 1000000 + 1);
-         } while (colors.indexOf(color) >= 0);
-         colors.push("#" + ("000000" + color.toString(16)).slice(-6));
+      const body = JSON.stringify({
+         url_list: labels
+      });
+
+      const res2 = await axios.post(
+         "http://localhost:5000/urlcategory/many",
+         body,
+         {
+            headers: {
+               "x-auth-token": token,
+               "Content-Type": "application/json"
+            }
+         }
+      );
+      var positive_time = 0;
+      var neutral_time = 0;
+      var negative_time = 0;
+      for (i = 0; i < res2.data.category.length; i++) {
+         if (res2.data.category[i] == 1) {
+            positive_time = positive_time + viewtime[i];
+         } else if (res2.data.category[i] == 0) {
+            neutral_time = neutral_time + viewtime[i];
+         } else if (res2.data.category[i] == -1) {
+            negative_time = negative_time + viewtime[i];
+         }
       }
 
-      setDoughnutData({
-         labels: lbl,
+      var category_vt = [positive_time, neutral_time, negative_time];
+      var category_lbl = ["productive", "neutral", "unproductive"];
+
+      var tableContent = [];
+      for (i = 0; i < labels.length; i++) {
+         tableContent.push({
+            url: labels[i],
+            time: viewtime[i],
+            category: res2.data.category[i]
+         });
+      }
+
+      setTableData(tableContent);
+
+      setGraphData({
+         labels: category_lbl,
          datasets: [
             {
                label: "Points",
-               backgroundColor: colors,
-               data: vt
+               backgroundColor: ["blue", "#bbbbbb", "red"],
+               data: category_vt
             }
          ]
       });
@@ -100,30 +152,45 @@ const Webstats = () => {
       fetchData();
    }, []);
 
-   if (doughnutData != null) {
-      return (
-         <Fragment>
-            <Grid container spacing={1}>
-               <Grid item sm>
-                  <Paper
-                     style={{ padding: 20, marginTop: 10, marginBottom: 10 }}
-                  >
-                     <DoughnutChart doughnutData={doughnutData} />
-                  </Paper>
-               </Grid>
-               <Grid item sm>
-                  <Paper
-                     style={{ padding: 20, marginTop: 10, marginBottom: 10 }}
-                  >
-                     <HorizontalBarChart doughnutData={doughnutData} />
-                  </Paper>
-               </Grid>
+   const handleChange = event => {
+      setInterval(event.target.value);
+   };
+
+   return (
+      <Fragment>
+         Hello <b>{username}</b>!<br />
+         <br />
+         <Select value={interval} onChange={handleChange}>
+            <MenuItem value={"day"}>Daily</MenuItem>
+            <MenuItem value={"week"}>Weekly</MenuItem>
+            <MenuItem value={"year"}>Yearly</MenuItem>
+            <MenuItem value={"all"}>All Time</MenuItem>
+         </Select>
+         <Grid container spacing={1}>
+            <Grid item sm>
+               <Paper
+                  style={{
+                     padding: 20,
+                     marginTop: 10,
+                     marginBottom: 10
+                  }}
+               >
+                  <DoughnutChart graphData={graphData} />
+               </Paper>
             </Grid>
-         </Fragment>
-      );
-   } else {
-      return "loading";
-   }
+            <Grid item sm>
+               <Paper style={{ padding: 20, marginTop: 10, marginBottom: 10 }}>
+                  <HorizontalBarChart graphData={graphData} />
+               </Paper>
+            </Grid>
+         </Grid>
+         <Grid container spacing={1}>
+            <Grid item sm>
+               <UrlTable tableData={tableData} />
+            </Grid>
+         </Grid>
+      </Fragment>
+   );
 };
 
 const rowC = {

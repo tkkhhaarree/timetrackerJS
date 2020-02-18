@@ -4,9 +4,9 @@ import React from "react";
 const HorizontalBarChart = props => {
    return (
       <HorizontalBar
-         data={props.doughnutData}
-         height={250}
-         width={350}
+         data={props.graphData}
+         height={200}
+         width={300}
          options={{
             legend: {
                display: false
@@ -18,6 +18,9 @@ const HorizontalBarChart = props => {
                   {
                      gridLines: {
                         display: false
+                     },
+                     ticks: {
+                        beginAtZero: true
                      }
                   }
                ],
@@ -25,7 +28,8 @@ const HorizontalBarChart = props => {
                   {
                      gridLines: {
                         display: false
-                     }
+                     },
+                     barPercentage: 0.7
                   }
                ]
             }

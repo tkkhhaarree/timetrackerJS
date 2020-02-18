@@ -65,7 +65,12 @@ class Register extends Component {
                <Typography component="h1" variant="h5">
                   Sign up
                </Typography>
-               <form noValidate onSubmit={this.onSubmit} style={form}>
+               <form
+                  noValidate
+                  onSubmit={this.onSubmit}
+                  style={form}
+                  spellCheck="false"
+               >
                   <TextField
                      variant="outlined"
                      margin="normal"

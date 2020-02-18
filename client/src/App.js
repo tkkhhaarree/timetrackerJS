@@ -13,7 +13,6 @@ import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { grey } from "@material-ui/core/colors";
 
 const darkTheme = createMuiTheme({
    palette: {

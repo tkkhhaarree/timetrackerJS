@@ -8,6 +8,7 @@ import Link from "@material-ui/core/Link";
 import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { auth } from "../actions/auth";
+import { display } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
    root: {
@@ -30,19 +31,50 @@ const NavBar = () => {
    const [btnLink, setBtnLink] = useState(
       localStorage.getItem("token") != null ? "/" : "/login"
    );
+   const [registerDisplay, setRegisterDisplay] = useState(
+      localStorage.getItem("token") != null
+         ? {
+              textTransform: "none",
+              padding: "5px 9px",
+              textDecoration: "none",
+              color: "white",
+              marginRight: "7px",
+              display: "none"
+           }
+         : {
+              textTransform: "none",
+              padding: "5px 9px",
+              textDecoration: "none",
+              color: "white",
+              marginRight: "7px",
+              display: "block"
+           }
+   );
 
    function changeNavbar() {
       if (btnText == "Logout") {
          auth.logout();
          setBtnText("Login");
          setBtnLink("/login");
+         setRegisterDisplay({
+            textTransform: "none",
+            padding: "5px 9px",
+            textDecoration: "none",
+            color: "white",
+            marginRight: "7px",
+            display: "block"
+         });
+         console.log("block");
       }
    }
 
    return (
       <div className={classes.root}>
          <AppBar position="fixed">
-            <Toolbar variant="dense">
+            <Toolbar
+               variant="dense"
+               style={{ paddingLeft: "10px", paddingRight: "10px" }}
+            >
                <Typography variant="h6" className={classes.title}>
                   <Link
                      href="/"
@@ -64,22 +96,16 @@ const NavBar = () => {
                >
                   <GitHubIcon />
                </IconButton>
-               <Link
+
+               <Button
+                  component={Link}
                   href="/register"
-                  style={{
-                     textDecoration: "none",
-                     color: "white",
-                     marginRight: "7px"
-                  }}
+                  variant="outlined"
+                  color="inherit"
+                  style={registerDisplay}
                >
-                  <Button
-                     variant="outlined"
-                     color="inherit"
-                     style={{ textTransform: "none", padding: "5px 9px" }}
-                  >
-                     <b>Register</b>
-                  </Button>
-               </Link>
+                  <b>Register</b>
+               </Button>
 
                <Link
                   href={btnLink}

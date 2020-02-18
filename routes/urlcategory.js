@@ -24,8 +24,56 @@ function url_strip(url) {
    return url;
 }
 
-router.get(
-   "/",
+router.post(
+   "/many",
+   [
+      check("url_list", "URL can't be empty!")
+         .not()
+         .isEmpty()
+   ],
+   auth,
+   async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+         return res.status(400).json({ errors: errors.array() });
+      }
+
+      try {
+         const { url_list } = req.body;
+         var i = 0;
+         var parent_url_list = [];
+         for (i = 0; i < url_list.length; i++) {
+            parent_url_list.push(url_strip(url_list[i]));
+         }
+
+         var category_list = [];
+
+         const id = req.user.id;
+         //console.log("parent url list: ", parent_url_list);
+         for (i = 0; i < parent_url_list.length; i++) {
+            var parent_url = parent_url_list[i];
+            let url_type = await UrlType.findOne({ user: id, url: parent_url });
+            if (url_type) {
+               category_list.push(url_type.choice);
+            } else {
+               let url_votes = await UrlVotes.findOne({ url: parent_url });
+               if (url_votes) {
+                  category_list.push(url_votes.category);
+               } else {
+                  category_list.push(0);
+               }
+            }
+         }
+         res.json({ category: category_list });
+      } catch (err) {
+         console.error(err.message);
+         res.status(500).send("Server error.");
+      }
+   }
+);
+
+router.post(
+   "/one",
    [
       check("url", "URL is required!")
          .not()

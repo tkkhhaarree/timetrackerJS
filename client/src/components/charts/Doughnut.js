@@ -1,13 +1,15 @@
 import { Doughnut } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const DoughnutChart = props => {
    return (
       <Doughnut
-         data={props.doughnutData}
-         height={250}
-         width={350}
+         data={props.graphData}
+         height={200}
+         width={300}
          options={{
+            cutoutPercentage: 55,
             maintainAspectRatio: false,
             legend: {
                position: "left",
