@@ -5,9 +5,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Webstats from "./Webstats";
 
 const Dashboard = () => {
-   const [interval, setInterval] = useState("all");
+   const [interval, setInterval] = useState("today");
    const [webstatsUrl, setWebstatsUrl] = useState(
-      "http://localhost:5000/stats/webstats"
+      "http://localhost:5000/stats/webstats/day"
    );
    const [username, setUsername] = useState();
    const token = localStorage.getItem("token");
@@ -27,8 +27,12 @@ const Dashboard = () => {
    const handleChange = event => {
       if (event.target.value == "today") {
          setWebstatsUrl("http://localhost:5000/stats/webstats/day");
+      } else if (event.target.value == "month") {
+         setWebstatsUrl("http://localhost:5000/stats/webstats/month");
+      } else if (event.target.value == "year") {
+         setWebstatsUrl("http://localhost:5000/stats/webstats/year");
       } else {
-         setWebstatsUrl("http://localhost:5000/stats/webstats");
+         setWebstatsUrl("http://localhost:5000/stats/webstats/");
       }
       setInterval(event.target.value);
    };
@@ -39,6 +43,8 @@ const Dashboard = () => {
          <br />
          <Select value={interval} onChange={handleChange}>
             <MenuItem value={"today"}>Today</MenuItem>
+            <MenuItem value={"month"}>This Month</MenuItem>
+            <MenuItem value={"year"}>This Year</MenuItem>
             <MenuItem value={"all"}>All Time</MenuItem>
          </Select>
          <br />

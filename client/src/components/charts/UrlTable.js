@@ -24,7 +24,13 @@ const UrlTable = props => {
                   {row.url}
                </TableCell>
                <TableCell align="right">{row.time}</TableCell>
-               <TableCell align="right">{row.category}</TableCell>
+               <TableCell align="right">
+                  {row.category == -1
+                     ? "Distracting"
+                     : row.category == 0
+                     ? "Neutral"
+                     : "Productive"}
+               </TableCell>
             </TableRow>
          );
       });

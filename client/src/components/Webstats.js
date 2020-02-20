@@ -102,7 +102,7 @@ const Webstats = props => {
       }
 
       var category_vt = [positive_time, neutral_time, negative_time];
-      var category_lbl = ["productive", "neutral", "unproductive"];
+      var category_lbl = ["Productive", "Neutral", "Distracting"];
 
       var tableContent = [];
       for (i = 0; i < labels.length; i++) {
