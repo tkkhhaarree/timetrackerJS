@@ -1,5 +1,4 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -24,12 +23,12 @@ const UrlTable = props => {
                   {row.url}
                </TableCell>
                <TableCell align="right">{row.time}</TableCell>
-               <TableCell align="right">
+               <TableCell align="center">
                   {row.category == -1
-                     ? "Distracting"
+                     ? "Distracting "
                      : row.category == 0
-                     ? "Neutral"
-                     : "Productive"}
+                     ? "Neutral "
+                     : "Productive "}
                </TableCell>
             </TableRow>
          );
@@ -47,7 +46,7 @@ const UrlTable = props => {
                   <TableCell align="right">
                      <b>View Time</b>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                      <b>Category</b>
                   </TableCell>
                </TableRow>
