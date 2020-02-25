@@ -1,35 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import axios from "axios";
 
-export default function FormDialog(props) {
-   const openStatus = props.openStatus;
-   const resetTable = props.resetTable;
+export default function CategoryChange(props) {
+   const defaultSelected = props.category;
+   const url = props.url;
+   const dialogOpen = props.dialogOpen;
 
-   const url = props.dialogUrl;
-   const category = props.dialogCategory;
+   const changeTable = props.changeTable;
+   const changeCancel = props.changeCancel;
 
-   const [open, setOpen] = useState(openStatus);
-   const [selectedCategory, setSelectedCategory] = useState(category);
+   const [open, setOpen] = React.useState(dialogOpen);
+   const [selected, setSelected] = useState(defaultSelected);
+   const [displayUrl, setDisplayUrl] = useState(url);
+
+   const handleChange = e => {
+      setSelected(e.target.value);
+   };
+
+   const DialogFunc = () => {
+      setOpen(dialogOpen);
+      setSelected(defaultSelected);
+      setDisplayUrl(url);
+   };
+
+   useEffect(DialogFunc, [dialogOpen]);
 
    const handleClose = () => {
       setOpen(false);
-   };
-
-   const handleSelectChange = e => {
-      setSelectedCategory(e.target.value);
+      changeCancel();
    };
 
    const handleSubmit = () => {
       const token = localStorage.getItem("token");
-
       const config = {
          headers: {
             "x-auth-token": token,
@@ -39,40 +49,33 @@ export default function FormDialog(props) {
 
       const body = JSON.stringify({
          url: url,
-         vote: selectedCategory
+         vote: selected
       });
 
-      axios.post("htp://localhost:5000/urlcategory", body, config).then(res => {
-         if (res) {
-            setOpen(false);
-         } else {
-            console.log("error in request for changing category.");
-         }
-      });
-
-      resetTable(url, selectedCategory);
+      axios
+         .post("http://localhost:5000/urlcategory/", body, config)
+         .then(res => {
+            if (res) {
+               changeTable(url, selected);
+            }
+         });
       setOpen(false);
    };
 
    return (
       <div>
          <Dialog
-            open={openStatus}
+            open={open}
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
+            fullWidth={true}
+            maxWidth={"sm"}
          >
-            <DialogTitle id="form-dialog-title">Change category</DialogTitle>
+            <DialogTitle id="form-dialog-title">Set Category</DialogTitle>
             <DialogContent>
-               <DialogContentText>
-                  Currently, The URL: {url} is set as{" "}
-                  {category == 1
-                     ? "Productive"
-                     : category == 0
-                     ? "Neutral"
-                     : "Distracting"}
-                  .
-               </DialogContentText>
-               <Select value={selectedCategory} onChange={handleSelectChange}>
+               <DialogContentText>{displayUrl}</DialogContentText>
+
+               <Select value={selected} onChange={handleChange}>
                   <MenuItem value={1}>Productive</MenuItem>
                   <MenuItem value={0}>Neutral</MenuItem>
                   <MenuItem value={-1}>Distracting</MenuItem>
@@ -83,7 +86,7 @@ export default function FormDialog(props) {
                   Cancel
                </Button>
                <Button onClick={handleSubmit} color="primary">
-                  Set
+                  Submit
                </Button>
             </DialogActions>
          </Dialog>
