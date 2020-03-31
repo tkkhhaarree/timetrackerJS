@@ -33,9 +33,16 @@ export default function App() {
                   <Switch>
                      <Route exact path="/login" component={Login} />
                      <Route exact path="/register" component={Register} />
+
                      <PrivateRoute
                         exact
-                        path="/dashboard"
+                        path="/dashboard/:interval_name/:interval_value"
+                        component={Dashboard}
+                     />
+
+                     <PrivateRoute
+                        exact
+                        path="/dashboard/:current_interval"
                         component={Dashboard}
                      />
                   </Switch>

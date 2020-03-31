@@ -1,4 +1,3 @@
-var d = new Date();
 var session = "";
 var init_url = "";
 var auth_token = "";

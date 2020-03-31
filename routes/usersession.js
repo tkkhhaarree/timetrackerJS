@@ -38,8 +38,8 @@ router.post(
       const { init_url } = req.body;
       const id = req.user.id;
       var today = new Date();
-      var date =
-         today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear();
+      var month = parseInt(today.getMonth()) + 1;
+      var date = today.getDate() + "/" + month + "/" + today.getFullYear();
 
       try {
          let session = await Session.findOneAndUpdate(
@@ -109,7 +109,12 @@ router.post("/get_app_session", auth, async (req, res) => {
    try {
       var today = new Date();
       var date =
-         today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear();
+         today.getDate() +
+         "/" +
+         today.getMonth() +
+         1 +
+         "/" +
+         today.getFullYear();
       const id = req.user.id;
       try {
          let session = await Session.findOneAndUpdate(
