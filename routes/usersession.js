@@ -88,14 +88,14 @@ router.post(
                user: id,
                session: date,
                url: url_strip(init_url),
-               ts: Math.floor(Date.now() / 1000),
+               ts: [Math.floor(Date.now() / 1000)],
                viewtime: 0
             });
             console.log("created init entry: ", ws);
 
             await ws.save();
          } else {
-            w.ts = Math.floor(Date.now() / 1000);
+            w.ts.push(Math.floor(Date.now() / 1000));
             await w.save();
          }
       } catch (err) {
@@ -130,7 +130,7 @@ router.post("/get_app_session", auth, async (req, res) => {
       }
    } catch (err) {
       console.log(err.message);
-      res.status(500).send("Server down.107");
+      res.status(500).send("Server down.");
    }
 });
 

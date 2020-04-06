@@ -12,7 +12,7 @@ const DoughnutChart = props => {
             height={200}
             width={300}
             options={{
-               cutoutPercentage: 55,
+               cutoutPercentage: 60,
                maintainAspectRatio: false,
                legend: {
                   position: "left",

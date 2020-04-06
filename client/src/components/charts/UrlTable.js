@@ -54,18 +54,36 @@ const UrlTable = props => {
       var tableRow = tableState.map(row => {
          return (
             <TableRow key={row.url + addInt()}>
-               <TableCell component="th" scope="row">
-                  {row.url}
+               <TableCell
+                  style={{ borderBottom: "none" }}
+                  component="th"
+                  scope="row"
+               >
+                  {row.url.length > 26
+                     ? row.url.substring(0, 27) + " ..."
+                     : row.url}
                </TableCell>
-               <TableCell align="right">{row.time}</TableCell>
-               <TableCell align="right">
+               <TableCell style={{ borderBottom: "none" }} align="right">
+                  {row.time}
+               </TableCell>
+               <TableCell style={{ borderBottom: "none" }} align="right">
                   {row.category == -1
                      ? "Distracting "
                      : row.category == 0
                      ? "Neutral "
                      : "Productive "}
-                  <button onClick={() => buttonClick(row.url, row.category)}>
-                     Change
+                  <button
+                     style={{
+                        padding: 0,
+                        border: "none",
+                        background: "none",
+                        fontSize: 11,
+                        color: "blue",
+                        outline: "none"
+                     }}
+                     onClick={() => buttonClick(row.url, row.category)}
+                  >
+                     change
                   </button>
                </TableCell>
             </TableRow>
@@ -75,10 +93,10 @@ const UrlTable = props => {
 
    return (
       <div>
-         <TableContainer component={Paper}>
+         <TableContainer>
             <Table size="small" aria-label="a dense table">
                <TableHead>
-                  <TableRow>
+                  <TableRow style={{ borderBottomColor: "black" }}>
                      <TableCell>
                         <b>URL</b>
                      </TableCell>

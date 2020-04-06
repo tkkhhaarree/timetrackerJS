@@ -4,10 +4,13 @@ import DataOutput from "./DataOutput";
 
 const DataRender = props => {
    const token = localStorage.getItem("token");
+   const prevUrl = props.prevUrl;
    const [graphData, setGraphData] = useState({});
    const [tableData, setTableData] = useState();
    const [fail_msg, setFailMsg] = useState("");
+   const [productivityScore, setProductivityScore] = useState(0);
    const statsUrl = props.url;
+
    async function fetchData() {
       const config = {
          headers: {
@@ -23,11 +26,7 @@ const DataRender = props => {
       var j;
       var temp1;
       var temp2;
-      var sum = 0;
-      var sp = 0;
-      var index = 0;
-      var lbl = [];
-      var vt = [];
+      var productivity_score = 0;
 
       for (i = 0; i < res.data.webstats.length; i++) {
          if (res.data.webstats[i].viewtime > 0) {
@@ -35,8 +34,6 @@ const DataRender = props => {
             viewtime.push(res.data.webstats[i].viewtime);
          }
       }
-
-      index = viewtime.length;
 
       for (i = 0; i < viewtime.length - 1; i++) {
          for (j = i + 1; j < viewtime.length; j++) {
@@ -50,27 +47,6 @@ const DataRender = props => {
             }
          }
       }
-
-      for (i = 0; i < viewtime.length; i++) {
-         sum = sum + viewtime[i];
-      }
-
-      for (i = viewtime.length - 1; i >= 0; i--) {
-         if (((sp + viewtime[i]) / sum) * 100 > 5) {
-            break;
-         } else {
-            sp = sp + viewtime[i];
-            index = i;
-         }
-      }
-
-      for (i = 0; i < index; i++) {
-         lbl.push(labels[i]);
-         vt.push(viewtime[i]);
-      }
-
-      lbl.push("others");
-      vt.push(sp);
 
       const body = JSON.stringify({
          url_list: labels
@@ -125,6 +101,16 @@ const DataRender = props => {
                }
             ]
          });
+
+         if (category_vt[0] + category_vt[1] + category_vt[2] !== 0) {
+            productivity_score = Math.round(
+               (100 * category_vt[0]) /
+                  (category_vt[0] + category_vt[1] + category_vt[2])
+            );
+         } else {
+            productivity_score = 0;
+         }
+         setProductivityScore(productivity_score);
       } catch (e) {
          setFailMsg("No data available for the current duration");
       }
@@ -139,6 +125,8 @@ const DataRender = props => {
          graphData={graphData}
          tableData={tableData}
          failMsg={fail_msg}
+         productivityScore={productivityScore}
+         prevUrl={prevUrl}
       />
    );
 };

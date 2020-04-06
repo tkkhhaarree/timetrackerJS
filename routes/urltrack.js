@@ -61,7 +61,7 @@ router.post(
          //console.log("old webstats:", ws);
 
          for (i = 0; i < ws.length; i++) {
-            url_timestamp[ws[i].url] = ws[i].ts;
+            url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
             url_viewtime[ws[i].url] = ws[i].viewtime;
          }
 
@@ -97,7 +97,7 @@ router.post(
             url: parent_url,
             session: session
          });
-         ws.ts = url_timestamp[parent_url];
+         ws.ts.push(url_timestamp[parent_url]);
          await ws.save();
 
          c_u = await CurrentUrl.findOne({
@@ -175,7 +175,7 @@ router.post(
          //console.log("old webstats:", ws);
 
          for (i = 0; i < ws.length; i++) {
-            url_timestamp[ws[i].url] = ws[i].ts;
+            url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
             url_viewtime[ws[i].url] = ws[i].viewtime;
          }
 
@@ -190,7 +190,7 @@ router.post(
                url: current_url,
                session: session
             });
-            ws.ts = url_timestamp[current_url];
+            ws.ts.push(url_timestamp[current_url]);
             ws.viewtime = url_viewtime[current_url];
             await ws.save();
             res.json({ message: "Chrome quit invoked successfully." });
@@ -231,7 +231,7 @@ router.post(
 
          let ws = await Webstats.find({ user: id, session: session });
          for (i = 0; i < ws.length; i++) {
-            url_timestamp[ws[i].url] = ws[i].ts;
+            url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
          }
 
          if (current_url != "chrome://newtab/") {
@@ -242,7 +242,7 @@ router.post(
                url: current_url,
                session: session
             });
-            ws.ts = url_timestamp[current_url];
+            ws.ts.push(url_timestamp[current_url]);
             await ws.save();
             res.json({ message: "chrome restore invoked successfully." });
          }
@@ -294,6 +294,5 @@ router.post(
       res.json({ message: "app stats updated successfully." });
    }
 );
-
 
 module.exports = router;
