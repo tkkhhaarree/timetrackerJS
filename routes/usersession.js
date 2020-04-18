@@ -10,10 +10,7 @@ router.use(cors());
 
 function url_strip(url) {
    if (url.includes("http://") || url.includes("https://")) {
-      url = url
-         .replace("https://", "")
-         .replace("http://", "")
-         .replace('"', "");
+      url = url.replace("https://", "").replace("http://", "").replace('"', "");
    }
    if (url.includes("/")) {
       url = url.split("/", 1)[0];
@@ -24,9 +21,10 @@ function url_strip(url) {
 router.post(
    "/get_session",
    [
-      check("init_url", "Initial URL cannot be empty.")
+      check("init_url", "Initial URL cannot be empty.").not().isEmpty(),
+      check("timezone_offset", "timezone offset cannot be empty.")
          .not()
-         .isEmpty()
+         .isEmpty(),
    ],
    auth,
    async (req, res) => {
@@ -35,16 +33,24 @@ router.post(
          return res.status(400).json({ errors: errors.array() });
       }
 
-      const { init_url } = req.body;
+      const { init_url, timezone_offset } = req.body;
       const id = req.user.id;
       var today = new Date();
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
       var month = parseInt(today.getMonth()) + 1;
-      var date = today.getDate() + "/" + month + "/" + today.getFullYear();
+      var date =
+         today.getHours() +
+         "-" +
+         today.getDate() +
+         "/" +
+         month +
+         "/" +
+         today.getFullYear();
 
       try {
          let session = await Session.findOneAndUpdate(
             { user: id },
-            { current_session: date },
+            { current_session: date, timezone_offset: timezone_offset },
             { new: true, upsert: true }
          );
          console.log(session);
@@ -70,7 +76,7 @@ router.post(
             cu = new CurrentUrl({
                user: id,
                session: date,
-               url: url_strip(init_url)
+               url: url_strip(init_url),
             });
             await cu.save();
             res.json({ session: cu.session });
@@ -79,7 +85,7 @@ router.post(
          let w = await Webstats.findOne({
             user: id,
             session: date,
-            url: url_strip(init_url)
+            url: url_strip(init_url),
          });
          console.log("found old one: ", w);
 
@@ -89,7 +95,7 @@ router.post(
                session: date,
                url: url_strip(init_url),
                ts: [Math.floor(Date.now() / 1000)],
-               viewtime: 0
+               viewtime: 0,
             });
             console.log("created init entry: ", ws);
 
@@ -107,8 +113,15 @@ router.post(
 
 router.post("/get_app_session", auth, async (req, res) => {
    try {
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+
       var today = new Date();
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
       var date =
+         today.getHours() +
+         "-" +
          today.getDate() +
          "/" +
          today.getMonth() +

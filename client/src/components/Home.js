@@ -18,7 +18,7 @@ const Home = () => {
             <br />
             <Button
                component={Link}
-               to="/dashboard"
+               to="/dashboard/daily"
                variant="outlined"
                color="primary"
             >

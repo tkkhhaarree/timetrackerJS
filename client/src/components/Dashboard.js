@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "@material-ui/core";
 import IntervalChange from "./IntervalChange";
 
-const Dashboard = props => {
+const Dashboard = (props) => {
    var interval_name = "";
    var interval_value = "";
    var api_url = "";
@@ -25,7 +25,7 @@ const Dashboard = props => {
       "September",
       "October",
       "November",
-      "December"
+      "December",
    ];
 
    if (
@@ -114,17 +114,17 @@ const Dashboard = props => {
 
    const config = {
       headers: {
-         "x-auth-token": token
-      }
+         "x-auth-token": token,
+      },
    };
 
    axios
       .get("http://localhost:5000/userauth/userinfo", config)
-      .then(userinfo => {
+      .then((userinfo) => {
          setUsername(userinfo.data.user.name);
       });
 
-   const handleChange = event => {
+   const handleChange = (event) => {
       window.open("/dashboard/" + event.target.value, "_self");
    };
 
@@ -163,7 +163,7 @@ const Dashboard = props => {
                marginLeft: 20,
                paddingLeft: "5px",
                paddingRight: "5px",
-               textTransform: "none"
+               textTransform: "none",
             }}
             onClick={intervalClick}
          >
@@ -172,11 +172,7 @@ const Dashboard = props => {
          <IntervalChange open={openInterval} changeCancel={changeCancel} />
 
          <br />
-         <DataRender
-            url={webstatsUrl}
-            intervalName={api_append}
-            prevUrl={prevUrl}
-         />
+         <DataRender url={webstatsUrl} prevUrl={prevUrl} />
       </Fragment>
    );
 };

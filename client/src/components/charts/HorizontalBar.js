@@ -1,7 +1,7 @@
 import { HorizontalBar } from "react-chartjs-2";
 import React from "react";
 
-const HorizontalBarChart = props => {
+const HorizontalBarChart = (props) => {
    return (
       <HorizontalBar
          data={props.graphData}
@@ -9,7 +9,7 @@ const HorizontalBarChart = props => {
          width={300}
          options={{
             legend: {
-               display: false
+               display: false,
             },
             maintainAspectRatio: false,
             responsive: false,
@@ -17,22 +17,27 @@ const HorizontalBarChart = props => {
                xAxes: [
                   {
                      gridLines: {
-                        display: false
+                        display: false,
                      },
                      ticks: {
-                        beginAtZero: true
-                     }
-                  }
+                        beginAtZero: true,
+                     },
+                     scaleLabel: {
+                        display: true,
+                        labelString: "seconds",
+                        fontSize: "14",
+                     },
+                  },
                ],
                yAxes: [
                   {
                      gridLines: {
-                        display: false
+                        display: false,
                      },
-                     barPercentage: 0.6
-                  }
-               ]
-            }
+                     barPercentage: 0.6,
+                  },
+               ],
+            },
          }}
       />
    );

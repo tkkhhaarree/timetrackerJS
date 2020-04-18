@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Comparison = props => {
+const Comparison = (props) => {
    const token = localStorage.getItem("token");
    const [prevScore, setPrevScore] = useState(0);
    const productivityScore = props.productivityScore;
@@ -24,8 +24,8 @@ const Comparison = props => {
    async function fetchData() {
       const config = {
          headers: {
-            "x-auth-token": token
-         }
+            "x-auth-token": token,
+         },
       };
 
       const res = await axios.get(prevUrl, config);
@@ -44,7 +44,7 @@ const Comparison = props => {
       }
 
       const body = JSON.stringify({
-         url_list: labels
+         url_list: labels,
       });
 
       try {
@@ -54,8 +54,8 @@ const Comparison = props => {
             {
                headers: {
                   "x-auth-token": token,
-                  "Content-Type": "application/json"
-               }
+                  "Content-Type": "application/json",
+               },
             }
          );
 
@@ -103,7 +103,7 @@ const Comparison = props => {
          <font
             style={{ display: no_prev }}
             size="4"
-            color={productivityScore - prevScore > 0 ? "green" : "red"}
+            color={productivityScore - prevScore >= 0 ? "green" : "red"}
          >
             {productivityScore - prevScore >= 0
                ? " +" + parseInt(productivityScore - prevScore)

@@ -1,34 +1,111 @@
 const express = require("express");
 const router = express.Router();
 const Webstats = require("../models/Webstats");
+const Session = require("../models/Session");
 const auth = require("../middleware/auth");
 var cors = require("cors");
 router.use(cors());
+
+function getNetWebstats(ws) {
+   var i = 0;
+   var unique_url = {};
+   for (i = 0; i < ws.length; i++) {
+      if (!(ws[i].url in unique_url)) {
+         unique_url[ws[i].url] = {
+            viewtime: ws[i].viewtime,
+            timestamp: ws[i].ts,
+         };
+      } else {
+         unique_url[ws[i].url].viewtime =
+            unique_url[ws[i].url].viewtime + ws[i].viewtime;
+         unique_url[ws[i].url].timestamp = unique_url[
+            ws[i].url
+         ].timestamp.concat(ws[i].ts);
+      }
+   }
+
+   var net_ws = [];
+   for (key in unique_url) {
+      var x = {
+         url: key,
+         viewtime: unique_url[key].viewtime,
+         timestamp: unique_url[key].timestamp,
+      };
+      net_ws.push(x);
+   }
+   return net_ws;
+}
+
+function getPartWebstats(ws, interval) {
+   var x;
+   var part_ws = {};
+   var session_url = {};
+   for (var i = 0; i < ws.length; i++) {
+      if (interval == "month") {
+         x =
+            ws[i].session.split("-")[1].split("/")[1] +
+            "/" +
+            ws[i].session.split("-")[1].split("/")[2];
+      } else if (interval == "day") {
+         x = ws[i].session.split("-")[1];
+      } else if (interval == "year") {
+         x = ws[i].session.split("-")[1].split("/")[2];
+      }
+
+      if (x in session_url) {
+         if (session_url[x].includes(ws[i].url)) {
+            var index = session_url[x].indexOf(ws[i].url);
+            part_ws[x][index].viewtime =
+               part_ws[x][index].viewtime + ws[i].viewtime;
+            part_ws[x][index].timestamp = part_ws[x][index].timestamp.concat(
+               ws[i].ts
+            );
+         } else {
+            if (part_ws[x] == null) {
+               part_ws[x] = [];
+            }
+
+            part_ws[x].push({
+               url: ws[i].url,
+               viewtime: ws[i].viewtime,
+               timestamp: ws[i].ts,
+            });
+            if (session_url[x] == null) {
+               session_url[x] = [];
+            }
+            session_url[x].push(ws[i].url);
+         }
+      } else {
+         if (part_ws[x] == null) {
+            part_ws[x] = [];
+         }
+
+         part_ws[x].push({
+            url: ws[i].url,
+            viewtime: ws[i].viewtime,
+            timestamp: ws[i].ts,
+         });
+         if (session_url[x] == null) {
+            session_url[x] = [];
+         }
+         session_url[x].push(ws[i].url);
+      }
+   }
+   return part_ws;
+}
 
 router.get("/webstats/all", auth, async (req, res) => {
    try {
       const id = req.user.id;
       let ws = await Webstats.find({ user: id });
-      var i = 0;
-      var unique_url = {};
-      for (i = 0; i < ws.length; i++) {
-         if (!(ws[i].url in unique_url)) {
-            unique_url[ws[i].url] = ws[i].viewtime;
-         } else {
-            unique_url[ws[i].url] = unique_url[ws[i].url] + ws[i].viewtime;
-         }
-      }
+      var net_ws = getNetWebstats(ws);
+      var part_ws = getPartWebstats(ws, "year");
 
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
-
-      res.json({ webstats: net_ws, message: "All time data." });
+      res.json({
+         webstats: net_ws,
+         part_webstats: part_ws,
+         message: "All time data.",
+      });
    } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error.");
@@ -39,18 +116,39 @@ router.get("/webstats/day", auth, async (req, res) => {
    try {
       const id = req.user.id;
       var today = new Date();
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
       var month = parseInt(today.getMonth()) + 1;
       var date = today.getDate() + "/" + month + "/" + today.getFullYear();
-      let ws = await Webstats.find({ user: id, session: date });
+      let ws = await Webstats.find({
+         user: id,
+         session: new RegExp(date + "$", "i"),
+      });
+
+      var part_ws = {};
+      for (var i = 0; i < ws.length; i++) {
+         if (part_ws[ws[i].session] == null) {
+            part_ws[ws[i].session] = [];
+         }
+         part_ws[ws[i].session].push({
+            url: ws[i].url,
+            viewtime: ws[i].viewtime,
+            timestamp: ws[i].ts,
+         });
+      }
+
+      var net_ws = getNetWebstats(ws);
       res.json({
-         webstats: ws,
+         webstats: net_ws,
+         part_webstats: part_ws,
          message:
             "Data from " +
             today.getDate() +
             " " +
             today.toLocaleString("default", { month: "long" }) +
             ", " +
-            today.getFullYear()
+            today.getFullYear(),
       });
    } catch (err) {
       console.error(err.message);
@@ -62,32 +160,23 @@ router.get("/webstats/year", auth, async (req, res) => {
    try {
       const id = req.user.id;
       var today = new Date();
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
       var date = today.getFullYear();
       let ws = await Webstats.find({
          user: id,
-         session: new RegExp(date + "$", "i")
+         session: new RegExp(date + "$", "i"),
       });
 
-      var i = 0;
-      var unique_url = {};
-      for (i = 0; i < ws.length; i++) {
-         if (!(ws[i].url in unique_url)) {
-            unique_url[ws[i].url] = ws[i].viewtime;
-         } else {
-            unique_url[ws[i].url] = unique_url[ws[i].url] + ws[i].viewtime;
-         }
-      }
+      var net_ws = getNetWebstats(ws);
+      var part_ws = getPartWebstats(ws, "month");
 
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
-
-      res.json({ webstats: net_ws, message: "Data from year " + date });
+      res.json({
+         webstats: net_ws,
+         part_webstats: part_ws,
+         message: "Data from year " + date,
+      });
    } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error.");
@@ -98,39 +187,27 @@ router.get("/webstats/month", auth, async (req, res) => {
    try {
       const id = req.user.id;
       var today = new Date();
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
       var month = parseInt(today.getMonth()) + 1;
       var date = month + "/" + today.getFullYear();
       let ws = await Webstats.find({
          user: id,
-         session: new RegExp(date + "$", "i")
+         session: new RegExp(date + "$", "i"),
       });
 
-      var i = 0;
-      var unique_url = {};
-      for (i = 0; i < ws.length; i++) {
-         if (!(ws[i].url in unique_url)) {
-            unique_url[ws[i].url] = ws[i].viewtime;
-         } else {
-            unique_url[ws[i].url] = unique_url[ws[i].url] + ws[i].viewtime;
-         }
-      }
-
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
+      var net_ws = getNetWebstats(ws);
+      var part_ws = getPartWebstats(ws, "day");
 
       res.json({
          webstats: net_ws,
+         part_webstats: part_ws,
          message:
             "Data from " +
             today.toLocaleString("default", { month: "long" }) +
             ", " +
-            today.getFullYear()
+            today.getFullYear(),
       });
    } catch (err) {
       console.error(err.message);
@@ -161,42 +238,36 @@ router.get("/webstats/daily/:value", auth, async (req, res) => {
          "September",
          "October",
          "November",
-         "December"
+         "December",
       ];
 
       let ws = await Webstats.find({
          user: id,
-         session: new RegExp(date + "$", "i")
+         session: new RegExp(date + "$", "i"),
       });
 
-      var i = 0;
-      var unique_url = {};
-      for (i = 0; i < ws.length; i++) {
-         if (!(ws[i].url in unique_url)) {
-            unique_url[ws[i].url] = ws[i].viewtime;
-         } else {
-            unique_url[ws[i].url] = unique_url[ws[i].url] + ws[i].viewtime;
+      var net_ws = getNetWebstats(ws);
+      var part_ws = {};
+      for (var i = 0; i < ws.length; i++) {
+         if (part_ws[ws[i].session] == null) {
+            part_ws[ws[i].session] = [];
          }
+         part_ws[ws[i].session].push({
+            url: ws[i].url,
+            viewtime: ws[i].viewtime,
+            timestamp: ws[i].ts,
+         });
       }
-
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
-
       res.json({
          webstats: net_ws,
+         part_webstats: part_ws,
          message:
             "Data from " +
             date_val +
             " " +
             month_name[month_val - 1] +
             ", " +
-            year_val
+            year_val,
       });
    } catch (err) {
       console.error(err.message);
@@ -214,7 +285,7 @@ router.get("/webstats/monthly/:value", auth, async (req, res) => {
       var date = month_val + "/" + year_val;
       let ws = await Webstats.find({
          user: id,
-         session: new RegExp(date + "$", "i")
+         session: new RegExp(date + "$", "i"),
       });
 
       var month_name = [
@@ -229,31 +300,15 @@ router.get("/webstats/monthly/:value", auth, async (req, res) => {
          "September",
          "October",
          "November",
-         "December"
+         "December",
       ];
 
-      var i = 0;
-      var unique_url = {};
-      for (i = 0; i < ws.length; i++) {
-         if (!(ws[i].url in unique_url)) {
-            unique_url[ws[i].url] = ws[i].viewtime;
-         } else {
-            unique_url[ws[i].url] = unique_url[ws[i].url] + ws[i].viewtime;
-         }
-      }
-
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
-
+      var net_ws = getNetWebstats(ws);
+      var part_ws = getPartWebstats(ws, "day");
       res.json({
          webstats: net_ws,
-         message: "Data from " + month_name[month_val - 1] + ", " + year_val
+         part_webstats: part_ws,
+         message: "Data from " + month_name[month_val - 1] + ", " + year_val,
       });
    } catch (err) {
       console.error(err.message);
@@ -268,29 +323,16 @@ router.get("/webstats/yearly/:year_val", auth, async (req, res) => {
 
       let ws = await Webstats.find({
          user: id,
-         session: new RegExp(year_val + "$", "i")
+         session: new RegExp(year_val + "$", "i"),
       });
 
-      var i = 0;
-      var unique_url = {};
-      for (i = 0; i < ws.length; i++) {
-         if (!(ws[i].url in unique_url)) {
-            unique_url[ws[i].url] = ws[i].viewtime;
-         } else {
-            unique_url[ws[i].url] = unique_url[ws[i].url] + ws[i].viewtime;
-         }
-      }
-
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
-
-      res.json({ webstats: net_ws, message: "Data from year " + year_val });
+      var net_ws = getNetWebstats(ws);
+      var part_ws = getPartWebstats(ws, "month");
+      res.json({
+         webstats: net_ws,
+         part_webstats: part_ws,
+         message: "Data from year " + year_val,
+      });
    } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error.");
@@ -299,13 +341,19 @@ router.get("/webstats/yearly/:year_val", auth, async (req, res) => {
 
 router.get("/webstats/week", auth, async (req, res) => {
    try {
+      var id = req.user.id;
       var today = new Date();
+
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
       var lastweek = [];
       var i, j;
       var d;
-      var d_string;
-      var id = req.user.id;
-      for (i = 1; i <= 7; i++) {
+      var d_string, d_month;
+
+      for (i = 0; i < 7; i++) {
          d = new Date(
             today.getFullYear(),
             today.getMonth(),
@@ -319,33 +367,16 @@ router.get("/webstats/week", auth, async (req, res) => {
       let ws = await Webstats.find({ user: id });
       for (i = 0; i < ws.length; i++) {
          for (j = 0; j < lastweek.length; j++) {
-            if (ws[i].session == lastweek[j]) {
+            if (ws[i].session.includes(lastweek[j])) {
                webstats.push({
                   url: ws[i].url,
-                  viewtime: ws[i].viewtime
+                  viewtime: ws[i].viewtime,
                });
             }
          }
       }
 
-      var unique_url = {};
-      for (i = 0; i < webstats.length; i++) {
-         if (!(webstats[i].url in unique_url)) {
-            unique_url[webstats[i].url] = webstats[i].viewtime;
-         } else {
-            unique_url[webstats[i].url] =
-               unique_url[webstats[i].url] + webstats[i].viewtime;
-         }
-      }
-
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
+      var net_ws = getNetWebstats(ws);
 
       var start = lastweek[6].split("/");
       var end = lastweek[0].split("/");
@@ -362,11 +393,13 @@ router.get("/webstats/week", auth, async (req, res) => {
          "September",
          "October",
          "November",
-         "December"
+         "December",
       ];
+      var part_ws = getPartWebstats(ws, "day");
 
       res.json({
          webstats: net_ws,
+         part_webstats: part_ws,
          message:
             "Data from " +
             start[0] +
@@ -379,10 +412,10 @@ router.get("/webstats/week", auth, async (req, res) => {
             " " +
             month_name[end[1] - 1] +
             " " +
-            end[2]
+            end[2],
       });
    } catch (err) {
-      //console.error(err.message);
+      console.error(err.message);
       res.status(500).send("Server error.");
    }
 });
@@ -390,11 +423,15 @@ router.get("/webstats/week", auth, async (req, res) => {
 router.get("/webstats/week/prev", auth, async (req, res) => {
    try {
       var today = new Date();
+      var id = req.user.id;
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
       var lastweek = [];
       var i, j;
       var d;
       var d_string;
-      var id = req.user.id;
       for (i = 1; i <= 7; i++) {
          d = new Date(
             today.getFullYear(),
@@ -409,34 +446,17 @@ router.get("/webstats/week/prev", auth, async (req, res) => {
       let ws = await Webstats.find({ user: id });
       for (i = 0; i < ws.length; i++) {
          for (j = 0; j < lastweek.length; j++) {
-            if (ws[i].session == lastweek[j]) {
+            if (ws[i].session.includes(lastweek[j])) {
                webstats.push({
                   url: ws[i].url,
-                  viewtime: ws[i].viewtime
+                  viewtime: ws[i].viewtime,
                });
             }
          }
       }
 
-      var unique_url = {};
-      for (i = 0; i < webstats.length; i++) {
-         if (!(webstats[i].url in unique_url)) {
-            unique_url[webstats[i].url] = webstats[i].viewtime;
-         } else {
-            unique_url[webstats[i].url] =
-               unique_url[webstats[i].url] + webstats[i].viewtime;
-         }
-      }
-
-      var net_ws = [];
-      for (key in unique_url) {
-         var x = {
-            url: key,
-            viewtime: unique_url[key]
-         };
-         net_ws.push(x);
-      }
-
+      var net_ws = getNetWebstats(ws);
+      var part_ws = getPartWebstats(ws, "day");
       var start = lastweek[6].split("/");
       var end = lastweek[0].split("/");
 
@@ -452,11 +472,12 @@ router.get("/webstats/week/prev", auth, async (req, res) => {
          "September",
          "October",
          "November",
-         "December"
+         "December",
       ];
 
       res.json({
          webstats: net_ws,
+         part_webstats: part_ws,
          message:
             "Data from " +
             start[0] +
@@ -469,10 +490,10 @@ router.get("/webstats/week/prev", auth, async (req, res) => {
             " " +
             month_name[end[1] - 1] +
             " " +
-            end[2]
+            end[2],
       });
    } catch (err) {
-      //console.error(err.message);
+      console.error(err.message);
       res.status(500).send("Server error.");
    }
 });

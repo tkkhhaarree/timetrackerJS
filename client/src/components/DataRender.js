@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DataOutput from "./DataOutput";
 
-const DataRender = props => {
+const DataRender = (props) => {
    const token = localStorage.getItem("token");
    const prevUrl = props.prevUrl;
    const [graphData, setGraphData] = useState({});
@@ -10,46 +10,37 @@ const DataRender = props => {
    const [fail_msg, setFailMsg] = useState("");
    const [productivityScore, setProductivityScore] = useState(0);
    const statsUrl = props.url;
+   const [totalTime, setTotalTime] = useState(0);
+   const [partWebstats, setPartWebstats] = useState();
 
    async function fetchData() {
       const config = {
          headers: {
-            "x-auth-token": token
-         }
+            "x-auth-token": token,
+         },
       };
 
       const res = await axios.get(statsUrl, config);
 
       var labels = [];
       var viewtime = [];
+      var timestamp = [];
       var i;
-      var j;
-      var temp1;
-      var temp2;
+
       var productivity_score = 0;
 
       for (i = 0; i < res.data.webstats.length; i++) {
          if (res.data.webstats[i].viewtime > 0) {
             labels.push(res.data.webstats[i].url);
             viewtime.push(res.data.webstats[i].viewtime);
+            timestamp.push(res.data.webstats[i].timestamp);
          }
       }
 
-      for (i = 0; i < viewtime.length - 1; i++) {
-         for (j = i + 1; j < viewtime.length; j++) {
-            if (viewtime[i] < viewtime[j]) {
-               temp1 = viewtime[j];
-               viewtime[j] = viewtime[i];
-               viewtime[i] = temp1;
-               temp2 = labels[j];
-               labels[j] = labels[i];
-               labels[i] = temp2;
-            }
-         }
-      }
+      console.log("timestamps: ", timestamp);
 
       const body = JSON.stringify({
-         url_list: labels
+         url_list: labels,
       });
 
       try {
@@ -59,10 +50,21 @@ const DataRender = props => {
             {
                headers: {
                   "x-auth-token": token,
-                  "Content-Type": "application/json"
-               }
+                  "Content-Type": "application/json",
+               },
             }
          );
+
+         var c;
+         var part_webstats = res.data.part_webstats;
+         for (var x in part_webstats) {
+            for (var j = 0; j < part_webstats[x].length; j++) {
+               c = res2.data.category[labels.indexOf(part_webstats[x][j].url)];
+               part_webstats[x][j]["category"] = c;
+            }
+         }
+         //console.log("part webstats: ", part_webstats);
+         setPartWebstats(part_webstats);
 
          var positive_time = 0;
          var neutral_time = 0;
@@ -78,6 +80,7 @@ const DataRender = props => {
          }
 
          var category_vt = [positive_time, neutral_time, negative_time];
+         setTotalTime(positive_time + negative_time + neutral_time);
          var category_lbl = ["Productive", "Neutral", "Distracting"];
 
          var tableContent = [];
@@ -85,7 +88,7 @@ const DataRender = props => {
             tableContent.push({
                url: labels[i],
                time: viewtime[i],
-               category: res2.data.category[i]
+               category: res2.data.category[i],
             });
          }
 
@@ -97,9 +100,20 @@ const DataRender = props => {
                {
                   label: "Points",
                   backgroundColor: ["blue", "#bbbbbb", "red"],
-                  data: category_vt
-               }
-            ]
+                  data: category_vt,
+               },
+            ],
+         });
+
+         console.log("graph data from render: ", {
+            labels: category_lbl,
+            datasets: [
+               {
+                  label: "Points",
+                  backgroundColor: ["blue", "#bbbbbb", "red"],
+                  data: category_vt,
+               },
+            ],
          });
 
          if (category_vt[0] + category_vt[1] + category_vt[2] !== 0) {
@@ -113,6 +127,7 @@ const DataRender = props => {
          setProductivityScore(productivity_score);
       } catch (e) {
          setFailMsg("No data available for the current duration");
+         console.log("fail msg from render: ", e);
       }
    }
 
@@ -127,6 +142,8 @@ const DataRender = props => {
          failMsg={fail_msg}
          productivityScore={productivityScore}
          prevUrl={prevUrl}
+         totalTime={totalTime}
+         partWebstats={partWebstats}
       />
    );
 };

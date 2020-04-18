@@ -143,7 +143,11 @@ export default function IntervalChange(props) {
             <DialogContent>
                <DialogContentText>
                   <div className={classes.root}>
-                     <AppBar position="static" color="default">
+                     <AppBar
+                        style={{ marginLeft: "23px" }}
+                        position="static"
+                        color="default"
+                     >
                         <Tabs
                            value={value}
                            onChange={handleChange}
@@ -168,6 +172,7 @@ export default function IntervalChange(props) {
                            showMonthDropdown
                            showYearDropdown
                            dropdownMode="select"
+                           dateFormat="MMMM d, yyyy"
                         />
                      </TabPanel>
                      <TabPanel value={value} index={1} dir={theme.direction}>
@@ -177,9 +182,9 @@ export default function IntervalChange(props) {
                            popperPlacement="bottom-start"
                            selected={startMonth}
                            onChange={changeMonth}
-                           dateFormat="MM/yyyy"
                            showMonthYearPicker
                            style={{ marginLeft: 20 }}
+                           dateFormat="MMMM, yyyy"
                         />
                      </TabPanel>
                      <TabPanel value={value} index={2} dir={theme.direction}>
@@ -219,7 +224,11 @@ export default function IntervalChange(props) {
                <Button onClick={handleClose} color="primary">
                   Cancel
                </Button>
-               <Button onClick={handleSubmit} color="primary">
+               <Button
+                  style={{ marginRight: "37px" }}
+                  onClick={handleSubmit}
+                  color="primary"
+               >
                   Submit
                </Button>
             </DialogActions>

@@ -1,0 +1,15 @@
+gmt: 10:57 am
+
+chile: 6:57 am
+therefore offset = +4 hr = +240 min
+
+india: 4:27 pm
+therefore offset = -5:30 hr = -330 min
+
+
+therefore chile_time  = india_time - chile_offset + india_offset
+
+
+var d = new Date()
+var i_off = d.timezoneOffset()
+var c_d = d.setMinutes(d.getMinutes() - c_off + i_off)

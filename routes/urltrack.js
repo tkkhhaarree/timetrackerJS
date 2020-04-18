@@ -7,16 +7,14 @@ const Webstats = require("../models/Webstats");
 const Appstats = require("../models/Appstats");
 const UrlType = require("../models/UrlType");
 const UrlVotes = require("../models/UrlVotes");
+const Session = require("../models/Session");
 const config = require("config");
 var cors = require("cors");
 router.use(cors());
 
 function url_strip(url) {
    if (url.includes("http://") || url.includes("https://")) {
-      url = url
-         .replace("https://", "")
-         .replace("http://", "")
-         .replace('"', "");
+      url = url.replace("https://", "").replace("http://", "").replace('"', "");
    }
    if (url.includes("/")) {
       url = url.split("/", 1)[0];
@@ -28,12 +26,8 @@ function url_strip(url) {
 router.post(
    "/send_url",
    [
-      check("url", "URL is required!")
-         .not()
-         .isEmpty(),
-      check("session", "Session cannot be empty!")
-         .not()
-         .isEmpty()
+      check("url", "URL is required!").not().isEmpty(),
+      check("session", "Session cannot be empty!").not().isEmpty(),
    ],
    auth,
    async (req, res) => {
@@ -52,7 +46,7 @@ router.post(
       try {
          let c_u = await CurrentUrl.findOne({
             user: id,
-            session: session
+            session: session,
          });
          var current_url = c_u.url;
          console.log("current url: ", current_url);
@@ -71,38 +65,47 @@ router.post(
                user: id,
                session: session,
                url: parent_url,
-               viewtime: 0
+               viewtime: 0,
             });
             await u_v.save();
          }
 
+         let s = await Session.findOne({ user: id });
+         var timezone_offset = s.timezone_offset;
+
          if (current_url != "chrome://newtab/") {
+            var today = new Date();
+            today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
             var time_spent =
-               Math.floor(Date.now() / 1000) - url_timestamp[current_url];
+               Math.floor(today.getTime() / 1000) - url_timestamp[current_url];
             console.log("time spent: ", time_spent);
             url_viewtime[current_url] = url_viewtime[current_url] + time_spent;
             ws = await Webstats.findOne({
                user: id,
                url: current_url,
-               session: session
+               session: session,
             });
             ws.viewtime = url_viewtime[current_url];
             await ws.save();
          }
 
-         var x = Math.floor(Date.now() / 1000);
+         var today = new Date();
+         today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
+         var x = Math.floor(today.getTime() / 1000);
          url_timestamp[parent_url] = x;
          ws = await Webstats.findOne({
             user: id,
             url: parent_url,
-            session: session
+            session: session,
          });
          ws.ts.push(url_timestamp[parent_url]);
          await ws.save();
 
          c_u = await CurrentUrl.findOne({
             user: id,
-            session: session
+            session: session,
          });
          c_u.url = parent_url;
          await c_u.save();
@@ -121,11 +124,7 @@ router.post(
 //-------------------
 router.post(
    "/quit_url",
-   [
-      check("url", "URL is required!")
-         .not()
-         .isEmpty()
-   ],
+   [check("url", "URL is required!").not().isEmpty()],
    auth,
    async (req, res) => {
       const errors = validationResult(req);
@@ -146,11 +145,7 @@ router.post(
 //----------------
 router.post(
    "/quit_chrome",
-   [
-      check("session", "session is required!")
-         .not()
-         .isEmpty()
-   ],
+   [check("session", "session is required!").not().isEmpty()],
    auth,
    async (req, res) => {
       const errors = validationResult(req);
@@ -165,7 +160,7 @@ router.post(
          var url_viewtime = {};
          let c_u = await CurrentUrl.findOne({
             user: id,
-            session: session
+            session: session,
          });
          var current_url = c_u.url;
          console.log("current url: ", current_url);
@@ -179,8 +174,13 @@ router.post(
             url_viewtime[ws[i].url] = ws[i].viewtime;
          }
 
+         let s = await Session.findOne({ user: id });
+         var timezone_offset = s.timezone_offset;
          if (current_url != "chrome://newtab/") {
-            var now = Math.floor(Date.now() / 1000);
+            var today = new Date();
+            today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
+            var now = Math.floor(today.getTime() / 1000);
             var t = now - url_timestamp[current_url];
             url_timestamp[current_url] = now;
             url_viewtime[current_url] = url_viewtime[current_url] + t;
@@ -188,7 +188,7 @@ router.post(
             let ws = await Webstats.findOne({
                user: id,
                url: current_url,
-               session: session
+               session: session,
             });
             ws.ts.push(url_timestamp[current_url]);
             ws.viewtime = url_viewtime[current_url];
@@ -207,11 +207,7 @@ router.post(
 //---------------
 router.post(
    "/restore_chrome",
-   [
-      check("session", "session is required!")
-         .not()
-         .isEmpty()
-   ],
+   [check("session", "session is required!").not().isEmpty()],
    auth,
    async (req, res) => {
       const errors = validationResult(req);
@@ -225,7 +221,7 @@ router.post(
 
          let c_u = await CurrentUrl.findOne({
             user: id,
-            session: session
+            session: session,
          });
          var current_url = c_u.url;
 
@@ -234,13 +230,19 @@ router.post(
             url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
          }
 
+         let s = await Session.findOne({ user: id });
+         var timezone_offset = s.timezone_offset;
+
          if (current_url != "chrome://newtab/") {
-            var now = Math.floor(Date.now() / 1000);
+            var today = new Date();
+            today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
+            var now = Math.floor(today.getTime() / 1000);
             url_timestamp[current_url] = now;
             let ws = await Webstats.findOne({
                user: id,
                url: current_url,
-               session: session
+               session: session,
             });
             ws.ts.push(url_timestamp[current_url]);
             await ws.save();
@@ -257,12 +259,8 @@ router.post(
 router.post(
    "/save_app",
    [
-      check("session", "session is required!")
-         .not()
-         .isEmpty(),
-      check("apptime", "App time is required!")
-         .not()
-         .isEmpty()
+      check("session", "session is required!").not().isEmpty(),
+      check("apptime", "App time is required!").not().isEmpty(),
    ],
    auth,
    async (req, res) => {
@@ -274,21 +272,27 @@ router.post(
       const id = req.user.id;
 
       console.log(apptime);
-      var now = Math.floor(Date.now() / 1000);
+
+      let s = await Session.findOne({ user: id });
+      var timezone_offset = s.timezone_offset;
+      var today = new Date();
+      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+
+      var now = Math.floor(today.getTime() / 1000);
       for (key in apptime) {
          let as = new Appstats({
             user: id,
             session: session,
             app: key,
             added_ts: now,
-            viewtime: apptime[key]
+            viewtime: apptime[key],
          });
          await as.save();
       }
       await Appstats.deleteMany({
          user: id,
          session: session,
-         added_ts: { $ne: now }
+         added_ts: { $ne: now },
       });
 
       res.json({ message: "app stats updated successfully." });
