@@ -11,7 +11,12 @@
       "default_popup": "popup.html"
    },
 
-   "permissions": ["tabs", "activeTab", "http://127.0.0.1/", "storage"],
+   "permissions": [
+      "tabs",
+      "activeTab",
+      "https://cryptic-stream-13108.herokuapp.com/",
+      "storage"
+   ],
    "background": {
       "scripts": ["background.js"],
       "persistent": false

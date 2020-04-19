@@ -116,7 +116,9 @@ router.get("/webstats/day", auth, async (req, res) => {
       var today = new Date();
       let s = await Session.findOne({ user: id });
       var timezone_offset = s.timezone_offset;
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
       var month = parseInt(today.getMonth()) + 1;
       var date = today.getDate() + "/" + month + "/" + today.getFullYear();
       let ws = await Webstats.find({
@@ -160,7 +162,9 @@ router.get("/webstats/year", auth, async (req, res) => {
       var today = new Date();
       let s = await Session.findOne({ user: id });
       var timezone_offset = s.timezone_offset;
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
       var date = today.getFullYear();
       let ws = await Webstats.find({
          user: id,
@@ -187,7 +191,9 @@ router.get("/webstats/month", auth, async (req, res) => {
       var today = new Date();
       let s = await Session.findOne({ user: id });
       var timezone_offset = s.timezone_offset;
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
       var month = parseInt(today.getMonth()) + 1;
       var date = month + "/" + today.getFullYear();
       let ws = await Webstats.find({
@@ -344,7 +350,9 @@ router.get("/webstats/week", auth, async (req, res) => {
 
       let s = await Session.findOne({ user: id });
       var timezone_offset = s.timezone_offset;
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
 
       var lastweek = [];
       var i, j;
@@ -424,7 +432,9 @@ router.get("/webstats/week/prev", auth, async (req, res) => {
       var id = req.user.id;
       let s = await Session.findOne({ user: id });
       var timezone_offset = s.timezone_offset;
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
 
       var lastweek = [];
       var i, j;

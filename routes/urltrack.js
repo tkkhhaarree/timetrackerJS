@@ -73,7 +73,11 @@ router.post(
 
          if (current_url != "chrome://newtab/") {
             var today = new Date();
-            today.setMinutes(today.getMinutes() - timezone_offset - 330);
+            today.setMinutes(
+               today.getMinutes() -
+                  timezone_offset +
+                  new Date().getTimezoneOffset()
+            );
 
             var time_spent =
                Math.floor(today.getTime() / 1000) - url_timestamp[current_url];
@@ -89,7 +93,11 @@ router.post(
          }
 
          var today = new Date();
-         today.setMinutes(today.getMinutes() - timezone_offset - 330);
+         today.setMinutes(
+            today.getMinutes() -
+               timezone_offset +
+               new Date().getTimezoneOffset()
+         );
 
          var x = Math.floor(today.getTime() / 1000);
          url_timestamp[parent_url] = x;
@@ -176,7 +184,11 @@ router.post(
          var timezone_offset = s.timezone_offset;
          if (current_url != "chrome://newtab/") {
             var today = new Date();
-            today.setMinutes(today.getMinutes() - timezone_offset - 330);
+            today.setMinutes(
+               today.getMinutes() -
+                  timezone_offset +
+                  new Date().getTimezoneOffset()
+            );
 
             var now = Math.floor(today.getTime() / 1000);
             var t = now - url_timestamp[current_url];
@@ -233,7 +245,11 @@ router.post(
 
          if (current_url != "chrome://newtab/") {
             var today = new Date();
-            today.setMinutes(today.getMinutes() - timezone_offset - 330);
+            today.setMinutes(
+               today.getMinutes() -
+                  timezone_offset +
+                  new Date().getTimezoneOffset()
+            );
 
             var now = Math.floor(today.getTime() / 1000);
             url_timestamp[current_url] = now;
@@ -274,7 +290,9 @@ router.post(
       let s = await Session.findOne({ user: id });
       var timezone_offset = s.timezone_offset;
       var today = new Date();
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
 
       var now = Math.floor(today.getTime() / 1000);
       for (key in apptime) {

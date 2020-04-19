@@ -30,7 +30,7 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
          };
          xh2.open(
             "POST",
-            "http://127.0.0.1:5000/usersession/get_session",
+            "https://cryptic-stream-13108.herokuapp.com/usersession/get_session",
             true
          );
          xh2.setRequestHeader("Content-Type", "application/json");
@@ -73,7 +73,10 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
                         console.log(this.responseText);
                      }
                   };
-                  xhttp.open("POST", "http://127.0.0.1:5000/urltrack/send_url");
+                  xhttp.open(
+                     "POST",
+                     "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
+                  );
                   xhttp.setRequestHeader("Content-Type", "application/json");
                   xhttp.setRequestHeader("x-auth-token", auth_token);
                   xhttp.send(JSON.stringify({ url: y, session: session }));
@@ -81,7 +84,7 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
             };
             xh2.open(
                "POST",
-               "http://127.0.0.1:5000/usersession/get_session",
+               "https://cryptic-stream-13108.herokuapp.com/usersession/get_session",
                true
             );
             xh2.setRequestHeader("Content-Type", "application/json");
@@ -99,7 +102,10 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
                   console.log(this.responseText);
                }
             };
-            xhttp.open("POST", "http://127.0.0.1:5000/urltrack/send_url");
+            xhttp.open(
+               "POST",
+               "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
+            );
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.setRequestHeader("x-auth-token", auth_token);
             xhttp.send(JSON.stringify({ url: y, session: session }));
@@ -133,7 +139,10 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
                         console.log(this.responseText);
                      }
                   };
-                  xhttp.open("POST", "http://127.0.0.1:5000/urltrack/send_url");
+                  xhttp.open(
+                     "POST",
+                     "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
+                  );
                   xhttp.setRequestHeader("Content-Type", "application/json");
                   xhttp.setRequestHeader("x-auth-token", auth_token);
                   xhttp.send(
@@ -143,7 +152,7 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
             };
             xh2.open(
                "POST",
-               "http://127.0.0.1:5000/usersession/get_session",
+               "https://cryptic-stream-13108.herokuapp.com/usersession/get_session",
                true
             );
             xh2.setRequestHeader("Content-Type", "application/json");
@@ -161,7 +170,10 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
                   console.log(this.responseText);
                }
             };
-            xhttp.open("POST", "http://127.0.0.1:5000/urltrack/send_url");
+            xhttp.open(
+               "POST",
+               "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
+            );
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.setRequestHeader("x-auth-token", auth_token);
             xhttp.send(JSON.stringify({ url: change.url, session: session }));
@@ -188,7 +200,10 @@ chrome.tabs.onRemoved.addListener(function (tabId, removeInfo) {
             console.log(this.responseText);
          }
       };
-      xhttp2.open("POST", "http://127.0.0.1:5000/urltrack/quit_url");
+      xhttp2.open(
+         "POST",
+         "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_url"
+      );
       xhttp2.setRequestHeader("Content-Type", "application/json");
       xhttp2.setRequestHeader("x-auth-token", auth_token);
       xhttp2.send(JSON.stringify({ url: tabToUrl[tabId] }));

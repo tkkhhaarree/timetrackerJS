@@ -34,7 +34,9 @@ router.post(
       const { init_url, timezone_offset } = req.body;
       const id = req.user.id;
       var today = new Date();
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
       var month = parseInt(today.getMonth()) + 1;
       var date =
          today.getHours() +
@@ -115,7 +117,9 @@ router.post("/get_app_session", auth, async (req, res) => {
       var timezone_offset = s.timezone_offset;
 
       var today = new Date();
-      today.setMinutes(today.getMinutes() - timezone_offset - 330);
+      today.setMinutes(
+         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
+      );
 
       var date =
          today.getHours() +
