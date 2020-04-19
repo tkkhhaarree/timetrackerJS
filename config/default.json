@@ -1,4 +1,4 @@
 {
-   "mongoURI": "mongodb://localhost:27017/timetrackerdb",
+   "mongoURI": "mongodb+srv://tkkhhaarree:<password>@cluster0-y050h.mongodb.net/test?retryWrites=true&w=majority",
    "jwtSecret": "tarunkhare"
 }
