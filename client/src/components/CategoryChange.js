@@ -21,7 +21,7 @@ export default function CategoryChange(props) {
    const [selected, setSelected] = useState(defaultSelected);
    const [displayUrl, setDisplayUrl] = useState(url);
 
-   const handleChange = e => {
+   const handleChange = (e) => {
       setSelected(e.target.value);
    };
 
@@ -43,22 +43,20 @@ export default function CategoryChange(props) {
       const config = {
          headers: {
             "x-auth-token": token,
-            "Content-Type": "application/json"
-         }
+            "Content-Type": "application/json",
+         },
       };
 
       const body = JSON.stringify({
          url: url,
-         vote: selected
+         vote: selected,
       });
 
-      axios
-         .post("http://localhost:5000/urlcategory/", body, config)
-         .then(res => {
-            if (res) {
-               changeTable(url, selected);
-            }
-         });
+      axios.post("/urlcategory/", body, config).then((res) => {
+         if (res) {
+            changeTable(url, selected);
+         }
+      });
       setOpen(false);
    };
 

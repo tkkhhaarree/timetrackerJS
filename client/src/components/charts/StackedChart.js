@@ -1,6 +1,22 @@
 import { Bar, Line } from "react-chartjs-2";
 import React from "react";
 
+var monthNames = [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec",
+];
+var d_name = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 const StackedChart = (props) => {
    const partWebstats = props.partWebstats;
 
@@ -24,24 +40,9 @@ const StackedChart = (props) => {
             i.split("/")[0]
          );
          console.log(d);
-         var d_name = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
          interval_part = d_name[d.getDay()];
       } else if (interval_name == "yearly") {
          var m_int = parseInt(i.split("/")[0]);
-         var monthNames = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-         ];
          interval_part = monthNames[m_int - 1];
       } else if (interval_name == "monthly" || "all") {
          interval_part = i.split("/")[0]; //1-31 or 2020
@@ -233,7 +234,6 @@ function getXAxis(interval_name, interval_value) {
       }
    } else if (interval_name == "weekly") {
       var d = new Date().getDay();
-      var d_name = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       for (var i = d + 1; i <= 6; i++) {
          x_axis.push(d_name[i]);
       }
@@ -243,58 +243,18 @@ function getXAxis(interval_name, interval_value) {
    } else if (interval_name == "yearly") {
       if (interval_value == null) {
          var m = new Date().getMonth();
-         const monthNames = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-         ];
+
          for (var i = 0; i <= m; i++) {
             x_axis.push(monthNames[i]);
          }
       } else {
          if (interval_value == new Date().getFullYear()) {
             var m = new Date().getMonth();
-            const monthNames = [
-               "Jan",
-               "Feb",
-               "Mar",
-               "Apr",
-               "May",
-               "Jun",
-               "Jul",
-               "Aug",
-               "Sep",
-               "Oct",
-               "Nov",
-               "Dec",
-            ];
+
             for (var i = 0; i <= m; i++) {
                x_axis.push(monthNames[i]);
             }
          } else {
-            const monthNames = [
-               "Jan",
-               "Feb",
-               "Mar",
-               "Apr",
-               "May",
-               "Jun",
-               "Jul",
-               "Aug",
-               "Sep",
-               "Oct",
-               "Nov",
-               "Dec",
-            ];
             for (var i = 0; i < monthNames.length; i++) {
                x_axis.push(monthNames[i]);
             }

@@ -89,21 +89,13 @@ const Dashboard = (props) => {
    }
 
    if (interval_value != "") {
-      api_url =
-         "http://localhost:5000/stats/webstats/" +
-         interval_name +
-         "/" +
-         interval_value;
+      api_url = "/stats/webstats/" + interval_name + "/" + interval_value;
    } else {
-      api_url = "http://localhost:5000/stats/webstats/" + api_append;
+      api_url = "/stats/webstats/" + api_append;
    }
 
    var prev_append = getPrevUrl(interval_name, interval_value);
-   var prev_url =
-      "http://localhost:5000/stats/webstats/" +
-      interval_name +
-      "/" +
-      prev_append;
+   var prev_url = "/stats/webstats/" + interval_name + "/" + prev_append;
 
    const [intervalName, setIntervalName] = useState(interval_name);
    const [webstatsUrl, setWebstatsUrl] = useState(api_url);
@@ -118,11 +110,9 @@ const Dashboard = (props) => {
       },
    };
 
-   axios
-      .get("http://localhost:5000/userauth/userinfo", config)
-      .then((userinfo) => {
-         setUsername(userinfo.data.user.name);
-      });
+   axios.get("/userauth/userinfo", config).then((userinfo) => {
+      setUsername(userinfo.data.user.name);
+   });
 
    const handleChange = (event) => {
       window.open("/dashboard/" + event.target.value, "_self");

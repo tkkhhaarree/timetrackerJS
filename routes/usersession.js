@@ -5,8 +5,6 @@ const Session = require("../models/Session");
 const CurrentUrl = require("../models/CurrentUrl");
 const Webstats = require("../models/Webstats");
 const auth = require("../middleware/auth");
-var cors = require("cors");
-router.use(cors());
 
 function url_strip(url) {
    if (url.includes("http://") || url.includes("https://")) {

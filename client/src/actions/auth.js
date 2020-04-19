@@ -11,7 +11,7 @@ const isValidToken = () => {
    return false;
 };
 
-const isValid = token => {
+const isValid = (token) => {
    const decoded = jwt_decode(token);
 
    const currentTime = Date.now() / 1000;
@@ -29,24 +29,24 @@ export const auth = {
    register(user) {
       const config = {
          headers: {
-            "Content-Type": "application/json"
-         }
+            "Content-Type": "application/json",
+         },
       };
       const body = JSON.stringify({
          name: user.username,
          email: user.email,
-         password: user.password
+         password: user.password,
       });
       return axios
-         .post("http://localhost:5000/userauth/signup", body, config)
-         .then(res => {
+         .post("/userauth/signup", body, config)
+         .then((res) => {
             console.log("response from auth: ", res);
             localStorage.setItem("token", res.data.token);
             this.isAuthenticated = true;
             console.log("from auth: ", this.isAuthenticated);
             return res.data;
          })
-         .catch(err => {
+         .catch((err) => {
             this.isAuthenticated = false;
             console.log(err);
          });
@@ -55,29 +55,29 @@ export const auth = {
    login(user) {
       const config = {
          headers: {
-            "Content-Type": "application/json"
-         }
+            "Content-Type": "application/json",
+         },
       };
       const body = JSON.stringify({
          email: user.email,
-         password: user.password
+         password: user.password,
       });
 
       return axios
-         .post("http://localhost:5000/userauth/login", body, config)
-         .then(res => {
+         .post("/userauth/login", body, config)
+         .then((res) => {
             console.log("response from auth: ", res);
             localStorage.setItem("token", res.data.token);
             this.isAuthenticated = true;
             console.log("from auth: ", this.isAuthenticated);
             return res.data;
          })
-         .catch(err => {
+         .catch((err) => {
             this.isAuthenticated = false;
             console.log(err);
          });
    },
    logout() {
       localStorage.removeItem("token");
-   }
+   },
 };

@@ -9,8 +9,6 @@ const UrlType = require("../models/UrlType");
 const UrlVotes = require("../models/UrlVotes");
 const Session = require("../models/Session");
 const config = require("config");
-var cors = require("cors");
-router.use(cors());
 
 function url_strip(url) {
    if (url.includes("http://") || url.includes("https://")) {

@@ -48,16 +48,12 @@ const Comparison = (props) => {
       });
 
       try {
-         const res2 = await axios.post(
-            "http://localhost:5000/urlcategory/many",
-            body,
-            {
-               headers: {
-                  "x-auth-token": token,
-                  "Content-Type": "application/json",
-               },
-            }
-         );
+         const res2 = await axios.post("/urlcategory/many", body, {
+            headers: {
+               "x-auth-token": token,
+               "Content-Type": "application/json",
+            },
+         });
 
          var positive_time = 0;
          var neutral_time = 0;

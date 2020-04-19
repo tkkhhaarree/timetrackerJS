@@ -8,15 +8,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const auth = require("../middleware/auth");
-var cors = require("cors");
-router.use(cors());
 
 function url_strip(url) {
    if (url.includes("http://") || url.includes("https://")) {
-      url = url
-         .replace("https://", "")
-         .replace("http://", "")
-         .replace('"', "");
+      url = url.replace("https://", "").replace("http://", "").replace('"', "");
    }
    if (url.includes("/")) {
       url = url.split("/", 1)[0];
@@ -26,11 +21,7 @@ function url_strip(url) {
 
 router.post(
    "/many",
-   [
-      check("url_list", "URL can't be empty!")
-         .not()
-         .isEmpty()
-   ],
+   [check("url_list", "URL can't be empty!").not().isEmpty()],
    auth,
    async (req, res) => {
       const errors = validationResult(req);
@@ -74,11 +65,7 @@ router.post(
 
 router.post(
    "/one",
-   [
-      check("url", "URL is required!")
-         .not()
-         .isEmpty()
-   ],
+   [check("url", "URL is required!").not().isEmpty()],
    auth,
    async (req, res) => {
       const errors = validationResult(req);
@@ -111,12 +98,8 @@ router.post(
 router.post(
    "/",
    [
-      check("url", "URL is required!")
-         .not()
-         .isEmpty(),
-      check("vote", "Vote is required!")
-         .not()
-         .isEmpty()
+      check("url", "URL is required!").not().isEmpty(),
+      check("vote", "Vote is required!").not().isEmpty(),
    ],
    auth,
    async (req, res) => {
@@ -140,7 +123,7 @@ router.post(
             let new_url_type = new UrlType({
                user: id,
                url: parent_url,
-               choice: vote
+               choice: vote,
             });
             await new_url_type.save();
          }
@@ -182,21 +165,21 @@ router.post(
                let new_url_vote = new UrlVotes({
                   url: parent_url,
                   positive: 1,
-                  category: 1
+                  category: 1,
                });
                await new_url_vote.save();
             } else if (vote == 0) {
                let new_url_vote = new UrlVotes({
                   url: parent_url,
                   neutral: 1,
-                  category: 0
+                  category: 0,
                });
                await new_url_vote.save();
             } else {
                let new_url_vote = new UrlVotes({
                   url: parent_url,
                   negative: 1,
-                  category: -1
+                  category: -1,
                });
                await new_url_vote.save();
             }

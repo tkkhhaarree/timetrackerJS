@@ -6,17 +6,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const auth = require("../middleware/auth");
-var cors = require("cors");
-router.use(cors());
 
 router.post(
    "/signup",
    [
-      check("name", "Name is required.")
-         .not()
-         .isEmpty(),
+      check("name", "Name is required.").not().isEmpty(),
       check("email", "Please use valid email.").isEmail(),
-      check("password", "password >= 6 char").isLength({ min: 6 })
+      check("password", "password >= 6 char").isLength({ min: 6 }),
    ],
    async (req, res) => {
       const errors = validationResult(req);
@@ -39,8 +35,8 @@ router.post(
 
          const payload = {
             user: {
-               id: user.id
-            }
+               id: user.id,
+            },
          };
          jwt.sign(
             payload,
@@ -62,7 +58,7 @@ router.post(
    "/login",
    [
       check("email", "Please use valid email.").isEmail(),
-      check("password", "password >= 6 char").isLength({ min: 6 })
+      check("password", "password >= 6 char").isLength({ min: 6 }),
    ],
    async (req, res) => {
       const errors = validationResult(req);
@@ -86,8 +82,8 @@ router.post(
          }
          const payload = {
             user: {
-               id: user.id
-            }
+               id: user.id,
+            },
          };
          jwt.sign(
             payload,

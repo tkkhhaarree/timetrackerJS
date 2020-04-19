@@ -3,8 +3,6 @@ const router = express.Router();
 const Webstats = require("../models/Webstats");
 const Session = require("../models/Session");
 const auth = require("../middleware/auth");
-var cors = require("cors");
-router.use(cors());
 
 function getNetWebstats(ws) {
    var i = 0;
