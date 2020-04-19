@@ -7,8 +7,6 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => res.send("API running"));
-
 app.use("/userauth", require("./routes/userauth"));
 app.use("/urltrack", require("./routes/urltrack"));
 app.use("/usersession", require("./routes/usersession"));
