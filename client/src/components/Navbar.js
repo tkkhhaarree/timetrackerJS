@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { auth } from "../actions/auth";
 import { display } from "@material-ui/system";
+import Logo from "../../src/clockman_logo.png";
 
 const useStyles = makeStyles((theme) => ({
    root: {
