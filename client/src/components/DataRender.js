@@ -19,31 +19,32 @@ const DataRender = (props) => {
             "x-auth-token": token,
          },
       };
-
-      const res = await axios.get(statsUrl, config);
-
-      var labels = [];
-      var viewtime = [];
-      var timestamp = [];
-      var i;
-
-      var productivity_score = 0;
-
-      for (i = 0; i < res.data.webstats.length; i++) {
-         if (res.data.webstats[i].viewtime > 0) {
-            labels.push(res.data.webstats[i].url);
-            viewtime.push(res.data.webstats[i].viewtime);
-            timestamp.push(res.data.webstats[i].timestamp);
-         }
-      }
-
-      console.log("timestamps: ", timestamp);
-
-      const body = JSON.stringify({
-         url_list: labels,
-      });
-
       try {
+
+	      const res = await axios.get(statsUrl, config);
+
+	      var labels = [];
+	      var viewtime = [];
+	      var timestamp = [];
+	      var i;
+
+	      var productivity_score = 0;
+
+	      for (i = 0; i < res.data.webstats.length; i++) {
+	         if (res.data.webstats[i].viewtime > 0) {
+	            labels.push(res.data.webstats[i].url);
+	            viewtime.push(res.data.webstats[i].viewtime);
+	            timestamp.push(res.data.webstats[i].timestamp);
+	         }
+	      }
+
+	      console.log("timestamps: ", timestamp);
+
+	      const body = JSON.stringify({
+	         url_list: labels,
+	      });
+
+      
          const res2 = await axios.post("/urlcategory/many", body, {
             headers: {
                "x-auth-token": token,
