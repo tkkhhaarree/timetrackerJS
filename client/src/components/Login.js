@@ -17,7 +17,7 @@ class Login extends Component {
       this.state = {
          email: "",
          password: "",
-         open: false
+         open: false,
       };
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
@@ -31,10 +31,10 @@ class Login extends Component {
       e.preventDefault();
       const user = {
          email: this.state.email,
-         password: this.state.password
+         password: this.state.password,
       };
 
-      auth.login(user).then(res => {
+      auth.login(user).then((res) => {
          if (res) {
             this.setState({ open: false });
             window.open("/dashboard/daily", "_self");
@@ -52,8 +52,8 @@ class Login extends Component {
          <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div style={paper}>
-               <Avatar>
-                  <LockOutlinedIcon />
+               <Avatar style={{ backgroundColor: "#ffffff" }}>
+                  <LockOutlinedIcon color="secondary" />
                </Avatar>
                <Typography component="h1" variant="h5">
                   Sign in
@@ -77,6 +77,7 @@ class Login extends Component {
                      autoFocus
                      value={this.state.email}
                      onChange={this.onChange}
+                     color="secondary"
                   />
 
                   <TextField
@@ -92,13 +93,14 @@ class Login extends Component {
                      autoComplete="current-password"
                      value={this.state.password}
                      onChange={this.onChange}
+                     color="secondary"
                   />
 
                   <Button
                      type="submit"
                      fullWidth
                      variant="contained"
-                     color="primary"
+                     color="secondary"
                      style={submit}
                   >
                      Sign In
@@ -123,20 +125,20 @@ const paper = {
    marginTop: "30px",
    display: "flex",
    flexDirection: "column",
-   alignItems: "center"
+   alignItems: "center",
 };
 
 const avatar = {
    margin: 1,
-   backgroundColor: "#1872cc"
+   backgroundColor: "#1872cc",
 };
 
 const form = {
    width: "100%", // Fix IE 11 issue.
-   marginTop: 1
+   marginTop: 1,
 };
 const submit = {
-   margin: "8px 0px 2px"
+   margin: "8px 0px 2px",
 };
 
 export default Login;

@@ -27,6 +27,7 @@ const Dashboard = (props) => {
       "November",
       "December",
    ];
+   document.title = "Clockman: Dashboard";
 
    if (
       props.match.params.interval_name != null &&
@@ -138,7 +139,7 @@ const Dashboard = (props) => {
 
    return (
       <Fragment>
-         <div style={{ marginLeft: 10 }}>
+         <div style={{ marginLeft: 10, marginTop: 10 }}>
             Welcome back <b>{username}</b>!<br />
             <br />
             <b>{data_msg}</b>
@@ -158,7 +159,7 @@ const Dashboard = (props) => {
 
          <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             style={{
                marginLeft: 20,
                paddingLeft: "5px",

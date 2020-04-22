@@ -19,7 +19,7 @@ class Register extends Component {
          email: "",
          password: "",
          open: false,
-         alert: ""
+         alert: "",
       };
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
@@ -34,10 +34,10 @@ class Register extends Component {
       const user = {
          username: this.state.username,
          email: this.state.email,
-         password: this.state.password
+         password: this.state.password,
       };
 
-      auth.register(user).then(res => {
+      auth.register(user).then((res) => {
          if (res) {
             this.setState({ open: false });
             window.open("/dashboard/daily", "_self");
@@ -45,7 +45,7 @@ class Register extends Component {
             this.setState({ open: true });
             this.setState({
                alert:
-                  "Invalid Email / Password format or Account already exists."
+                  "Invalid Email / Password format or Account already exists.",
             });
             setTimeout(() => {
                this.setState({ open: false });
@@ -59,8 +59,8 @@ class Register extends Component {
          <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div style={paper}>
-               <Avatar>
-                  <LockOutlinedIcon />
+               <Avatar style={{ backgroundColor: "#ffffff" }}>
+                  <LockOutlinedIcon color="secondary" />
                </Avatar>
                <Typography component="h1" variant="h5">
                   Sign up
@@ -84,6 +84,7 @@ class Register extends Component {
                      autoFocus
                      value={this.state.username}
                      onChange={this.onChange}
+                     color="secondary"
                   />
 
                   <TextField
@@ -98,6 +99,7 @@ class Register extends Component {
                      autoComplete="email"
                      value={this.state.email}
                      onChange={this.onChange}
+                     color="secondary"
                   />
 
                   <TextField
@@ -113,13 +115,14 @@ class Register extends Component {
                      autoComplete="current-password"
                      value={this.state.password}
                      onChange={this.onChange}
+                     color="secondary"
                   />
 
                   <Button
                      type="submit"
                      fullWidth
                      variant="contained"
-                     color="primary"
+                     color="secondary"
                      style={submit}
                   >
                      Sign Up
@@ -143,20 +146,20 @@ const paper = {
    marginTop: "30px",
    display: "flex",
    flexDirection: "column",
-   alignItems: "center"
+   alignItems: "center",
 };
 
 const avatar = {
    margin: 1,
-   backgroundColor: "#1872cc"
+   backgroundColor: "#1872cc",
 };
 
 const form = {
    width: "100%", // Fix IE 11 issue.
-   marginTop: 1
+   marginTop: 1,
 };
 const submit = {
-   margin: "8px 0px 2px"
+   margin: "8px 0px 2px",
 };
 
 export default Register;

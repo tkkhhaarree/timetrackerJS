@@ -33,11 +33,11 @@ function TabPanel(props) {
    );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
    root: {
       backgroundColor: theme.palette.background.paper,
-      width: 500
-   }
+      width: 500,
+   },
 }));
 
 export default function IntervalChange(props) {
@@ -110,15 +110,15 @@ export default function IntervalChange(props) {
       }
    };
 
-   const changeDate = date => {
+   const changeDate = (date) => {
       setStartDate(date);
    };
 
-   const changeMonth = date => {
+   const changeMonth = (date) => {
       setStartMonth(date);
    };
 
-   const changeYear = e => {
+   const changeYear = (e) => {
       setStartYear(e.target.value);
    };
 
@@ -151,8 +151,8 @@ export default function IntervalChange(props) {
                         <Tabs
                            value={value}
                            onChange={handleChange}
-                           indicatorColor="primary"
-                           textColor="primary"
+                           indicatorColor="secondary"
+                           textColor="secondary"
                            variant="fullWidth"
                            aria-label="full width tabs example"
                         >
@@ -221,13 +221,13 @@ export default function IntervalChange(props) {
                </DialogContentText>
             </DialogContent>
             <DialogActions>
-               <Button onClick={handleClose} color="primary">
+               <Button onClick={handleClose} color="secondary">
                   Cancel
                </Button>
                <Button
                   style={{ marginRight: "37px" }}
                   onClick={handleSubmit}
-                  color="primary"
+                  color="secondary"
                >
                   Submit
                </Button>

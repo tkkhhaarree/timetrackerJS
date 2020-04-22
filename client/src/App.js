@@ -4,7 +4,7 @@ import {
    Route,
    Link,
    Redirect,
-   Switch
+   Switch,
 } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -17,16 +17,19 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 const darkTheme = createMuiTheme({
    palette: {
       primary: {
-         main: "#212F3D"
-      }
-   }
+         main: "#ffffff",
+      },
+      secondary: {
+         main: "#222224",
+      },
+   },
 });
 
 export default function App() {
    return (
-      <ThemeProvider theme={darkTheme}>
-         <Router>
-            <Fragment>
+      <Fragment>
+         <ThemeProvider theme={darkTheme}>
+            <Router>
                <Navbar />
                <Route exact path="/" component={Home} />
                <section>
@@ -47,16 +50,16 @@ export default function App() {
                      />
                   </Switch>
                </section>
-            </Fragment>
-         </Router>
-      </ThemeProvider>
+            </Router>
+         </ThemeProvider>
+      </Fragment>
    );
 }
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
    <Route
       {...rest}
-      render={props =>
+      render={(props) =>
          auth.isAuthenticated === true ? (
             <Component {...props} />
          ) : (

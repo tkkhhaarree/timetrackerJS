@@ -8,19 +8,19 @@ import Link from "@material-ui/core/Link";
 import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { auth } from "../actions/auth";
-import { display } from "@material-ui/system";
+import Logo from "../../src/clockman_logo.png";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
    root: {
       display: "flex",
-      flex: 1
+      flex: 1,
    },
    menuButton: {
-      marginRight: theme.spacing(1)
+      marginRight: theme.spacing(1),
    },
    title: {
-      flexGrow: 1
-   }
+      flexGrow: 1,
+   },
 }));
 
 const NavBar = () => {
@@ -37,17 +37,17 @@ const NavBar = () => {
               textTransform: "none",
               padding: "5px 9px",
               textDecoration: "none",
-              color: "white",
+              color: "black",
               marginRight: "7px",
-              display: "none"
+              display: "none",
            }
          : {
               textTransform: "none",
               padding: "5px 9px",
               textDecoration: "none",
-              color: "white",
+              color: "black",
               marginRight: "7px",
-              display: "block"
+              display: "block",
            }
    );
 
@@ -60,9 +60,9 @@ const NavBar = () => {
             textTransform: "none",
             padding: "5px 9px",
             textDecoration: "none",
-            color: "white",
+            color: "black",
             marginRight: "7px",
-            display: "block"
+            display: "block",
          });
          console.log("block");
       }
@@ -70,20 +70,25 @@ const NavBar = () => {
 
    return (
       <div className={classes.root}>
-         <AppBar position="fixed">
+         <AppBar
+            position="fixed"
+            elevation={1}
+            style={{ backgroundColor: "#f5f4f0" }}
+         >
             <Toolbar
                variant="dense"
-               style={{ paddingLeft: "10px", paddingRight: "10px" }}
+               style={{
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+               }}
             >
                <Typography variant="h6" className={classes.title}>
-                  <Link
-                     href="/"
-                     style={{ color: "white", textDecoration: "none" }}
-                  >
-                     <b style={{ fontSize: 20 }}>
-                        Timetracker
-                        <sup style={{ fontSize: 11 }}> beta</sup>
-                     </b>
+                  <Link href="/">
+                     <img
+                        src={Logo}
+                        height={40}
+                        style={{ marginTop: 10, marginBottom: 2 }}
+                     />
                   </Link>
                </Typography>
                <IconButton
@@ -92,7 +97,7 @@ const NavBar = () => {
                   target="_blank"
                   edge="end"
                   className={classes.menuButton}
-                  style={{ color: "white" }}
+                  style={{ color: "black" }}
                >
                   <GitHubIcon />
                </IconButton>
@@ -111,7 +116,7 @@ const NavBar = () => {
                   href={btnLink}
                   style={{
                      textDecoration: "none",
-                     color: "white"
+                     color: "black",
                   }}
                >
                   <Button

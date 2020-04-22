@@ -21,7 +21,7 @@ export default function CategoryChange(props) {
    const [selected, setSelected] = useState(defaultSelected);
    const [displayUrl, setDisplayUrl] = useState(url);
 
-   const handleChange = e => {
+   const handleChange = (e) => {
       setSelected(e.target.value);
    };
 
@@ -43,18 +43,18 @@ export default function CategoryChange(props) {
       const config = {
          headers: {
             "x-auth-token": token,
-            "Content-Type": "application/json"
-         }
+            "Content-Type": "application/json",
+         },
       };
 
       const body = JSON.stringify({
          url: url,
-         vote: selected
+         vote: selected,
       });
 
       axios
          .post("http://localhost:5000/urlcategory/", body, config)
-         .then(res => {
+         .then((res) => {
             if (res) {
                changeTable(url, selected);
             }
@@ -82,10 +82,10 @@ export default function CategoryChange(props) {
                </Select>
             </DialogContent>
             <DialogActions>
-               <Button onClick={handleClose} color="primary">
+               <Button onClick={handleClose} color="secondary">
                   Cancel
                </Button>
-               <Button onClick={handleSubmit} color="primary">
+               <Button onClick={handleSubmit} color="secondary">
                   Submit
                </Button>
             </DialogActions>

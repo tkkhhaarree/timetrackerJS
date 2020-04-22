@@ -1,11 +1,11 @@
 let submit = document.getElementById("submit");
 
-submit.onclick = function() {
+submit.onclick = function () {
    var email = document.getElementById("email").value;
    var password = document.getElementById("password").value;
 
    var xhttp = new XMLHttpRequest();
-   xhttp.onreadystatechange = function() {
+   xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
          auth_token = JSON.parse(this.responseText)["token"];
          chrome.storage.local.set({ token: auth_token, logged_in: true });
@@ -24,6 +24,7 @@ submit.onclick = function() {
             this.status
          );
          document.getElementById("loginfail").innerHTML = "Server Error.";
+         document.getElementById("signup_msg").innerHTML = "";
       }
    };
    xhttp.open("POST", "http://127.0.0.1:5000/userauth/login", true);
