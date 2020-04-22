@@ -62,32 +62,34 @@ export default function CategoryChange(props) {
 
    return (
       <div>
-         <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="form-dialog-title"
-            fullWidth={true}
-            maxWidth={"sm"}
-         >
-            <DialogTitle id="form-dialog-title">Set Category</DialogTitle>
-            <DialogContent>
-               <DialogContentText>{displayUrl}</DialogContentText>
+         <div>
+            <Dialog
+               open={open}
+               onClose={handleClose}
+               aria-labelledby="form-dialog-title"
+               fullWidth={true}
+               maxWidth={"sm"}
+            >
+               <DialogTitle id="form-dialog-title">Set Category</DialogTitle>
+               <DialogContent>
+                  <DialogContentText>{displayUrl}</DialogContentText>
 
-               <Select value={selected} onChange={handleChange}>
-                  <MenuItem value={1}>Productive</MenuItem>
-                  <MenuItem value={0}>Neutral</MenuItem>
-                  <MenuItem value={-1}>Distracting</MenuItem>
-               </Select>
-            </DialogContent>
-            <DialogActions>
-               <Button onClick={handleClose} color="primary">
-                  Cancel
-               </Button>
-               <Button onClick={handleSubmit} color="primary">
-                  Submit
-               </Button>
-            </DialogActions>
-         </Dialog>
+                  <Select value={selected} onChange={handleChange}>
+                     <MenuItem value={1}>Productive</MenuItem>
+                     <MenuItem value={0}>Neutral</MenuItem>
+                     <MenuItem value={-1}>Distracting</MenuItem>
+                  </Select>
+               </DialogContent>
+               <DialogActions>
+                  <Button onClick={handleClose} color="secondary">
+                     Cancel
+                  </Button>
+                  <Button onClick={handleSubmit} color="secondary">
+                     Submit
+                  </Button>
+               </DialogActions>
+            </Dialog>
+         </div>
       </div>
    );
 }

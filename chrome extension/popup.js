@@ -24,6 +24,7 @@ submit.onclick = function () {
             this.status
          );
          document.getElementById("loginfail").innerHTML = "Server Error.";
+         document.getElementById("signup_msg").innerHTML = "";
       }
    };
    xhttp.open(
