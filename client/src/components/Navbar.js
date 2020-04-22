@@ -8,7 +8,6 @@ import Link from "@material-ui/core/Link";
 import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { auth } from "../actions/auth";
-import { display } from "@material-ui/system";
 import Logo from "../../src/clockman_logo.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +37,7 @@ const NavBar = () => {
               textTransform: "none",
               padding: "5px 9px",
               textDecoration: "none",
-              color: "white",
+              color: "black",
               marginRight: "7px",
               display: "none",
            }
@@ -46,7 +45,7 @@ const NavBar = () => {
               textTransform: "none",
               padding: "5px 9px",
               textDecoration: "none",
-              color: "white",
+              color: "black",
               marginRight: "7px",
               display: "block",
            }
@@ -61,7 +60,7 @@ const NavBar = () => {
             textTransform: "none",
             padding: "5px 9px",
             textDecoration: "none",
-            color: "white",
+            color: "black",
             marginRight: "7px",
             display: "block",
          });
