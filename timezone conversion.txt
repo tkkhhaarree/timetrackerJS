@@ -11,5 +11,33 @@ therefore chile_time  = india_time - chile_offset + india_offset
 
 
 var d = new Date()
-var i_off = d.timezoneOffset()
+var i_off = d.getTimezoneOffset()
 var c_d = d.setMinutes(d.getMinutes() - c_off + i_off)
+
+
+
+session_url:  
+{
+	2-2020: [abc, def]
+}
+
+part_ws:
+{
+	2/2020: [
+		{
+			url: abc,
+			viewtime: 3+2,
+			timestamp: [1, 3] + [4, 5]
+		},
+		{
+			url: def,
+			viewtime: 4,
+			timestamp: [1]
+		}
+	],
+	3/2020 :[
+		{
+
+		}
+	] 	
+}	
