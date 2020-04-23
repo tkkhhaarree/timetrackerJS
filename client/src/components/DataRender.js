@@ -5,6 +5,8 @@ import DataOutput from "./DataOutput";
 const DataRender = (props) => {
    const token = localStorage.getItem("token");
    const prevUrl = props.prevUrl;
+   const loadingDisable = props.loadingDisable;
+
    const [graphData, setGraphData] = useState({});
    const [tableData, setTableData] = useState();
    const [fail_msg, setFailMsg] = useState("");
@@ -122,8 +124,10 @@ const DataRender = (props) => {
             productivity_score = 0;
          }
          setProductivityScore(productivity_score);
+         loadingDisable();
       } catch (e) {
          setFailMsg("No data available for the current duration");
+         loadingDisable();
          console.log("fail msg from render: ", e);
       }
    }
