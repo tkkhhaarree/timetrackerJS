@@ -178,7 +178,7 @@ const Dashboard = (props) => {
          <IntervalChange open={openInterval} changeCancel={changeCancel} />
 
          <br />
-         <DataRender url={webstatsUrl} prevUrl={prevUrl} />
+         <DataRender url={webstatsUrl} prevUrl={prevUrl} loadingDisable={loadingDisable}/>
          </div>
       </Fragment>
    );
