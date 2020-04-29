@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import DataOutput from "./DataOutput";
 
 const DataRender = (props) => {
    const token = localStorage.getItem("token");
    const prevUrl = props.prevUrl;
+   const loadingDisable = props.loadingDisable;
    const [graphData, setGraphData] = useState({});
    const [tableData, setTableData] = useState();
    const [fail_msg, setFailMsg] = useState("");
@@ -19,31 +20,30 @@ const DataRender = (props) => {
             "x-auth-token": token,
          },
       };
-
-      const res = await axios.get(statsUrl, config);
-
-      var labels = [];
-      var viewtime = [];
-      var timestamp = [];
-      var i;
-
-      var productivity_score = 0;
-
-      for (i = 0; i < res.data.webstats.length; i++) {
-         if (res.data.webstats[i].viewtime > 0) {
-            labels.push(res.data.webstats[i].url);
-            viewtime.push(res.data.webstats[i].viewtime);
-            timestamp.push(res.data.webstats[i].timestamp);
-         }
-      }
-
-      console.log("timestamps: ", timestamp);
-
-      const body = JSON.stringify({
-         url_list: labels,
-      });
-
       try {
+         const res = await axios.get(statsUrl, config);
+
+         var labels = [];
+         var viewtime = [];
+         var timestamp = [];
+         var i;
+
+         var productivity_score = 0;
+
+         for (i = 0; i < res.data.webstats.length; i++) {
+            if (res.data.webstats[i].viewtime > 0) {
+               labels.push(res.data.webstats[i].url);
+               viewtime.push(res.data.webstats[i].viewtime);
+               timestamp.push(res.data.webstats[i].timestamp);
+            }
+         }
+
+         console.log("timestamps: ", timestamp);
+
+         const body = JSON.stringify({
+            url_list: labels,
+         });
+
          const res2 = await axios.post(
             "http://localhost:5000/urlcategory/many",
             body,
@@ -125,9 +125,11 @@ const DataRender = (props) => {
             productivity_score = 0;
          }
          setProductivityScore(productivity_score);
+         loadingDisable();
       } catch (e) {
          setFailMsg("No data available for the current duration");
          console.log("fail msg from render: ", e);
+         loadingDisable();
       }
    }
 

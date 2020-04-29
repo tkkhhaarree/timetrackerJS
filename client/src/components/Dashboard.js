@@ -6,6 +6,8 @@ import DataRender from "./DataRender";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "@material-ui/core";
 import IntervalChange from "./IntervalChange";
+import Backdrop from "@material-ui/core/Backdrop";
+import { CircularProgress } from "@material-ui/core/";
 
 const Dashboard = (props) => {
    var interval_name = "";
@@ -112,6 +114,8 @@ const Dashboard = (props) => {
    const [username, setUsername] = useState();
    const token = localStorage.getItem("token");
    const [openInterval, setOpenInterval] = useState(false);
+   const [loading, setLoading] = useState(true);
+   const [display, setDisplay] = useState("none");
 
    const config = {
       headers: {
@@ -129,6 +133,11 @@ const Dashboard = (props) => {
       window.open("/dashboard/" + event.target.value, "_self");
    };
 
+   const loadingDisable = () => {
+      setLoading(false);
+      setDisplay("inline");
+   };
+
    const changeCancel = () => {
       setOpenInterval(false);
    };
@@ -139,41 +148,50 @@ const Dashboard = (props) => {
 
    return (
       <Fragment>
-         <div style={{ marginLeft: 10, marginTop: 10 }}>
-            Welcome back <b>{username}</b>!<br />
+         <Backdrop open={loading}>
+            <CircularProgress color="blue" />
+         </Backdrop>
+         <div style={{ display: display }}>
+            <div style={{ marginLeft: 10, marginTop: 10 }}>
+               Welcome back <b>{username}</b>!<br />
+               <br />
+               <b>{data_msg}</b>
+            </div>
             <br />
-            <b>{data_msg}</b>
+            <Select
+               value={intervalName}
+               onChange={handleChange}
+               style={{ marginLeft: 20 }}
+            >
+               <MenuItem value={"daily"}>Daily</MenuItem>
+               <MenuItem value={"weekly"}>Weekly</MenuItem>
+               <MenuItem value={"monthly"}>Monthly</MenuItem>
+               <MenuItem value={"yearly"}>Yearly</MenuItem>
+               <MenuItem value={"all"}>All Time</MenuItem>
+            </Select>
+
+            <Button
+               variant="outlined"
+               color="secondary"
+               style={{
+                  marginLeft: 20,
+                  paddingLeft: "5px",
+                  paddingRight: "5px",
+                  textTransform: "none",
+               }}
+               onClick={intervalClick}
+            >
+               Select Interval
+            </Button>
+            <IntervalChange open={openInterval} changeCancel={changeCancel} />
+
+            <br />
+            <DataRender
+               url={webstatsUrl}
+               prevUrl={prevUrl}
+               loadingDisable={loadingDisable}
+            />
          </div>
-         <br />
-         <Select
-            value={intervalName}
-            onChange={handleChange}
-            style={{ marginLeft: 20 }}
-         >
-            <MenuItem value={"daily"}>Daily</MenuItem>
-            <MenuItem value={"weekly"}>Weekly</MenuItem>
-            <MenuItem value={"monthly"}>Monthly</MenuItem>
-            <MenuItem value={"yearly"}>Yearly</MenuItem>
-            <MenuItem value={"all"}>All Time</MenuItem>
-         </Select>
-
-         <Button
-            variant="outlined"
-            color="secondary"
-            style={{
-               marginLeft: 20,
-               paddingLeft: "5px",
-               paddingRight: "5px",
-               textTransform: "none",
-            }}
-            onClick={intervalClick}
-         >
-            Select Interval
-         </Button>
-         <IntervalChange open={openInterval} changeCancel={changeCancel} />
-
-         <br />
-         <DataRender url={webstatsUrl} prevUrl={prevUrl} />
       </Fragment>
    );
 };

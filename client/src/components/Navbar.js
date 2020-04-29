@@ -26,13 +26,17 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
    const classes = useStyles();
    const [btnText, setBtnText] = useState(
-      localStorage.getItem("token") != null ? "Logout" : "Login"
+      localStorage.getItem("token") != null && auth.isAuthenticated
+         ? "Logout"
+         : "Login"
    );
    const [btnLink, setBtnLink] = useState(
-      localStorage.getItem("token") != null ? "/" : "/login"
+      localStorage.getItem("token") != null && auth.isAuthenticated
+         ? "/"
+         : "/login"
    );
    const [registerDisplay, setRegisterDisplay] = useState(
-      localStorage.getItem("token") != null
+      localStorage.getItem("token") != null && auth.isAuthenticated
          ? {
               textTransform: "none",
               padding: "5px 9px",
@@ -73,7 +77,9 @@ const NavBar = () => {
          <AppBar
             position="fixed"
             elevation={1}
-            style={{ backgroundColor: "#f5f4f0" }}
+            style={{
+               backgroundColor: "#f5f4f0",
+            }}
          >
             <Toolbar
                variant="dense"

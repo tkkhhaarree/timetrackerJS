@@ -16,25 +16,11 @@ import Score from "../score.JPG";
 const Home = () => {
    let token = localStorage.getItem("token");
    if (auth.isAuthenticated === true && token != null) {
-      return (
-         <Fragment>
-            <font color="black">you are already logged in!.</font>
-            <br />
-            <br />
-            <Button
-               component={Link}
-               to="/dashboard/daily"
-               variant="outlined"
-               color="secondary"
-            >
-               Dashboard
-            </Button>
-         </Fragment>
-      );
+      window.location.href = "/dashboard/daily";
    } else {
       return (
          <Fragment>
-            <Grid container spacing={1}>
+            <Grid container>
                <Grid item sm>
                   <Paper
                      elevation={0}
@@ -88,7 +74,7 @@ const Home = () => {
                   </Paper>
                </Grid>
             </Grid>
-            <Grid container spacing={1}>
+            <Grid container>
                <Grid item sm>
                   <Paper
                      elevation={0}

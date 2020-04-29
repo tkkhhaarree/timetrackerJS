@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
+const CurrentUrl = require("../models/CurrentUrl");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
@@ -12,11 +13,9 @@ router.use(cors());
 router.post(
    "/signup",
    [
-      check("name", "Name is required.")
-         .not()
-         .isEmpty(),
+      check("name", "Name is required.").not().isEmpty(),
       check("email", "Please use valid email.").isEmail(),
-      check("password", "password >= 6 char").isLength({ min: 6 })
+      check("password", "password >= 6 char").isLength({ min: 6 }),
    ],
    async (req, res) => {
       const errors = validationResult(req);
@@ -39,13 +38,13 @@ router.post(
 
          const payload = {
             user: {
-               id: user.id
-            }
+               id: user.id,
+            },
          };
          jwt.sign(
             payload,
             config.get("jwtSecret"),
-            { expiresIn: 36000 },
+            { expiresIn: 360000 },
             (err, token) => {
                if (err) throw err;
                res.json({ token });
@@ -62,7 +61,7 @@ router.post(
    "/login",
    [
       check("email", "Please use valid email.").isEmail(),
-      check("password", "password >= 6 char").isLength({ min: 6 })
+      check("password", "password >= 6 char").isLength({ min: 6 }),
    ],
    async (req, res) => {
       const errors = validationResult(req);
@@ -86,13 +85,13 @@ router.post(
          }
          const payload = {
             user: {
-               id: user.id
-            }
+               id: user.id,
+            },
          };
          jwt.sign(
             payload,
             config.get("jwtSecret"),
-            { expiresIn: 36000 },
+            { expiresIn: 360000 },
             (err, token) => {
                if (err) throw err;
                res.json({ token, username: user.name });
@@ -112,6 +111,20 @@ router.get("/userinfo", auth, async (req, res) => {
       res.json({ user });
    } catch (err2) {
       console.error(err2.message);
+      res.status(500).send("Server down.");
+   }
+});
+
+router.get("/logout", auth, async (req, res) => {
+   try {
+      const cu = await CurrentUrl.findOne({
+         user: req.user.id,
+      });
+      cu.logged_in = false;
+      await cu.save();
+      res.json({ "logged in": cu.logged_in });
+   } catch (e) {
+      console.error(e.message);
       res.status(500).send("Server down.");
    }
 });

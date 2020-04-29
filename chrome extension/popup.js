@@ -3,6 +3,7 @@ let submit = document.getElementById("submit");
 submit.onclick = function () {
    var email = document.getElementById("email").value;
    var password = document.getElementById("password").value;
+   console.log("login button clicked.");
 
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function () {
