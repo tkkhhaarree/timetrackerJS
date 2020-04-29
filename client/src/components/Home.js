@@ -20,7 +20,7 @@ const Home = () => {
    } else {
       return (
          <Fragment>
-            <Grid container spacing={1}>
+            <Grid container >
                <Grid item sm>
                   <Paper
                      elevation={0}
@@ -74,7 +74,7 @@ const Home = () => {
                   </Paper>
                </Grid>
             </Grid>
-            <Grid container spacing={1}>
+            <Grid container >
                <Grid item sm>
                   <Paper
                      elevation={0}

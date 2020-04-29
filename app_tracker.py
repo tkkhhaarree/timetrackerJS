@@ -25,7 +25,7 @@ ticket = 0  # 1 if server is up.
 save_counter = 0
 try:
     response = requests.post(
-        "http://127.0.0.1:5000/userauth/login",
+        "https://cryptic-stream-13108.herokuapp.com/userauth/login",
         data=json.dumps({"email": email, "password": password}),
         headers={"Content-Type": "application/json"},
     )
@@ -57,7 +57,7 @@ while ticket == 1:
         chrome_flag = 1
         print("offset: ", int(time.timezone / 60))
         s = requests.post(
-            "http://127.0.0.1:5000/usersession/get_app_session",
+            "https://cryptic-stream-13108.herokuapp.com/usersession/get_app_session",
             data=json.dumps({"timezone_offset": int(time.timezone / 60)}),
             headers={"x-auth-token": auth, "Content-Type": "application/json"},
         )
@@ -89,7 +89,7 @@ while ticket == 1:
         try:
             print("chrome has been quit.")
             resp = requests.post(
-                "http://127.0.0.1:5000/urltrack/quit_chrome",
+                "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_chrome",
                 data=json.dumps({"session": session}),
                 headers={"x-auth-token": auth, "Content-Type": "application/json"},
             )
@@ -109,7 +109,7 @@ while ticket == 1:
         print("chrome minimized")
         chrome_minimized = 1
         resp = requests.post(
-            "http://127.0.0.1:5000/urltrack/quit_chrome",
+            "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_chrome",
             data=json.dumps({"session": session}),
             headers={"x-auth-token": auth, "Content-Type": "application/json"},
         )
@@ -124,7 +124,7 @@ while ticket == 1:
     ):
         print("chrome restored.")
         resp = requests.post(
-            "http://127.0.0.1:5000/urltrack/restore_chrome",
+            "https://cryptic-stream-13108.herokuapp.com/urltrack/restore_chrome",
             data=json.dumps({"session": session}),
             headers={"x-auth-token": auth, "Content-Type": "application/json"},
         )
@@ -139,7 +139,7 @@ while ticket == 1:
     if save_counter == 10:
         try:
             save_resp = requests.post(
-                "http://127.0.0.1:5000/urltrack/save_app",
+                "https://cryptic-stream-13108.herokuapp.com/urltrack/save_app",
                 data=json.dumps({"session": session, "apptime": process_time}),
                 headers={"x-auth-token": auth, "Content-Type": "application/json"},
             )
