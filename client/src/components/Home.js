@@ -16,21 +16,7 @@ import Score from "../score.JPG";
 const Home = () => {
    let token = localStorage.getItem("token");
    if (auth.isAuthenticated === true && token != null) {
-      return (
-         <Fragment>
-            <font color="black">you are already logged in!.</font>
-            <br />
-            <br />
-            <Button
-               component={Link}
-               to="/dashboard/daily"
-               variant="outlined"
-               color="secondary"
-            >
-               Dashboard
-            </Button>
-         </Fragment>
-      );
+      window.location.href = "/dashboard/daily";
    } else {
       return (
          <Fragment>

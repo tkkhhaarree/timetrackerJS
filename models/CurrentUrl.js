@@ -13,7 +13,11 @@ const CurrentUrlSchema = new mongoose.Schema({
     url: {
         type: String,
         default: null
-    }
+    },
+    logged_in: {
+      type: Boolean,
+      default: false,
+   },
 });
 
 module.exports = CurrentUrl = mongoose.model("current_url", CurrentUrlSchema);

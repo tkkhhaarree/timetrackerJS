@@ -8,7 +8,11 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       var storageChange = changes[key];
       if (key == "token") {
          auth_token = storageChange.newValue;
-         flag = 1;
+         if (auth_token != "") {
+            flag = 1;
+         } else {
+            flag = 0;
+         }
       }
    }
    console.log("flag after storage change invoke: ", flag);
@@ -16,10 +20,9 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (
       tabs
    ) {
-      init_url = tabs[0].url;
-      console.log("init url: " + init_url);
-
       if (auth_token != "" && flag == 1) {
+         init_url = tabs[0].url;
+         console.log("init url: " + init_url);
          var xh2 = new XMLHttpRequest();
          xh2.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -48,7 +51,7 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
 chrome.tabs.onActivated.addListener(function (activeInfo) {
    chrome.tabs.get(activeInfo.tabId, function (tab) {
       var y = tab.url;
-      console.log("selected url: " + y);
+      console.log("flag is: ", +flag + " and token is: " + auth_token);
       if (auth_token != "" && flag == 1) {
          var today = new Date();
          var month = parseInt(today.getMonth()) + 1;
@@ -73,13 +76,11 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
                         console.log(this.responseText);
                      }
                   };
-                  xhttp.open(
-                     "POST",
-                     "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
-                  );
+                  xhttp.open("POST", "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url");
                   xhttp.setRequestHeader("Content-Type", "application/json");
                   xhttp.setRequestHeader("x-auth-token", auth_token);
                   xhttp.send(JSON.stringify({ url: y, session: session }));
+                  console.log("selected url: " + y);
                }
             };
             xh2.open(
@@ -102,13 +103,11 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
                   console.log(this.responseText);
                }
             };
-            xhttp.open(
-               "POST",
-               "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
-            );
+            xhttp.open("POST", "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url");
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.setRequestHeader("x-auth-token", auth_token);
             xhttp.send(JSON.stringify({ url: y, session: session }));
+            console.log("selected url: " + y);
          }
       }
    });
@@ -116,7 +115,7 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
    if (tab.active && change.url) {
-      console.log("updated url: " + change.url);
+      console.log("flag is: ", +flag + " and token is: " + auth_token);
       if (auth_token != "" && flag == 1) {
          var today = new Date();
          var month = parseInt(today.getMonth()) + 1;
@@ -139,15 +138,13 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
                         console.log(this.responseText);
                      }
                   };
-                  xhttp.open(
-                     "POST",
-                     "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
-                  );
+                  xhttp.open("POST", "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url");
                   xhttp.setRequestHeader("Content-Type", "application/json");
                   xhttp.setRequestHeader("x-auth-token", auth_token);
                   xhttp.send(
                      JSON.stringify({ url: change.url, session: session })
                   );
+                  console.log("updated url: " + change.url);
                }
             };
             xh2.open(
@@ -170,13 +167,11 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
                   console.log(this.responseText);
                }
             };
-            xhttp.open(
-               "POST",
-               "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url"
-            );
+            xhttp.open("POST", "https://cryptic-stream-13108.herokuapp.com/urltrack/send_url");
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.setRequestHeader("x-auth-token", auth_token);
             xhttp.send(JSON.stringify({ url: change.url, session: session }));
+            console.log("updated url: " + change.url);
          }
       }
    }
@@ -192,7 +187,6 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 });
 
 chrome.tabs.onRemoved.addListener(function (tabId, removeInfo) {
-   console.log("removed url: " + tabToUrl[tabId]);
    if (auth_token != "" && flag == 1) {
       var xhttp2 = new XMLHttpRequest();
       xhttp2.onreadystatechange = function () {
@@ -200,15 +194,13 @@ chrome.tabs.onRemoved.addListener(function (tabId, removeInfo) {
             console.log(this.responseText);
          }
       };
-      xhttp2.open(
-         "POST",
-         "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_url"
-      );
+      xhttp2.open("POST", "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_url");
       xhttp2.setRequestHeader("Content-Type", "application/json");
       xhttp2.setRequestHeader("x-auth-token", auth_token);
       xhttp2.send(JSON.stringify({ url: tabToUrl[tabId] }));
 
       // Remove information for non-existent tab
       delete tabToUrl[tabId];
+      console.log("removed url: " + tabToUrl[tabId]);
    }
 });

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
+const CurrentUrl = require("../models/CurrentUrl");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
@@ -108,6 +109,20 @@ router.get("/userinfo", auth, async (req, res) => {
       res.json({ user });
    } catch (err2) {
       console.error(err2.message);
+      res.status(500).send("Server down.");
+   }
+});
+
+router.get("/logout", auth, async (req, res) => {
+   try {
+      const cu = await CurrentUrl.findOne({
+         user: req.user.id,
+      });
+      cu.logged_in = false;
+      await cu.save();
+      res.json({ "logged in": cu.logged_in });
+   } catch (e) {
+      console.error(e.message);
       res.status(500).send("Server down.");
    }
 });

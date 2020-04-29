@@ -3,6 +3,7 @@ let submit = document.getElementById("submit");
 submit.onclick = function () {
    var email = document.getElementById("email").value;
    var password = document.getElementById("password").value;
+   console.log("login button clicked.");
 
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function () {
@@ -27,11 +28,7 @@ submit.onclick = function () {
          document.getElementById("signup_msg").innerHTML = "";
       }
    };
-   xhttp.open(
-      "POST",
-      "https://cryptic-stream-13108.herokuapp.com/userauth/login",
-      true
-   );
+   xhttp.open("POST", "https://cryptic-stream-13108.herokuapp.com/userauth/login", true);
    xhttp.setRequestHeader("Content-Type", "application/json");
    xhttp.send(JSON.stringify({ email: email, password: password }));
 };

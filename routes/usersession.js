@@ -111,42 +111,44 @@ router.post(
    }
 );
 
-router.post("/get_app_session", auth, async (req, res) => {
-   try {
-      let s = await Session.findOne({ user: id });
-      var timezone_offset = s.timezone_offset;
-
-      var today = new Date();
-      today.setMinutes(
-         today.getMinutes() - timezone_offset + new Date().getTimezoneOffset()
-      );
-
-      var date =
-         today.getHours() +
-         "-" +
-         today.getDate() +
-         "/" +
-         today.getMonth() +
-         1 +
-         "/" +
-         today.getFullYear();
-      const id = req.user.id;
+router.post(
+   "/get_app_session",
+   [
+      check("timezone_offset", "timezone offset cannot be empty.")
+         .not()
+         .isEmpty(),
+   ],
+   auth,
+   async (req, res) => {
       try {
+         var { timezone_offset } = req.body;
+         console.log("offset app: ", req.body);
+
+         var today = new Date();
+         today.setMinutes(today.getMinutes() - parseInt(timezone_offset) - 330);
+         var m = today.getMonth() + 1;
+         var date =
+            today.getHours() +
+            "-" +
+            today.getDate() +
+            "/" +
+            m +
+            "/" +
+            today.getFullYear();
+         var id = req.user.id;
+
          let session = await Session.findOneAndUpdate(
             { user: id },
-            { current_session: date },
+            { current_session: date, timezone_offset: timezone_offset },
             { new: true, upsert: true }
          );
          console.log(session);
-         res.json({ session: session.current_session });
+         res.json({ session: date });
       } catch (err) {
-         console.error(err.message);
-         res.status(500).send("Server down103.");
+         console.log(err.message);
+         res.status(500).send("Server down.");
       }
-   } catch (err) {
-      console.log(err.message);
-      res.status(500).send("Server down.");
    }
-});
+);
 
 module.exports = router;
