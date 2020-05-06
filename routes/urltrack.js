@@ -162,53 +162,57 @@ router.post(
             user: id,
             session: session,
          });
-         var current_url = c_u.url;
-         //console.log("current url: ", current_url);
+         if (c_u != null) {
+            if (c_u.logged_in == true) {
+               var current_url = c_u.url;
+               //console.log("current url: ", current_url);
 
-         if (c_u.logged_in == true) {
-            let ws = await Webstats.find({ user: id, session: session });
+               let ws = await Webstats.find({ user: id, session: session });
 
-            //console.log("old webstats:", ws);
+               //console.log("old webstats:", ws);
 
-            for (i = 0; i < ws.length; i++) {
-               url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
-               url_viewtime[ws[i].url] = ws[i].viewtime;
-            }
+               for (i = 0; i < ws.length; i++) {
+                  url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
+                  url_viewtime[ws[i].url] = ws[i].viewtime;
+               }
 
-            let s = await Session.findOne({ user: id });
-            var timezone_offset = s.timezone_offset;
-            if (current_url != "chrome:") {
-               var today = new Date();
-               today.setMinutes(today.getMinutes() - timezone_offset - 330);
+               let s = await Session.findOne({ user: id });
+               var timezone_offset = s.timezone_offset;
+               if (current_url != "chrome:") {
+                  var today = new Date();
+                  today.setMinutes(today.getMinutes() - timezone_offset - 330);
 
-               var now = Math.floor(today.getTime() / 1000);
-               var t = now - url_timestamp[current_url];
-               url_timestamp[current_url] = now;
-               url_viewtime[current_url] = url_viewtime[current_url] + t;
+                  var now = Math.floor(today.getTime() / 1000);
+                  var t = now - url_timestamp[current_url];
+                  url_timestamp[current_url] = now;
+                  url_viewtime[current_url] = url_viewtime[current_url] + t;
 
-               let ws = await Webstats.findOne({
-                  user: id,
-                  url: current_url,
-                  session: session,
-               });
-               ws.ts.push(url_timestamp[current_url]);
-               ws.viewtime = url_viewtime[current_url];
-               console.log(
-                  "viewtime of " +
-                     current_url +
-                     " after quit chrome: " +
-                     ws.viewtime
-               );
-               console.log(
-                  "timestamp of " +
-                     current_url +
-                     " after quit chrome: " +
-                     url_timestamp[current_url]
-               );
-               await ws.save();
-               res.json({ message: "Chrome quit invoked successfully." });
+                  let ws = await Webstats.findOne({
+                     user: id,
+                     url: current_url,
+                     session: session,
+                  });
+                  ws.ts.push(url_timestamp[current_url]);
+                  ws.viewtime = url_viewtime[current_url];
+                  console.log(
+                     "viewtime of " +
+                        current_url +
+                        " after quit chrome: " +
+                        ws.viewtime
+                  );
+                  console.log(
+                     "timestamp of " +
+                        current_url +
+                        " after quit chrome: " +
+                        url_timestamp[current_url]
+                  );
+                  await ws.save();
+                  res.json({ message: "Chrome quit invoked successfully." });
+               } else {
+                  res.json({ message: "chrome not open currently." });
+               }
             } else {
-               res.json({ message: "chrome not open currently." });
+               res.json({ message: "currently extension logged out." });
             }
          } else {
             res.json({ message: "currently extension logged out." });
@@ -239,38 +243,42 @@ router.post(
             user: id,
             session: session,
          });
-         var current_url = c_u.url;
+         if (c_u != null) {
+            if (c_u.logged_in == true) {
+               var current_url = c_u.url;
 
-         if (c_u.logged_in == true) {
-            let ws = await Webstats.find({ user: id, session: session });
-            for (i = 0; i < ws.length; i++) {
-               url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
-            }
+               let ws = await Webstats.find({ user: id, session: session });
+               for (i = 0; i < ws.length; i++) {
+                  url_timestamp[ws[i].url] = ws[i].ts[ws[i].ts.length - 1];
+               }
 
-            let s = await Session.findOne({ user: id });
-            var timezone_offset = s.timezone_offset;
+               let s = await Session.findOne({ user: id });
+               var timezone_offset = s.timezone_offset;
 
-            if (current_url != "chrome:") {
-               var today = new Date();
-               today.setMinutes(today.getMinutes() - timezone_offset - 330);
+               if (current_url != "chrome:") {
+                  var today = new Date();
+                  today.setMinutes(today.getMinutes() - timezone_offset - 330);
 
-               var now = Math.floor(today.getTime() / 1000);
-               url_timestamp[current_url] = now;
-               let ws = await Webstats.findOne({
-                  user: id,
-                  url: current_url,
-                  session: session,
-               });
-               ws.ts.push(url_timestamp[current_url]);
-               await ws.save();
-               console.log(
-                  "timestamp of " +
-                     current_url +
-                     " after restore chrome: " +
-                     url_timestamp[current_url]
-               );
+                  var now = Math.floor(today.getTime() / 1000);
+                  url_timestamp[current_url] = now;
+                  let ws = await Webstats.findOne({
+                     user: id,
+                     url: current_url,
+                     session: session,
+                  });
+                  ws.ts.push(url_timestamp[current_url]);
+                  await ws.save();
+                  console.log(
+                     "timestamp of " +
+                        current_url +
+                        " after restore chrome: " +
+                        url_timestamp[current_url]
+                  );
 
-               res.json({ message: "chrome restore invoked successfully." });
+                  res.json({ message: "chrome restore invoked successfully." });
+               }
+            } else {
+               res.json({ message: "currently extension logged out." });
             }
          } else {
             res.json({ message: "currently extension logged out." });

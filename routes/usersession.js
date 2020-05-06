@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator");
 const Session = require("../models/Session");
 const CurrentUrl = require("../models/CurrentUrl");
 const Webstats = require("../models/Webstats");
+const Appstats = require("../models/Appstats");
 const auth = require("../middleware/auth");
 var cors = require("cors");
 router.use(cors());
@@ -145,7 +146,16 @@ router.post(
             { new: true, upsert: true }
          );
          console.log(session);
-         res.json({ session: date });
+         let as = await Appstats.find({
+            user: id,
+            session: date,
+         });
+         var appstats = {};
+         for (var i = 0; i < as.length; i++) {
+            appstats[as[i].app] = as[i].viewtime;
+         }
+
+         res.json({ session: date, appstats: appstats });
       } catch (err) {
          console.log(err.message);
          res.status(500).send("Server down.");

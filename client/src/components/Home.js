@@ -28,21 +28,17 @@ const Home = () => {
                         padding: 20,
                         marginTop: 20,
                         marginBottom: 20,
-                        marginLeft: 30,
+                        marginLeft: 10,
                         marginRight: 10,
                      }}
                   >
                      <h1>Track how you spend your online time.</h1>
                      <b>Clockman</b> automatically tracks your browsing
-                     activity,
-                     <br />
-                     categorizes the websites visited by you.
+                     activity, categorizes the websites visited by you.
                      <br />
                      <br />
                      <b>Its free!</b> And simple to use. Just download the
-                     extension,
-                     <br />
-                     and you are good to go!
+                     extension, and you are good to go!
                      <br />
                      <br />
                      <br />
