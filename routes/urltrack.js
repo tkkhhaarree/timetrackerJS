@@ -320,21 +320,32 @@ router.post(
       today.setMinutes(today.getMinutes() - timezone_offset - 330);
 
       var now = Math.floor(today.getTime() / 1000);
+
       for (key in apptime) {
-         let as = new Appstats({
+         let ps = await Webstats.findOne({
             user: id,
             session: session,
-            app: key,
-            added_ts: now,
-            viewtime: apptime[key],
+            url: key,
+            datatype: "app",
          });
-         await as.save();
+         if (ps != null) {
+            var x = ps.ts;
+            x.push(now);
+            ps.ts = x;
+            ps.viewtime = apptime[key];
+            await ps.save();
+         } else {
+            let as = new Webstats({
+               user: id,
+               session: session,
+               url: key,
+               ts: [now],
+               viewtime: apptime[key],
+               datatype: "app",
+            });
+            await as.save();
+         }
       }
-      await Appstats.deleteMany({
-         user: id,
-         session: session,
-         added_ts: { $ne: now },
-      });
 
       res.json({ message: "app stats updated successfully." });
    }

@@ -3,24 +3,28 @@ const mongoose = require("mongoose");
 const WebstatsSchema = new mongoose.Schema({
    user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user"
+      ref: "user",
    },
    session: {
       type: String,
-      default: null
+      default: null,
    },
    url: {
       type: String,
-      default: null
+      default: null,
    },
    ts: {
       type: [Number],
-      default: null
+      default: null,
    },
    viewtime: {
       type: Number,
-      default: null
-   }
+      default: null,
+   },
+   datatype: {
+      type: String,
+      default: "url",
+   },
 });
 
 module.exports = Webstats = mongoose.model("webstats", WebstatsSchema);

@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import CategoryChange from "../CategoryChange";
 
-const UrlTable = props => {
+const UrlTable = (props) => {
    var tableData = props.tableData;
    const [tableState, setTableState] = useState();
    const [open, setOpen] = useState(false);
@@ -51,7 +51,7 @@ const UrlTable = props => {
       return int;
    }
    if (tableState != null) {
-      var tableRow = tableState.map(row => {
+      var tableRow = tableState.map((row) => {
          return (
             <TableRow key={row.url + addInt()}>
                <TableCell
@@ -79,7 +79,7 @@ const UrlTable = props => {
                         background: "none",
                         fontSize: 11,
                         color: "blue",
-                        outline: "none"
+                        outline: "none",
                      }}
                      onClick={() => buttonClick(row.url, row.category)}
                   >
@@ -98,7 +98,7 @@ const UrlTable = props => {
                <TableHead>
                   <TableRow style={{ borderBottomColor: "black" }}>
                      <TableCell>
-                        <b>URL</b>
+                        <b>Name</b>
                      </TableCell>
                      <TableCell align="right">
                         <b>View Time</b>
