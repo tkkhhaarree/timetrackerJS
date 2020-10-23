@@ -7,14 +7,11 @@
    "icons": { "48": "icon.png" },
    "browser_action": {
       "default_icon": "icon.PNG",
-      "default_title": "Just observing your current url.",
-      "default_popup": "popup.html"
+      "default_title": "Just observing your current url."
    },
-
    "permissions": [
       "tabs",
       "activeTab",
-      "https://cryptic-stream-13108.herokuapp.com/",
       "storage"
    ],
    "background": {

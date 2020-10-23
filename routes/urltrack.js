@@ -127,7 +127,46 @@ router.post(
    }
 );
 
-//-------------------
+//---------------------------------------------------------------------------------------
+
+// router.post(
+//    "/send_url_2",
+//    [
+//       check("url", "URL is required!").not().isEmpty(),
+//       check("session", "Session cannot be empty!").not().isEmpty(),
+//    ],
+//    auth,
+//    async (req, res) => {
+//       const errors = validationResult(req);
+//       if (!errors.isEmpty()) {
+//          return res.status(400).json({ errors: errors.array() });
+//       }
+//       const { viewtime, session } = req.body;
+//       const id = req.user.id;
+//       var i;
+//       var vt_arr = Object.keys(viewtime);
+      
+//       for(i=0; i<vt_arr.length; i++){
+//          vt_arr[i] = url_strip(vt_arr[i])
+//       }
+
+
+//    }
+// );
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 router.post(
    "/quit_url",
    [check("url", "URL is required!").not().isEmpty()],
@@ -350,5 +389,8 @@ router.post(
       res.json({ message: "app stats updated successfully." });
    }
 );
+
+//---------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!----------------------------
+
 
 module.exports = router;

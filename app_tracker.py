@@ -8,6 +8,10 @@ import json
 from tkinter import *
 import threading
 import datetime
+import logging
+
+
+logging.basicConfig(filename='example.log', level=logging.DEBUG)
 
 
 def btnClick():
@@ -72,10 +76,11 @@ def signIn():
 
         status_text["text"] = "Login Success!"
 
-    except:
+    except Exception as e:
         print("url tracker server down1")
         status_text["text"] = "Error logging in."
         ticket = 0
+        logging.error(e)
     status_text.pack()
 
     print("offset: ", int(time.timezone / 60))
