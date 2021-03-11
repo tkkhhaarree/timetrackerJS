@@ -1,5 +1,5 @@
 # timetrackerJS
-Hosted on: https://clockman.herokuapp.com/
+Hosted on: https://clockman.herokuapp.com/ <br>
 An online productivity tracking tool created in MERN stack.
 
 1. Download this repo.<br>
