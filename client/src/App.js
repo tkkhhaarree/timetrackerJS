@@ -7,6 +7,7 @@ import {
    Switch,
 } from "react-router-dom";
 import Login from "./components/Login";
+
 import Register from "./components/Register";
 import { auth } from "./actions/auth";
 import Dashboard from "./components/Dashboard";
@@ -32,6 +33,7 @@ export default function App() {
             <Router>
                <Navbar />
                <Route exact path="/" component={Home} />
+
                <section>
                   <Switch>
                      <Route exact path="/login" component={Login} />

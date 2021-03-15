@@ -15,7 +15,7 @@ logout.onclick = function () {
             window.location.href = "popup.html";
          }
       };
-      xhttp.open("GET", "https://cryptic-stream-13108.herokuapp.com/userauth/logout", true);
+      xhttp.open("GET", "https://clockman.herokuapp.com/userauth/logout", true);
       xhttp.setRequestHeader("x-auth-token", result.token);
       xhttp.send();
    });

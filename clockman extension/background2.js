@@ -9,27 +9,27 @@ var flag = 0;
 
 
 
-// setInterval(function () {
-//    function doSomethingWithMinimizedWindows(windows) {
-//       for (var i = 0; i < windows.length; i++) {
-//           // do something with windows[i]
-//           // for example:
-//           console.log('Window #'+windows[i].id+' is minimized!');
-//       }
-//   }
+setInterval(function () {
+   function doSomethingWithMinimizedWindows(windows) {
+      for (var i = 0; i < windows.length; i++) {
+          // do something with windows[i]
+          // for example:
+          console.log('Window #'+windows[i].id+' is minimized!');
+      }
+  }
   
-//   chrome.windows.getAll(function(windows) {
-//       var minimized = [];
+  chrome.windows.getAll(function(windows) {
+      var minimized = [];
   
-//       for (var i = 0; i < windows.length; i++) {
-//           if (windows[i].state === "minimized") {
-//               minimized.push(windows[i]);
-//           }
-//       }
+      for (var i = 0; i < windows.length; i++) {
+          if (windows[i].state === "minimized") {
+              minimized.push(windows[i]);
+          }
+      }
   
-//       doSomethingWithMinimizedWindows(minimized);
-//   });
-// }, 3000);
+      doSomethingWithMinimizedWindows(minimized);
+  });
+}, 3000);
 
 
 
@@ -176,40 +176,40 @@ var flag = 0;
 
 // //---------------------------------------------------------------------------------------
 
-chrome.tabs.onActivated.addListener(function (activeInfo) {
-   chrome.tabs.get(activeInfo.tabId, function (tab) {
-      var x = tab.url;
-      console.log("activated: ", x);
-      if (!(x in viewtime)) {
-         viewtime[x] = 0;
-      }
-      var new_ts = Math.floor(Date.now() / 1000);
-      viewtime[prev_url] = viewtime[prev_url] + (new_ts - current_active_ts);
-      current_active_ts = new_ts;
-      prev_url = x;
+// chrome.tabs.onActivated.addListener(function (activeInfo) {
+//    chrome.tabs.get(activeInfo.tabId, function (tab) {
+//       var x = tab.url;
+//       console.log("activated: ", x);
+//       if (!(x in viewtime)) {
+//          viewtime[x] = 0;
+//       }
+//       var new_ts = Math.floor(Date.now() / 1000);
+//       viewtime[prev_url] = viewtime[prev_url] + (new_ts - current_active_ts);
+//       current_active_ts = new_ts;
+//       prev_url = x;
       
-   });
-});
+//    });
+// });
 
-var tabToUrl = {};
-chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
-   if (tab.active && change.url) {
-      var x = change.url;
-      tabToUrl[tabId] = tab.url;
-      console.log("Updated: ", x);
-      if (!(x in viewtime)) {
-         viewtime[x] = 0;
-      }
-      var new_ts = Math.floor(Date.now() / 1000);
-      viewtime[prev_url] = viewtime[prev_url] + (new_ts - current_active_ts);
-      current_active_ts = new_ts;
-      prev_url = x;
+// var tabToUrl = {};
+// chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
+//    if (tab.active && change.url) {
+//       var x = change.url;
+//       tabToUrl[tabId] = tab.url;
+//       console.log("Updated: ", x);
+//       if (!(x in viewtime)) {
+//          viewtime[x] = 0;
+//       }
+//       var new_ts = Math.floor(Date.now() / 1000);
+//       viewtime[prev_url] = viewtime[prev_url] + (new_ts - current_active_ts);
+//       current_active_ts = new_ts;
+//       prev_url = x;
       
-   }
-});
+//    }
+// });
 
-chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-   let url = tabs[0].url;
-   console.log("current url: ", url)
-   prev_url = url;
-});
+// chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+//    let url = tabs[0].url;
+//    console.log("current url: ", url)
+//    prev_url = url;
+// });

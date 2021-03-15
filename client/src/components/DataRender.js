@@ -22,31 +22,29 @@ const DataRender = (props) => {
          },
       };
       try {
+         const res = await axios.get(statsUrl, config);
 
-	      const res = await axios.get(statsUrl, config);
+         var labels = [];
+         var viewtime = [];
+         var timestamp = [];
+         var i;
 
-	      var labels = [];
-	      var viewtime = [];
-	      var timestamp = [];
-	      var i;
+         var productivity_score = 0;
 
-	      var productivity_score = 0;
+         for (i = 0; i < res.data.webstats.length; i++) {
+            if (res.data.webstats[i].viewtime > 0) {
+               labels.push(res.data.webstats[i].url);
+               viewtime.push(res.data.webstats[i].viewtime);
+               timestamp.push(res.data.webstats[i].timestamp);
+            }
+         }
 
-	      for (i = 0; i < res.data.webstats.length; i++) {
-	         if (res.data.webstats[i].viewtime > 0) {
-	            labels.push(res.data.webstats[i].url);
-	            viewtime.push(res.data.webstats[i].viewtime);
-	            timestamp.push(res.data.webstats[i].timestamp);
-	         }
-	      }
+         console.log("timestamps: ", timestamp);
 
-	      console.log("timestamps: ", timestamp);
+         const body = JSON.stringify({
+            url_list: labels,
+         });
 
-	      const body = JSON.stringify({
-	         url_list: labels,
-	      });
-
-      
          const res2 = await axios.post("/urlcategory/many", body, {
             headers: {
                "x-auth-token": token,
@@ -126,7 +124,9 @@ const DataRender = (props) => {
          setProductivityScore(productivity_score);
          loadingDisable();
       } catch (e) {
-         setFailMsg("No data available for the current duration");
+         setFailMsg(
+            "No data available for the current duration. Switch intervals to view old data."
+         );
          loadingDisable();
          console.log("fail msg from render: ", e);
       }

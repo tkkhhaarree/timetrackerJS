@@ -61,7 +61,7 @@ def signIn():
     save_counter = 0
     try:
         response = requests.post(
-            "https://cryptic-stream-13108.herokuapp.com/userauth/login",
+            "https://clockman.herokuapp.com/userauth/login",
             data=json.dumps({"email": email, "password": password}),
             headers={"Content-Type": "application/json"},
         )
@@ -85,7 +85,7 @@ def signIn():
 
     print("offset: ", int(time.timezone / 60))
     s = requests.post(
-        "https://cryptic-stream-13108.herokuapp.com/usersession/get_app_session",
+        "https://clockman.herokuapp.com/usersession/get_app_session",
         data=json.dumps({"timezone_offset": int(time.timezone / 60)}),
         headers={"x-auth-token": auth, "Content-Type": "application/json"},
     )
@@ -109,9 +109,10 @@ def signIn():
 
         if session != x:
             s = requests.post(
-                "https://cryptic-stream-13108.herokuapp.com/usersession/get_app_session",
+                "https://clockman.herokuapp.com/usersession/get_app_session",
                 data=json.dumps({"timezone_offset": int(time.timezone / 60)}),
-                headers={"x-auth-token": auth, "Content-Type": "application/json"},
+                headers={"x-auth-token": auth,
+                         "Content-Type": "application/json"},
             )
             session = json.loads(s.text)["session"]
             process_time = json.loads(s.text)["appstats"]
@@ -122,7 +123,8 @@ def signIn():
         try:
             current_app = (
                 psutil.Process(
-                    win32process.GetWindowThreadProcessId(GetForegroundWindow())[1]
+                    win32process.GetWindowThreadProcessId(
+                        GetForegroundWindow())[1]
                 )
                 .name()
                 .replace(".exe", "")
@@ -157,9 +159,10 @@ def signIn():
             try:
                 print("chrome has been quit.")
                 resp = requests.post(
-                    "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_chrome",
+                    "https://clockman.herokuapp.com/urltrack/quit_chrome",
                     data=json.dumps({"session": session}),
-                    headers={"x-auth-token": auth, "Content-Type": "application/json"},
+                    headers={"x-auth-token": auth,
+                             "Content-Type": "application/json"},
                 )
                 print(resp.text)
 
@@ -172,9 +175,10 @@ def signIn():
             print("chrome minimized")
             chrome_minimized = 1
             resp = requests.post(
-                "https://cryptic-stream-13108.herokuapp.com/urltrack/quit_chrome",
+                "https://clockman.herokuapp.com/urltrack/quit_chrome",
                 data=json.dumps({"session": session}),
-                headers={"x-auth-token": auth, "Content-Type": "application/json"},
+                headers={"x-auth-token": auth,
+                         "Content-Type": "application/json"},
             )
             print(resp.text)
 
@@ -182,9 +186,10 @@ def signIn():
         if current_app == "chrome" and chrome_flag == 1 and chrome_minimized == 1:
             print("chrome restored.")
             resp = requests.post(
-                "https://cryptic-stream-13108.herokuapp.com/urltrack/restore_chrome",
+                "https://clockman.herokuapp.com/urltrack/restore_chrome",
                 data=json.dumps({"session": session}),
-                headers={"x-auth-token": auth, "Content-Type": "application/json"},
+                headers={"x-auth-token": auth,
+                         "Content-Type": "application/json"},
             )
             print(resp.text)
             chrome_minimized = 0
@@ -199,9 +204,11 @@ def signIn():
         if save_counter == 10:
             try:
                 save_resp = requests.post(
-                    "https://cryptic-stream-13108.herokuapp.com/urltrack/save_app",
-                    data=json.dumps({"session": session, "apptime": process_time}),
-                    headers={"x-auth-token": auth, "Content-Type": "application/json"},
+                    "https://clockman.herokuapp.com/urltrack/save_app",
+                    data=json.dumps(
+                        {"session": session, "apptime": process_time}),
+                    headers={"x-auth-token": auth,
+                             "Content-Type": "application/json"},
                 )
                 print(save_resp.text)
                 print(process_time)
@@ -228,9 +235,11 @@ Label(login_screen, text="Password").pack()
 password_login_entry = Entry(login_screen, textvariable="password", show="*")
 password_login_entry.pack()
 Label(login_screen, text="").pack()
-login_button = Button(login_screen, text="Login", width=10, height=1, command=btnClick)
+login_button = Button(login_screen, text="Login",
+                      width=10, height=1, command=btnClick)
 status_text = Label(login_screen, text="")
-logout_button = Button(login_screen, text="Logout", width=10, height=1, command=logout)
+logout_button = Button(login_screen, text="Logout",
+                       width=10, height=1, command=logout)
 login_button.pack()
 login_screen.protocol("WM_DELETE_WINDOW", onClose)
 login_screen.mainloop()

@@ -14,11 +14,11 @@
    "permissions": [
       "tabs",
       "activeTab",
-      "https://cryptic-stream-13108.herokuapp.com/",
+      "https://clockman.herokuapp.com/",
       "storage"
    ],
    "background": {
-      "scripts": ["background2.js"],
+      "scripts": ["background.js"],
       "persistent": false
    }
 }

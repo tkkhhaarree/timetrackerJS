@@ -26,10 +26,15 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
    const classes = useStyles();
    const [btnText, setBtnText] = useState(
-      localStorage.getItem("token") != null && auth.isAuthenticated ? "Logout" : "Login"
+      localStorage.getItem("token") != null && auth.isAuthenticated
+         ? "Logout"
+         : "Login"
    );
+
    const [btnLink, setBtnLink] = useState(
-      localStorage.getItem("token") != null && auth.isAuthenticated ? "/" : "/login"
+      localStorage.getItem("token") != null && auth.isAuthenticated
+         ? "/"
+         : "/login"
    );
    const [registerDisplay, setRegisterDisplay] = useState(
       localStorage.getItem("token") != null && auth.isAuthenticated
@@ -101,6 +106,23 @@ const NavBar = () => {
                >
                   <GitHubIcon />
                </IconButton>
+
+               <Button
+                  component={Link}
+                  href="https://drive.google.com/file/d/18ST1sVeRqla2ki9fvc_aK-7ZNdMs19vp/view"
+                  target="_blank"
+                  color="inherit"
+                  variant="outlined"
+                  style={{
+                     textTransform: "none",
+                     padding: "5px 9px",
+                     textDecoration: "none",
+                     color: "black",
+                     marginRight: "7px",
+                  }}
+               >
+                  <b>Download</b>
+               </Button>
 
                <Button
                   component={Link}
