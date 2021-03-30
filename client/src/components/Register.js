@@ -40,7 +40,7 @@ class Register extends Component {
       auth.register(user).then((res) => {
          if (res) {
             this.setState({ open: false });
-            window.open("/dashboard/daily", "_self");
+            window.open("/dashboard/yearly", "_self");
          } else {
             this.setState({ open: true });
             this.setState({
