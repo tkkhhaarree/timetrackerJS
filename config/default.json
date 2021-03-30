@@ -1,4 +1,4 @@
 {
-   "mongoURI": "mongodb+srv://tkkhhaarree:simoncommission@cluster0.y050h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+   "mongoURI": "mongodb+srv://tkkhhaarree:simoncommission@cluster0.y050h.mongodb.net/test?retryWrites=true&w=majority",
    "jwtSecret": "tarunkhare"
 }
