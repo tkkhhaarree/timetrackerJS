@@ -37,7 +37,7 @@ class Login extends Component {
       auth.login(user).then((res) => {
          if (res) {
             this.setState({ open: false });
-            window.open("/dashboard/yearly", "_self");
+            window.open("/dashboard/all", "_self");
          } else {
             this.setState({ open: true });
             setTimeout(() => {
