@@ -13,6 +13,7 @@ Select "load unpacked" option.<br>
 "Select the "extension" folder in this repo.<br>
 Now sign in the web app using credentials: abcd@gmail.com, password: 123456<br>
 See your browsing activity.
+redeploy
 
 
 
