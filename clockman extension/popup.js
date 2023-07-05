@@ -28,7 +28,7 @@ submit.onclick = function () {
          document.getElementById("signup_msg").innerHTML = "";
       }
    };
-   xhttp.open("POST", "https://clockman.herokuapp.com/userauth/login", true);
+   xhttp.open("POST", "https://localhost:5000/userauth/login", true);
    xhttp.setRequestHeader("Content-Type", "application/json");
    xhttp.send(JSON.stringify({ email: email, password: password }));
 };

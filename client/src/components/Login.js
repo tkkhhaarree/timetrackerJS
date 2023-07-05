@@ -49,74 +49,79 @@ class Login extends Component {
 
    render() {
       return (
-         <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <div style={paper}>
-               <Avatar style={{ backgroundColor: "#ffffff" }}>
-                  <LockOutlinedIcon color="secondary" />
-               </Avatar>
-               <Typography component="h1" variant="h5">
-                  Sign in
-               </Typography>
-               <form
-                  noValidate
-                  onSubmit={this.onSubmit}
-                  style={form}
-                  spellCheck="false"
-               >
-                  <TextField
-                     variant="outlined"
-                     margin="normal"
-                     required
-                     fullWidth
-                     id="email"
-                     type="email"
-                     label="Email Address"
-                     name="email"
-                     autoComplete="email"
-                     autoFocus
-                     value={this.state.email}
-                     onChange={this.onChange}
-                     color="secondary"
-                  />
-
-                  <TextField
-                     variant="outlined"
-                     margin="normal"
-                     required
-                     fullWidth
-                     name="password"
-                     label="Password"
-                     type="password"
-                     name="password"
-                     id="password"
-                     autoComplete="current-password"
-                     value={this.state.password}
-                     onChange={this.onChange}
-                     color="secondary"
-                  />
-
-                  <Button
-                     type="submit"
-                     fullWidth
-                     variant="contained"
-                     color="secondary"
-                     style={submit}
+         <div>
+            <font color="red">
+               <b>For demo: use Email: tarun@gmail.com and password: 123456</b>
+            </font>
+            <Container component="main" maxWidth="xs">
+               <CssBaseline />
+               <div style={paper}>
+                  <Avatar style={{ backgroundColor: "#ffffff" }}>
+                     <LockOutlinedIcon color="secondary" />
+                  </Avatar>
+                  <Typography component="h1" variant="h5">
+                     Sign in
+                  </Typography>
+                  <form
+                     noValidate
+                     onSubmit={this.onSubmit}
+                     style={form}
+                     spellCheck="false"
                   >
-                     Sign In
-                  </Button>
+                     <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        type="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                        value={this.state.email}
+                        onChange={this.onChange}
+                        color="secondary"
+                     />
 
-                  <Link href="/register" variant="body2">
-                     Don't have an account? Sign Up
-                  </Link>
-               </form>
-               <Snackbar open={this.state.open}>
-                  <Alert variant="filled" severity="error">
-                     Invalid Login ID / Password
-                  </Alert>
-               </Snackbar>
-            </div>
-         </Container>
+                     <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        name="password"
+                        id="password"
+                        autoComplete="current-password"
+                        value={this.state.password}
+                        onChange={this.onChange}
+                        color="secondary"
+                     />
+
+                     <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="secondary"
+                        style={submit}
+                     >
+                        Sign In
+                     </Button>
+
+                     <Link href="/register" variant="body2">
+                        Don't have an account? Sign Up
+                     </Link>
+                  </form>
+                  <Snackbar open={this.state.open}>
+                     <Alert variant="filled" severity="error">
+                        Invalid Login ID / Password
+                     </Alert>
+                  </Snackbar>
+               </div>
+            </Container>
+         </div>
       );
    }
 }

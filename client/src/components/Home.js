@@ -61,12 +61,12 @@ const Home = () => {
                      </Button>
                      <Button
                         component={Link}
-                        to="/register"
+                        to="/login"
                         variant="outlined"
                         color="secondary"
                         style={{ textTransform: "none", padding: 4 }}
                      >
-                        <b>Sign Up for Clockman</b>
+                        <b>Check out demo!</b>
                      </Button>
                      <Button
                         component={Materialink}

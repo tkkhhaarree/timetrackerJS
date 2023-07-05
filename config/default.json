@@ -1,4 +1,4 @@
 {
-   "mongoURI": "mongodb+srv://tkkhhaarree:simoncommission@cluster0.y050h.mongodb.net/test?retryWrites=true&w=majority",
+   "mongoURI": "mongodb+srv://tarunkhare54321:clockmanpw@cluster0.ofaxr8x.mongodb.net/Cluster0?retryWrites=true&w=majority",
    "jwtSecret": "tarunkhare"
 }

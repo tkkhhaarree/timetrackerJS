@@ -15,7 +15,7 @@ logout.onclick = function () {
             window.location.href = "popup.html";
          }
       };
-      xhttp.open("GET", "https://clockman.herokuapp.com/userauth/logout", true);
+      xhttp.open("GET", "https://localhost:5000/userauth/logout", true);
       xhttp.setRequestHeader("x-auth-token", result.token);
       xhttp.send();
    });
