@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import Alert from "@material-ui/lab/Alert";
+
 import Snackbar from "@material-ui/core/Snackbar";
 
 class Login extends Component {
@@ -92,7 +92,6 @@ class Login extends Component {
                         name="password"
                         label="Password"
                         type="password"
-                        name="password"
                         id="password"
                         autoComplete="current-password"
                         value={this.state.password}
@@ -115,9 +114,7 @@ class Login extends Component {
                      </Link>
                   </form>
                   <Snackbar open={this.state.open}>
-                     <Alert variant="filled" severity="error">
-                        Invalid Login ID / Password
-                     </Alert>
+                     Invalid Login ID / Password
                   </Snackbar>
                </div>
             </Container>

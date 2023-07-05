@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import Alert from "@material-ui/lab/Alert";
+
 import Snackbar from "@material-ui/core/Snackbar";
 
 class Register extends Component {
@@ -44,8 +44,7 @@ class Register extends Component {
          } else {
             this.setState({ open: true });
             this.setState({
-               alert:
-                  "Invalid Email / Password format or Account already exists.",
+               alert: "Invalid Email / Password format or Account already exists.",
             });
             setTimeout(() => {
                this.setState({ open: false });
@@ -110,7 +109,6 @@ class Register extends Component {
                      name="password"
                      label="Password"
                      type="password"
-                     name="password"
                      id="password"
                      autoComplete="current-password"
                      value={this.state.password}
@@ -131,11 +129,7 @@ class Register extends Component {
                      Already have an account? Sign In
                   </Link>
                </form>
-               <Snackbar open={this.state.open}>
-                  <Alert variant="filled" severity="error">
-                     {this.state.alert}
-                  </Alert>
-               </Snackbar>
+               <Snackbar open={this.state.open}>{this.state.alert}</Snackbar>
             </div>
          </Container>
       );
