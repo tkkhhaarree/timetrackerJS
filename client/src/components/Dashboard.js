@@ -9,7 +9,6 @@ import IntervalChange from "./IntervalChange";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-
 const Dashboard = (props) => {
    var interval_name = "";
    var interval_value = "";
@@ -92,9 +91,14 @@ const Dashboard = (props) => {
    }
 
    if (interval_value != "") {
-      api_url = "/stats/webstats/" + interval_name + "/" + interval_value;
+      api_url =
+         "https://clockman-api.onrender.com/stats/webstats/" +
+         interval_name +
+         "/" +
+         interval_value;
    } else {
-      api_url = "/stats/webstats/" + api_append;
+      api_url =
+         "https://clockman-api.onrender.com/stats/webstats/" + api_append;
    }
 
    var prev_append = getPrevUrl(interval_name, interval_value);
@@ -115,9 +119,11 @@ const Dashboard = (props) => {
       },
    };
 
-   axios.get("/userauth/userinfo", config).then((userinfo) => {
-      setUsername(userinfo.data.user.name);
-   });
+   axios
+      .get("https://clockman-api.onrender.com/userauth/userinfo", config)
+      .then((userinfo) => {
+         setUsername(userinfo.data.user.name);
+      });
 
    const handleChange = (event) => {
       window.open("/dashboard/" + event.target.value, "_self");
@@ -138,47 +144,50 @@ const Dashboard = (props) => {
 
    return (
       <Fragment>
-      	<Backdrop open={loading}>
+         <Backdrop open={loading}>
             <CircularProgress color="inherit" />
          </Backdrop>
 
          <div style={{ display: display }}>
-
-         <div style={{ marginLeft: 10, marginTop: 10 }}>
-            Welcome back <b>{username}</b>!<br />
+            <div style={{ marginLeft: 10, marginTop: 10 }}>
+               Welcome back <b>{username}</b>!<br />
+               <br />
+               <b>{data_msg}</b>
+            </div>
             <br />
-            <b>{data_msg}</b>
-         </div>
-         <br />
-         <Select
-            value={intervalName}
-            onChange={handleChange}
-            style={{ marginLeft: 20 }}
-         >
-            <MenuItem value={"daily"}>Daily</MenuItem>
-            <MenuItem value={"weekly"}>Weekly</MenuItem>
-            <MenuItem value={"monthly"}>Monthly</MenuItem>
-            <MenuItem value={"yearly"}>Yearly</MenuItem>
-            <MenuItem value={"all"}>All Time</MenuItem>
-         </Select>
+            <Select
+               value={intervalName}
+               onChange={handleChange}
+               style={{ marginLeft: 20 }}
+            >
+               <MenuItem value={"daily"}>Daily</MenuItem>
+               <MenuItem value={"weekly"}>Weekly</MenuItem>
+               <MenuItem value={"monthly"}>Monthly</MenuItem>
+               <MenuItem value={"yearly"}>Yearly</MenuItem>
+               <MenuItem value={"all"}>All Time</MenuItem>
+            </Select>
 
-         <Button
-            variant="outlined"
-            color="secondary"
-            style={{
-               marginLeft: 20,
-               paddingLeft: "5px",
-               paddingRight: "5px",
-               textTransform: "none",
-            }}
-            onClick={intervalClick}
-         >
-            Select Interval
-         </Button>
-         <IntervalChange open={openInterval} changeCancel={changeCancel} />
+            <Button
+               variant="outlined"
+               color="secondary"
+               style={{
+                  marginLeft: 20,
+                  paddingLeft: "5px",
+                  paddingRight: "5px",
+                  textTransform: "none",
+               }}
+               onClick={intervalClick}
+            >
+               Select Interval
+            </Button>
+            <IntervalChange open={openInterval} changeCancel={changeCancel} />
 
-         <br />
-         <DataRender url={webstatsUrl} prevUrl={prevUrl} loadingDisable={loadingDisable}/>
+            <br />
+            <DataRender
+               url={webstatsUrl}
+               prevUrl={prevUrl}
+               loadingDisable={loadingDisable}
+            />
          </div>
       </Fragment>
    );

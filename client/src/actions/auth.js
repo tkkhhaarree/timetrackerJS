@@ -38,7 +38,11 @@ export const auth = {
          password: user.password,
       });
       return axios
-         .post("/userauth/signup", body, config)
+         .post(
+            "https://clockman-api.onrender.com/userauth/signup",
+            body,
+            config
+         )
          .then((res) => {
             console.log("response from auth: ", res);
             localStorage.setItem("token", res.data.token);
@@ -64,7 +68,7 @@ export const auth = {
       });
 
       return axios
-         .post("/userauth/login", body, config)
+         .post("https://clockman-api.onrender.com/userauth/login", body, config)
          .then((res) => {
             console.log("response from auth: ", res);
             localStorage.setItem("token", res.data.token);

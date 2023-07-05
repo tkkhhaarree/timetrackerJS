@@ -52,11 +52,13 @@ export default function CategoryChange(props) {
          vote: selected,
       });
 
-      axios.post("/urlcategory/", body, config).then((res) => {
-         if (res) {
-            changeTable(url, selected);
-         }
-      });
+      axios
+         .post("https://clockman-api.onrender.com/urlcategory/", body, config)
+         .then((res) => {
+            if (res) {
+               changeTable(url, selected);
+            }
+         });
       setOpen(false);
    };
 

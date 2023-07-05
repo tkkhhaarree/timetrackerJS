@@ -45,12 +45,16 @@ const DataRender = (props) => {
             url_list: labels,
          });
 
-         const res2 = await axios.post("/urlcategory/many", body, {
-            headers: {
-               "x-auth-token": token,
-               "Content-Type": "application/json",
-            },
-         });
+         const res2 = await axios.post(
+            "https://clockman-api.onrender.com/urlcategory/many",
+            body,
+            {
+               headers: {
+                  "x-auth-token": token,
+                  "Content-Type": "application/json",
+               },
+            }
+         );
 
          var c;
          var part_webstats = res.data.part_webstats;
