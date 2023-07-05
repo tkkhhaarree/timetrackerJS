@@ -2,10 +2,17 @@ const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
 const path = require("path");
+const cors = require("cors");
 
 connectDB();
 
 app.use(express.json({ extended: false }));
+
+app.use(
+   cors({
+      origin: ["https://clockman.onrender.com", "http://localhost:3000"],
+   })
+);
 
 app.use("/userauth", require("./routes/userauth"));
 app.use("/urltrack", require("./routes/urltrack"));
