@@ -67,8 +67,8 @@ export default function App() {
                      paddingLeft: "10px",
                   }}
                >
-                  <b>Created with</b> <FontAwesomeIcon icon={faHeart} />{" "}
-                  by&nbsp;
+                  <b>Created with</b>{" "}
+                  <FontAwesomeIcon color="red" icon={faHeart} /> by&nbsp;
                   <b>
                      <a
                         href="https://www.linkedin.com/in/tkhare54321/"
