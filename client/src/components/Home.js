@@ -210,10 +210,17 @@ const Home = () => {
                               <br />
                            </b>
                            <div style={{ fontSize: 15 }}>
-                              <b>*For audit purpose only: </b>
-                              Click <Link to="/login">Login</Link>, Use{" "}
-                              <b>Email: </b>
+                              <font color="red">
+                                 <b>*For demo: </b>
+                              </font>
+                              Click{" "}
+                              <b>
+                                 <Link to="/login">Login</Link>
+                              </b>
+                              , Use <b>Email: </b>
                               abcd@gmail.com and <b>password:</b> 123456
+                              <br />
+                              <br />
                            </div>
                         </div>
                      </div>
@@ -229,7 +236,10 @@ const Home = () => {
                         marginRight: 10,
                      }}
                   >
-                     <img src={Extension} />
+                     <img
+                        style={{ border: "1px solid grey" }}
+                        src={Extension}
+                     />
                   </Paper>
                </Grid>
             </Grid>

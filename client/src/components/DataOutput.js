@@ -19,7 +19,7 @@ const DataOutput = (props) => {
    if (fail_msg == "") {
       return (
          <Fragment>
-            <Grid container spacing={1}>
+            <Grid container>
                <Grid item sm>
                   <Paper
                      elevation={0}
@@ -69,9 +69,9 @@ const DataOutput = (props) => {
                </Grid>
             </Grid>
 
-            <Grid container spacing={1}>
+            <Grid container>
                <Grid item sm>
-                  <Grid container spacing={1}>
+                  <Grid container>
                      <Grid item sm>
                         <Paper
                            elevation={0}
@@ -89,7 +89,7 @@ const DataOutput = (props) => {
                         </Paper>
                      </Grid>
                   </Grid>
-                  <Grid container spacing={1}>
+                  <Grid container>
                      <Grid item sm>
                         <Paper
                            elevation={0}
@@ -114,7 +114,7 @@ const DataOutput = (props) => {
    } else {
       return (
          <Fragment>
-            <Grid container spacing={1}>
+            <Grid container>
                <Grid item sm>
                   <Paper
                      style={{
@@ -127,7 +127,7 @@ const DataOutput = (props) => {
                   </Paper>
                </Grid>
             </Grid>
-            <Grid container spacing={1}>
+            <Grid container>
                <Grid item sm>
                   <Paper
                      elevation={0}

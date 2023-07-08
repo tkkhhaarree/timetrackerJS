@@ -78,7 +78,7 @@ const NavBar = () => {
          <AppBar
             position="fixed"
             elevation={1}
-            style={{ backgroundColor: "#f5f4f0" }}
+            style={{ backgroundColor: "#b6dbc0" }}
          >
             <Toolbar
                variant="dense"
