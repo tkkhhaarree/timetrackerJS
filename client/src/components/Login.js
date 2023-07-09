@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 
 import Snackbar from "@material-ui/core/Snackbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class Login extends Component {
    constructor() {
@@ -40,9 +42,9 @@ class Login extends Component {
             window.open("/dashboard/all", "_self");
          } else {
             this.setState({ open: true });
-            setTimeout(() => {
-               this.setState({ open: false });
-            }, 3000);
+            toast.error("Invalid credentials!", {
+               position: toast.POSITION.BOTTOM_CENTER,
+            });
          }
       });
    }
@@ -113,9 +115,7 @@ class Login extends Component {
                         Don't have an account? Sign Up
                      </Link>
                   </form>
-                  <Snackbar open={this.state.open}>
-                     Invalid Login ID / Password
-                  </Snackbar>
+                  <ToastContainer />
                </div>
             </Container>
          </div>
