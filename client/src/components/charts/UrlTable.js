@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import CategoryChange from "../CategoryChange";
+import TablePagination from '@material-ui/core/TablePagination';
 
 const UrlTable = (props) => {
    var tableData = props.tableData;
@@ -14,6 +15,8 @@ const UrlTable = (props) => {
    const [open, setOpen] = useState(false);
    const [dialogUrl, setDialogUrl] = useState();
    const [dialogCategory, setDialogCategory] = useState();
+   const [page, setPage] = useState(0);
+   const [rowsPerPage, setRowsPerPage] = useState(10);
 
    const updateState = () => {
       console.log("tablestate updated");
@@ -50,46 +53,57 @@ const UrlTable = (props) => {
       int = int + 1;
       return int;
    }
-   if (tableState != null) {
-      var tableRow = tableState.map((row) => {
-         return (
-            <TableRow key={row.url + addInt()}>
-               <TableCell
-                  style={{ borderBottom: "none" }}
-                  component="th"
-                  scope="row"
+   const handleChangePage = (event, newPage) => {
+      setPage(newPage);
+   };
+
+   const handleChangeRowsPerPage = (event) => {
+      setRowsPerPage(parseInt(event.target.value, 10));
+      setPage(0);
+   };
+
+   const paginatedRows = tableState
+      ? tableState.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      : [];
+
+   var tableRow = paginatedRows.map((row) => {
+      return (
+         <TableRow key={row.url + addInt()}>
+            <TableCell
+               style={{ borderBottom: "none" }}
+               component="th"
+               scope="row"
+            >
+               {row.url.length > 26
+                  ? row.url.substring(0, 27) + " ..."
+                  : row.url}
+            </TableCell>
+            <TableCell style={{ borderBottom: "none" }} align="right">
+               {row.time}
+            </TableCell>
+            <TableCell style={{ borderBottom: "none" }} align="right">
+               {row.category == -1
+                  ? "Distracting "
+                  : row.category == 0
+                  ? "Neutral "
+                  : "Productive "}
+               <button
+                  style={{
+                     padding: 0,
+                     border: "none",
+                     background: "none",
+                     fontSize: 11,
+                     color: "blue",
+                     outline: "none",
+                  }}
+                  onClick={() => buttonClick(row.url, row.category)}
                >
-                  {row.url.length > 26
-                     ? row.url.substring(0, 27) + " ..."
-                     : row.url}
-               </TableCell>
-               <TableCell style={{ borderBottom: "none" }} align="right">
-                  {row.time}
-               </TableCell>
-               <TableCell style={{ borderBottom: "none" }} align="right">
-                  {row.category == -1
-                     ? "Distracting "
-                     : row.category == 0
-                     ? "Neutral "
-                     : "Productive "}
-                  <button
-                     style={{
-                        padding: 0,
-                        border: "none",
-                        background: "none",
-                        fontSize: 11,
-                        color: "blue",
-                        outline: "none",
-                     }}
-                     onClick={() => buttonClick(row.url, row.category)}
-                  >
-                     change
-                  </button>
-               </TableCell>
-            </TableRow>
-         );
-      });
-   }
+                  change
+               </button>
+            </TableCell>
+         </TableRow>
+      );
+   });
 
    return (
       <div>
@@ -111,6 +125,15 @@ const UrlTable = (props) => {
                <TableBody>{tableRow}</TableBody>
             </Table>
          </TableContainer>
+         <TablePagination
+            rowsPerPageOptions={[10, 20, 50]}
+            component="div"
+            count={tableState ? tableState.length : 0}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+         />
          <CategoryChange
             url={dialogUrl}
             category={dialogCategory}

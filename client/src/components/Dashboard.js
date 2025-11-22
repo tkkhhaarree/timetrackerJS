@@ -212,6 +212,9 @@ function getPrevUrl(interval_name, interval_value) {
       } else if (interval_name == "yearly") {
          prev_append = d.getFullYear() - 1;
       }
+      else{
+         prev_append = "";
+      }
    } else {
       var interval_split = interval_value.split("-");
       if (interval_name == "daily") {

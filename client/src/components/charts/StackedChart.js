@@ -52,7 +52,7 @@ const StackedChart = (props) => {
       var d = 0;
       var n = 0;
 
-      for (var j = 0; j < partWebstats[i].length; j++) {
+      for (let j = 0; j < partWebstats[i].length; j++) {
          if (partWebstats[i][j].category == 1) {
             p = p + partWebstats[i][j].viewtime;
          } else if (partWebstats[i][j].category == 0) {
@@ -70,7 +70,7 @@ const StackedChart = (props) => {
    var neutral_data = [];
    var distracting_data = [];
 
-   for (var i = 0; i < data_x_axis.length; i++) {
+   for (let i = 0; i < data_x_axis.length; i++) {
       if (interval_name == "weekly" || interval_name == "yearly") {
          data_x_axis[i] = data_x_axis[i].toString();
       } else {
@@ -85,7 +85,7 @@ const StackedChart = (props) => {
       }
    }
    var max = 0;
-   for (var i = 0; i < x_axis.length; i++) {
+   for (let i = 0; i < x_axis.length; i++) {
       if (data_x_axis.includes(x_axis[i])) {
          productive_data.push(p_x_axis[data_x_axis.indexOf(x_axis[i])]);
          distracting_data.push(d_x_axis[data_x_axis.indexOf(x_axis[i])]);
