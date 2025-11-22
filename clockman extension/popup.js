@@ -1,3 +1,5 @@
+const BASE_URL = "https://clockman-api.onrender.com";
+
 let submit = document.getElementById("submit");
 
 submit.onclick = function () {
@@ -5,30 +7,31 @@ submit.onclick = function () {
    var password = document.getElementById("password").value;
    console.log("login button clicked.");
 
-   var xhttp = new XMLHttpRequest();
-   xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-         auth_token = JSON.parse(this.responseText)["token"];
+   fetch(`${BASE_URL}/userauth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, password: password }),
+   })
+      .then((response) => {
+         if (response.ok) {
+            return response.json();
+         } else if (response.status === 400) {
+            document.getElementById("loginfail").innerHTML = "Invalid login ID / Password";
+            throw new Error("Invalid login");
+         } else {
+            document.getElementById("loginfail").innerHTML = "Server Error.";
+            document.getElementById("signup_msg").innerHTML = "";
+            throw new Error("Server error");
+         }
+      })
+      .then((data) => {
+         const auth_token = data["token"];
          chrome.storage.local.set({ token: auth_token, logged_in: true });
          console.log("auth from popup after login: ", auth_token);
-         //document.body.innerHTML = "You are logged in!";
-
-         chrome.browserAction.setPopup({ popup: "logged_in.html" });
+         chrome.action.setPopup({ popup: "logged_in.html" });
          window.location.href = "logged_in.html";
-      } else if (this.status == 400) {
-         document.getElementById("loginfail").innerHTML =
-            "Invalid login ID / Password";
-      } else {
-         console.log(
-            "ready state, status: %d %d",
-            this.readyState,
-            this.status
-         );
-         document.getElementById("loginfail").innerHTML = "Server Error.";
-         document.getElementById("signup_msg").innerHTML = "";
-      }
-   };
-   xhttp.open("POST", "https://localhost:5000/userauth/login", true);
-   xhttp.setRequestHeader("Content-Type", "application/json");
-   xhttp.send(JSON.stringify({ email: email, password: password }));
+      })
+      .catch((error) => {
+         console.error("Error during login:", error);
+      });
 };

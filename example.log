@@ -36,3 +36,841 @@ DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman.herokua
 DEBUG:urllib3.connectionpool:https://clockman.herokuapp.com:443 "POST /urltrack/quit_chrome HTTP/1.1" 200 45
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman.herokuapp.com:443
 DEBUG:urllib3.connectionpool:https://clockman.herokuapp.com:443 "POST /urltrack/quit_chrome HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 0
+ERROR:root:Expecting value: line 1 column 1 (char 0)
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 0
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 0 seconds
+DEBUG:root:Updated process_time: {'python': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 0 seconds
+DEBUG:root:Updated process_time: {'python': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 0 seconds
+DEBUG:root:Updated process_time: {'python': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 0 seconds
+DEBUG:root:Updated process_time: {'python': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 0 seconds
+DEBUG:root:Updated process_time: {'Code': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 0 seconds
+DEBUG:root:Updated process_time: {'Code': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 0 seconds
+DEBUG:root:Updated process_time: {'Code': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 0 seconds
+DEBUG:root:Updated process_time: {'Code': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 0 seconds
+DEBUG:root:Updated process_time: {'Code': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 0 seconds
+DEBUG:root:Updated process_time: {'Code': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 0 seconds
+DEBUG:root:Updated process_time: {'python': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 0 seconds
+DEBUG:root:Updated process_time: {'python': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 400 None
+ERROR:root:'token'
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 401 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 400 None
+ERROR:root:list indices must be integers or slices, not str
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 401 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: Code
+DEBUG:root:Time spent on Code: 1 seconds
+DEBUG:root:Updated process_time: {'Code': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:root:Current app detected: python
+DEBUG:root:Time spent on python: 1 seconds
+DEBUG:root:Updated process_time: {'python': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /userauth/login HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /urltrack/save_app HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): clockman-api.onrender.com:443
+DEBUG:urllib3.connectionpool:https://clockman-api.onrender.com:443 "POST /usersession/get_app_session HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /userauth/login HTTP/1.1" 200 214
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /usersession/get_app_session HTTP/1.1" 200 41
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:5000
+DEBUG:urllib3.connectionpool:http://localhost:5000 "POST /urltrack/save_app HTTP/1.1" 200 45

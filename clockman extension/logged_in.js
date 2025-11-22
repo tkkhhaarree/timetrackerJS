@@ -1,22 +1,31 @@
+const BASE_URL = "https://clockman-api.onrender.com";
+
 let logout = document.getElementById("logout");
 
 logout.onclick = function () {
    console.log("logout button clicked.");
    chrome.storage.local.get("token", function (result) {
       console.log("result logout before token: ", result);
-      var xhttp = new XMLHttpRequest();
 
-      xhttp.onreadystatechange = function () {
-         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+      fetch(`${BASE_URL}/userauth/logout`, {
+         method: "GET",
+         headers: { "x-auth-token": result.token }
+      })
+         .then((response) => {
+            if (response.ok) {
+               return response.text();
+            } else {
+               throw new Error("Logout failed");
+            }
+         })
+         .then((data) => {
+            console.log(data);
             chrome.storage.local.set({ logged_in: false, token: "" });
-            chrome.storage.local.set({ token: "" });
-            chrome.browserAction.setPopup({ popup: "popup.html" });
+            chrome.action.setPopup({ popup: "popup.html" });
             window.location.href = "popup.html";
-         }
-      };
-      xhttp.open("GET", "https://localhost:5000/userauth/logout", true);
-      xhttp.setRequestHeader("x-auth-token", result.token);
-      xhttp.send();
+         })
+         .catch((error) => {
+            console.error("Error during logout:", error);
+         });
    });
 };

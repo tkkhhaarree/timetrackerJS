@@ -10,8 +10,13 @@ import threading
 import datetime
 import logging
 
-
 logging.basicConfig(filename='example.log', level=logging.DEBUG)
+
+# Declare the base URL as a variable
+BASE_URL = "https://clockman-api.onrender.com"
+# BASE_URL = "http://localhost:5000"
+
+sleep_interval = 5  # in seconds   
 
 
 def btnClick():
@@ -61,7 +66,7 @@ def signIn():
     save_counter = 0
     try:
         response = requests.post(
-            "https://clockman.herokuapp.com/userauth/login",
+            f"{BASE_URL}/userauth/login",
             data=json.dumps({"email": email, "password": password}),
             headers={"Content-Type": "application/json"},
         )
@@ -85,10 +90,12 @@ def signIn():
 
     print("offset: ", int(time.timezone / 60))
     s = requests.post(
-        "https://clockman.herokuapp.com/usersession/get_app_session",
+        f"{BASE_URL}/usersession/get_app_session",
         data=json.dumps({"timezone_offset": int(time.timezone / 60)}),
         headers={"x-auth-token": auth, "Content-Type": "application/json"},
     )
+
+    print("s response:", s.text)
     session = json.loads(s.text)["session"]
     process_time = json.loads(s.text)["appstats"]
     print("process time aqquired: ", process_time)
@@ -109,10 +116,9 @@ def signIn():
 
         if session != x:
             s = requests.post(
-                "https://clockman.herokuapp.com/usersession/get_app_session",
+                f"{BASE_URL}/usersession/get_app_session",
                 data=json.dumps({"timezone_offset": int(time.timezone / 60)}),
-                headers={"x-auth-token": auth,
-                         "Content-Type": "application/json"},
+                headers={"x-auth-token": auth, "Content-Type": "application/json"},
             )
             session = json.loads(s.text)["session"]
             process_time = json.loads(s.text)["appstats"]
@@ -120,6 +126,7 @@ def signIn():
 
         current_app = ""
         init = time.time()
+        print("init time: " + str(init))
         try:
             current_app = (
                 psutil.Process(
@@ -139,10 +146,17 @@ def signIn():
             chrome_quit = 0
             print("chrome opened with session: " + str(session))
         running_list = []
+
+
         cmd = 'powershell "gps | where {$_.MainWindowTitle } | select ProcessName'
         proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+
+        #print("proc stdout: "+ str(proc.stdout))
+
         for line in proc.stdout:
             running_list.append(line.decode().rstrip())
+
+        #print("running list: "+ str(running_list))
 
         # when chrome has been quit.
         if (
@@ -159,10 +173,9 @@ def signIn():
             try:
                 print("chrome has been quit.")
                 resp = requests.post(
-                    "https://clockman.herokuapp.com/urltrack/quit_chrome",
+                    f"{BASE_URL}/urltrack/quit_chrome",
                     data=json.dumps({"session": session}),
-                    headers={"x-auth-token": auth,
-                             "Content-Type": "application/json"},
+                    headers={"x-auth-token": auth, "Content-Type": "application/json"},
                 )
                 print(resp.text)
 
@@ -175,10 +188,9 @@ def signIn():
             print("chrome minimized")
             chrome_minimized = 1
             resp = requests.post(
-                "https://clockman.herokuapp.com/urltrack/quit_chrome",
+                f"{BASE_URL}/urltrack/quit_chrome",
                 data=json.dumps({"session": session}),
-                headers={"x-auth-token": auth,
-                         "Content-Type": "application/json"},
+                headers={"x-auth-token": auth, "Content-Type": "application/json"},
             )
             print(resp.text)
 
@@ -186,10 +198,9 @@ def signIn():
         if current_app == "chrome" and chrome_flag == 1 and chrome_minimized == 1:
             print("chrome restored.")
             resp = requests.post(
-                "https://clockman.herokuapp.com/urltrack/restore_chrome",
+                f"{BASE_URL}/urltrack/restore_chrome",
                 data=json.dumps({"session": session}),
-                headers={"x-auth-token": auth,
-                         "Content-Type": "application/json"},
+                headers={"x-auth-token": auth, "Content-Type": "application/json"},
             )
             print(resp.text)
             chrome_minimized = 0
@@ -197,18 +208,21 @@ def signIn():
         if current_app not in process_time.keys():
             process_time[current_app] = 0
         final = time.time()
-        process_time[current_app] += int(final - init)
+        print("final time: " + str(final))
+        #print(f"Time spent on {current_app}: {int(final - init)} seconds")
+        time.sleep(sleep_interval- (final - init))
+        process_time[current_app] += sleep_interval
+        print(f"Total time spent on {current_app}: {process_time[current_app]} seconds")
         save_counter = save_counter + 1
         # print("process time: ", process_time)
         # print("running processes: ", running_list)
         if save_counter == 10:
             try:
                 save_resp = requests.post(
-                    "https://clockman.herokuapp.com/urltrack/save_app",
+                    f"{BASE_URL}/urltrack/save_app",
                     data=json.dumps(
                         {"session": session, "apptime": process_time}),
-                    headers={"x-auth-token": auth,
-                             "Content-Type": "application/json"},
+                    headers={"x-auth-token": auth, "Content-Type": "application/json"},
                 )
                 print(save_resp.text)
                 print(process_time)
